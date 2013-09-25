@@ -1,5 +1,8 @@
 # Django settings for farmville project.
 
+from os.path import abspath, basename, dirname, join, normpath
+ROOT = dirname(dirname(abspath(__file__)))
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -108,6 +111,7 @@ ROOT_URLCONF = 'farmville.urls'
 WSGI_APPLICATION = 'farmville.wsgi.application'
 
 TEMPLATE_DIRS = (
+    normpath(join(ROOT, 'farmville', 'templates')),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -127,6 +131,8 @@ INSTALLED_APPS = (
     'farmville.farmer',
     'farmville.barn',
     'farmville.sheep',
+    'farmville.message',
+    'farmville.wolf',
 )
 
 # A sample logging configuration. The only tangible logging

@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-
+import farmville
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 # admin.autodiscover()
@@ -14,4 +14,9 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
+    #url(r'^farmer/', include('farmville.farmer.urls')),
+    #url(r'^barn/', include('farmville.barn.urls')),
+    url(r'^sheep/', include('farmville.sheep.urls')),
+    #url(r'^message/$', include('farmville.message.urls')),
+    #url(r'^wolf/$', include('farmville.wolf.urls')),
 )

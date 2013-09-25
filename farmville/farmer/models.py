@@ -1,7 +1,17 @@
 from django.db import models
-from django.contrib.admin
-
+from django.contrib import admin
 # Create your models here.
+
 class Farmer(models.Model):
-    name = CharField(max_length=50)
-    email = CharField(max_length=100)
+    username = models.CharField(max_length=50, primary_key = True)
+    password = models.CharField(max_length=50)
+    firstname = models.CharField(max_length=10)
+    lastname = models.CharField(max_length=10)
+    email = models.EmailField(max_length=50)
+    tlf = models.CharField(max_length=15)
+    reserve = models.ForeignKey('self')
+
+    def __unicode__(self):
+	return self.username
+
+admin.site.register(Farmer)
