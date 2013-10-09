@@ -3,7 +3,7 @@ from django.contrib import admin
 # Create your models here.
 
 class Farmer(models.Model):
-    userid = models.CharField(max_length=7, primary_key = True)
+    farmerid = models.CharField(max_length=7, primary_key = True)
     username = models.CharField(max_length=50, null=True)
     password = models.CharField(max_length=50, null=True)
     firstname = models.CharField(max_length=10, null=True)
