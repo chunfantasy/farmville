@@ -18,3 +18,16 @@ def generateSheep(request):
 	{'sheepList': sheepList},
 	context_instance=RequestContext(request)
     )
+
+def sheepRegister(request):
+    farmer = request.farmer
+    sheep = Sheep()
+    s = Sheep.objects.filter(farmer=farmer, date=thisyear)
+    if s == None:
+	sheep.id = farmer.id + thisyear + "000"
+    else:
+	sheep.id = farmer.id + thisyear + (s.id+1)
+    return render_to_response('sheep/sheep.html',
+	{'sheepList': sheepList},
+	context_instance=RequestContext(request)
+    )
