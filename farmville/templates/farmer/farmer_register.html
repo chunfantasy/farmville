@@ -1,0 +1,17 @@
+<form action="/farmer/farmerRegisterSubmit" method="post">{% csrf_token %}
+    <lable for="username">Username</lable>
+    <input name ="username" type="text"></input></br>
+    <lable for="password">Password</lable>
+    <input name ="password" type="password"></input></br>
+    <lable for="firstname">First Name</lable>
+    <input name ="firstname" type="text"></input></br>
+    <lable for="lastname">Last Name</lable>
+    <input name ="lastname" type="text"></input></br>
+    <lable for="email">E-mail</lable>
+    <input name ="email" type="text"></input></br>
+    <lable for="tlf">Telephone</lable>
+    <input name ="tlf" type="text"></input></br>
+    <lable for="reserve">Reserve</lable>
+    <input name ="reserve" type="text"></input></br>
+    <input id ="submit" type="submit" value="Submit"></input>
+</form>
