@@ -5,6 +5,7 @@
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+
 }
 
 /*			HTML5 display-role reset for older browsers			*/
@@ -54,28 +55,18 @@ hyperlink unpressed			hlunp			#3697B3
 
 */
 
-
+html, body { height: 100%; }
 body {
-	background-color: white
-}
+	/* BACKGROUND */
+	background-image: radial-gradient(center , ellipse cover, #09AB82, #05630D);
+	background-image: -o-radial-gradient(center , ellipse cover, #09AB82, #05630D);
+	background-image: -ms-radial-gradient(center , ellipse cover, #09AB82, #05630D);
+	background-image: -moz-radial-gradient(center , ellipse cover, #09AB82, #05630D);
+	background-image: -webkit-radial-gradient(center , ellipse cover, #09AB82, #05630D);
+	/* FONTS */
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-weight: 300;
 
-h1 {
-	font-family: "Helvetica", Helvetica, serif;
-	font-size: 72px;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;		/*		 grad1		 grad2*/
-	background-image: -webkit-linear-gradient(bottom, 	#6BBB2C 0%, #C7EEA3 100%);
-	background-image: -moz-linear-gradient(bottom,		#6BBB2C 0%, #C7EEA3 100%);
-	background-image: -o-linear-gradient(bottom, 		#6BBB2C 0%, #C7EEA3 100%);
-	background-image: -ms-linear-gradient(bottom, 		#6BBB2C 0%, #C7EEA3 100%);
-	background-image: linear-gradient(bottom, 			#6BBB2C 0%, #C7EEA3 100%);
-}
-h2{
-	font-family: "Helvetica", Helvetica, serif;
-	font-size: 48px;
-	color: white;
-	text-align: center;
-	text-shadow: 0 -1px black;
 }
 
 /* HEADER */
@@ -83,55 +74,81 @@ h2{
 	position:fixed;
 	left:0px;
 	top:0px;
-	height:100px;
+	height:40px;
 	width:100%;
-	background:#6BBB2C;
     margin:0px auto;
-}
-#title {
-	text-align: center;
-}
+    background-color: white;
+    /* DROP SHADOW */
+	-webkit-box-shadow: 0px 2px 1px 0px #05630D;
+	box-shadow: 0px 2px 1px 0px #05630D;
 
+	
+}
 /* IE 6 */
 * html #header {
    position:absolute;
    bottom:expression((0-(footer.offsetHeight)+(document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight)+(ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop))+'px');
 }
 
-/* FORM */
-div.form_holder {
-	font-family: sans-serif;
-	/*					bbg 					*/
-	background-color: white;				 	/*		 grad1		 grad2*/
-	background-image: -webkit-linear-gradient(bottom, 	#6BBB2C 0%, #C7EEA3 100%);
-	background-image: -moz-linear-gradient(bottom,		#6BBB2C 0%, #C7EEA3 100%);
-	background-image: -o-linear-gradient(bottom, 		#6BBB2C 0%, #C7EEA3 100%);
-	background-image: -ms-linear-gradient(bottom, 		#6BBB2C 0%, #C7EEA3 100%);
-	background-image: linear-gradient(bottom, 			#6BBB2C 0%, #C7EEA3 100%);
+#title {
+	margin-top: 2px;
+	text-align: center;
+}
 
-	-moz-border-radius: 15px;
-	border-radius: 15px;
-	width: 400px;
-	height: 450px;	
+h1,h2,h3 {
+	position: relative;
+	margin-left: 30px;
+	text-align: left;
+}
+h1{
+	font-size: 25px;
+}
+h2{
+	margin-top: 20px;
+	font-size: 18px;
+	font-style: bold;
+	color: black;
+}
+h3{
+	margin-top: 12px;
+	font-size: 15px;
+	color: grey;
+}
+
+
+
+/* FORM */
+.container {
+	margin-top: 90px;
+
+	position: absolute;
+	text-align: center;
+
+	/*													 white		 grey	*/
+	background-image: -webkit-linear-gradient(top, 	#FFFFFF 70%, #F4F4F4 100%);
+	background-image: -moz-linear-gradient(top, 	#FFFFFF 70%, #F4F4F4 100%);
+	background-image: -o-linear-gradient(top, 		#FFFFFF 70%, #F4F4F4 100%);
+	background-image: -ms-linear-gradient(top, 		#FFFFFF 70%, #F4F4F4 100%);
+	background-image: linear-gradient(top, 			#FFFFFF 70%, #F4F4F4 100%);
+
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	width: 350px;
+	height: 450px;
 }
 
 #regDiv {
-	position: absolute;
-	left: 72%;
-	top: 50%;
+	/* 600 + 350 + 25 = 975*/
+	left: 1010px;
 	margin-left: -350px;
-	margin-top: -15%;
 }
 
 #loginDiv {
-	position: absolute;
-	left: 50%;
-	top: 50%;
+	left: 640px;
 	margin-left: -350px;
-	margin-top: -15%;
 }
 
-div.form_holder label {
+.block label {
 	display: none;
 }
 
@@ -140,16 +157,15 @@ div.form_holder label {
 }
 
 
-div.form_holder input[type="text"],div.form_holder input[type="password"] {
+.block input[type="text"],.block input[type="password"] {
 	width: 60%;
-	height: 50px;
+	height: 45px;
 	position: relative;
-	margin-top: 12px;
-	margin-left: 20%;
+	margin-top: 10px;
 	font-size: 14px;
 	color: #8A858C;
 	outline: none;
-	border: 1px solid rgba(0, 0, 0, .49);
+	border: 1px solid #8A858C;
 
 	padding-left: 20px;
 	
@@ -157,49 +173,38 @@ div.form_holder input[type="text"],div.form_holder input[type="password"] {
 	-moz-background-clip: padding-box;
 	background-clip: padding-box;
 	border-radius: 6px;
-	/*													 white		 grey	*/
-	background-image: -webkit-linear-gradient(bottom, 	#FFFFFF 0%, #F4F4F4 100%);
-	background-image: -moz-linear-gradient(bottom, 		#FFFFFF 0%, #F4F4F4 100%);
-	background-image: -o-linear-gradient(bottom, 		#FFFFFF 0%, #F4F4F4 100%);
-	background-image: -ms-linear-gradient(bottom, 		#FFFFFF 0%, #F4F4F4 100%);
-	background-image: linear-gradient(bottom, 			#FFFFFF 0%, #F4F4F4 100%);
 
-	-webkit-box-shadow: inset 0px 2px 0px #d9d9d9;
-	box-shadow: inset 0px 2px 0px #d9d9d9;
+	-webkit-box-shadow: inset 0px 3px 3px #d9d9d9;
+	box-shadow: inset 0px 3px 3px #d9d9d9;
+}
+.block input[name="username"],.block input[name="firstName"] {
+	margin-top: 30px;
 }
 
-div.form_holder input[name="username"],input[name="username2"] {
-	margin-top: 150px;
+.block input[type="text"]:focus,.block input[type="password"]:focus {
+
+	-webkit-box-shadow: 0px 0px 1px 2px #C7EEA3;
+	box-shadow: 0px 0px 1px 2px #C7EEA3;
 }
 
-div.form_holder input[type="text"]:focus,div.form_holder input[type="password"]:focus {
-	-webkit-box-shadow: inset 0px 2px 0px #a7a7a7;
-	box-shadow: inset 0px 2px 0px #a7a7a7;
+.block input:first-child {
+	margin-top: 10px;
 }
 
-div.form_holder input:first-child {
-	margin-top: 0px;
-}
-
-div.form_holder input[type="submit"] {
+.block input[type="submit"] {
 	width: 60%;
-	height: 50px;
+	height: 40px;
 	margin-top: 12px;
-	margin-left: 20%;
 	color: #fff;
 	font-size: 18px;
-	font-weight: bold;
-	text-shadow: 0px -1px 0px black;
-	outline: none;
-	border: 1px solid rgba(0, 0, 0, .49);
+	font-family: sans-serif;
 
 	-webkit-background-clip: padding-box;
 	-moz-background-clip: padding-box;
 	background-clip: padding-box;
 	border-radius: 6px;
 
-	/*					butbg					*/
-	background-color: #6BBB2C;					/*		bgrad1		bgrad2		*/
+	background-color: #6BBB2C;
 	background-image: -webkit-linear-gradient(bottom, 	#6BBB2C 0%, #94CF54 100%);
 	background-image: -moz-linear-gradient(bottom, 		#6BBB2C 0%, #94CF54 100%);
 	background-image: -o-linear-gradient(bottom, 		#6BBB2C 0%, #94CF54 100%);
@@ -207,7 +212,7 @@ div.form_holder input[type="submit"] {
 	background-image: linear-gradient(bottom, 			#6BBB2C 0%, #94CF54 100%);
 	
 	
-	text-shadow: 0px -1px 0px black;
+	text-shadow: 1px 1px 3px black;
 	outline: none;
 	border: 1px solid rgba(0, 0, 0, .49);
 	
@@ -220,25 +225,15 @@ div.form_holder input[type="submit"] {
 	transition: all .1s ease-in-out;
 }
 
-div.form_holder input[type="submit"]:hover {
-	margin-top: 10px;
+.block input[type="submit"]:hover {
+	margin-top: 15px;
 }
 
-div.form_holder input[type="submit"]:active {
-	/*					butbg					*/
-	background-color: #6BBB2C;					/*		bgrad2		bgrad1		*/
+.block input[type="submit"]:active {
+	background-color: #6BBB2C;
 	background-image: -webkit-linear-gradient(bottom, 	#94CF54 0%, #6BBB2C 100%);
 	background-image: -moz-linear-gradient(bottom, 		#94CF54 0%, #6BBB2C 100%);
 	background-image: -o-linear-gradient(bottom, 		#94CF54 0%, #6BBB2C 100%);
 	background-image: -ms-linear-gradient(bottom,		#94CF54 0%, #6BBB2C 100%);
 	background-image: linear-gradient(bottom,			#94CF54 0%, #6BBB2C 100%);
-}
-
-div.vertical-line{
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: -110px;
-	width: 5px;
-  	background-color: black;
-  	height: 90%;
 }
