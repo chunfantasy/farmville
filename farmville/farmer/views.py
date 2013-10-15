@@ -42,16 +42,12 @@ def farmerLogin(request):
     try:
 	username = request.POST['username']
 	password = request.POST['password']
-	print username
-	print password
 	farmer = authenticate(username=username, password=password)
-	print farmer
 	if farmer is not None:
 	    result = 'success!'
 	else:
 	    result = 'fail!'
-    except RuntimeError as e:
-    	print e
+    except:
     	result = 'error!'
     return render_to_response('result.html',
 	{'result':result},
