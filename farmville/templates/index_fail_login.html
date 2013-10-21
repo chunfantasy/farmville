@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<title>Project Farmville Login</title>
+	<meta name="description" content="login">
+	<meta name="author" content="gruppe5">
+	<link rel="stylesheet" type="text/css" href="/static/css/main.css" />
+	<!--<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="http://www.modernizr.com/downloads/modernizr-latest.js"></script>
+	<script type="text/javascript" src="../js/placeholder.js"></script>-->
+</head>
+<body>
+	<div id="header">
+		<h1 id="title">Project Farmville</h1>
+	</div>
+	<div id="loginDiv", class="container">
+		<form class="block" action="/farmer/farmerLogin" method="post">{% csrf_token %}
+			<h2>Welcome to Farmville!</h2>
+			<h3>
+			Handling sheep! Sheep are amazing, look at those sheep frolicking and jumping around! Sheep! Wonderful sheep!
+			</h3>
+			<h3>
+			When I want to look at my sheep, I always use Farmville - "Not author of this page."
+			</h3>
+			<label for="username">username</label><input type="text" name="username" class="placeholder" placeholder="Your username">
+			<label for="password">password</label><input type="password" name="password" class="placeholder" placeholder="Password">
+			<br>username or password is not correct!
+			<input type="submit" value="Log In">
+		</form>
+	</div>
+	<div id="regDiv", class="container">
+		<form class="block" action="/farmer/farmerRegister" method="post">{% csrf_token %}
+			<h2>Ny på Farmville?</h2>
+			<h3>Registrer deg her!</h3>
+			<label for="firstName">username</label><input type="text" name="firstName" class="placeholder" placeholder="First name">
+			<label for="lastName">username</label><input type="text" name="lastName" class="placeholder" placeholder="Last name">
+			<label for="regUsername">username</label><input type="text" name="username2" class="placeholder" placeholder="me@projectfarmville.com">
+			<label for="regPassword">password</label><input type="password" name="password2" class="placeholder" placeholder="Choose a password">
+			<label for="testPassword">password</label><input type="password" name="password3" class="placeholder" placeholder="Repeat password">
+			<input type="submit" value="Register">
+			<!--<div class="vertical-line" />-->
+		</form>
+	</div>
+</body>
+</html>
