@@ -2,7 +2,7 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.http import HttpResponse, HttpResponseRedirect
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login
 
 from farmville.farmer.models import Farmer
 
@@ -31,28 +31,28 @@ def farmerRegister(request):
 	    farmer.farmerid = '1000001'
 	    farmer.save()
     except:
-	return render_to_response('index.html',
+	return render_to_response('index_fail_register.html',
 	    {},
 	    context_instance=RequestContext(request))
     return render_to_response('result.html',
-	{'result':'Success'},
 	context_instance=RequestContext(request))
 
 def farmerLogin(request):
     try:
 	username = request.POST['username']
 	password = request.POST['password']
-	print username
-	print password
 	farmer = authenticate(username=username, password=password)
-	print farmer
 	if farmer is not None:
+	    print farmer
+	    login(request, farmer)
 	    result = 'success!'
+	    print "success"
 	else:
-	    result = 'fail!'
-    except RuntimeError as e:
-    	print e
-    	result = 'error!'
+	    raise
+    except:
+    	return render_to_response('index_fail_login.html',
+	    {},
+	    context_instance=RequestContext(request))
     return render_to_response('result.html',
 	{'result':result},
 	context_instance=RequestContext(request))
