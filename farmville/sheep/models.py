@@ -18,6 +18,6 @@ class Sheep(models.Model):
     status = models.IntegerField(max_length=1, choices=STATUS_CHOICES,default=0, null=True)
 
     def __unicode__(self):
-	return str(self.barn) + " " + str(self.name)
+	return str(self.Farmer) + " " + str(self.name)
  
 admin.site.register(Sheep)

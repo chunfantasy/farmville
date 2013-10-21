@@ -6,9 +6,9 @@
 <tbody>
 {% for s in sheepList %}
     <tr class ="{%  cycle 'odd' 'even' %}">
-        <td>
-            Sheep {{s.name}} {{ s.birthday }} {{ s.sheepID }}
-        </td>
+        <td>Sheepname: {{s.name}}</td>
+        <td>Birthday: {{ s.birthday }}</td>
+        <td>SheepID: {{ s.sheepID }}</td>
     </tr>
 {% endfor %}
 </tbody>
