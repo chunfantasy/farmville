@@ -24,7 +24,7 @@ def farmerRegister(request):
 	farmer.last_name = last_name
 	if len(Farmer.objects.all()) != 0:
 	    farmerlist = Farmer.objects.all()
-	    lastid = farmerlist[len(farmerlist)-2].farmerid
+	    lastid = farmerlist[-2].farmerid
 	    farmer.farmerid = str(int(lastid) + 1)
 	    farmer.save()
 	else:

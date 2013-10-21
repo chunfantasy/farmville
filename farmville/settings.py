@@ -131,7 +131,6 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'farmville.farmer',
-    'farmville.barn',
     'farmville.sheep',
     'farmville.message',
     'farmville.wolf',
