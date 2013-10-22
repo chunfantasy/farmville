@@ -13,25 +13,29 @@ def index(request):
 
 def farmerRegister(request):
     try:
-    	if request.POST['password2'] != request.POST['password3']:
-    	    raise
-	first_name = request.POST['firstName']
-	last_name = request.POST['lastName']
-	password = request.POST['password2']
-	username = request.POST['username2']
-	farmer = Farmer.objects.create_user(username = username, password = password)
-	farmer.first_name = first_name
-	farmer.last_name = last_name
-	if len(Farmer.objects.all()) != 0:
-	    farmerlist = Farmer.objects.all()
-	    lastid = farmerlist[-2].farmerid
-	    farmer.farmerid = str(int(lastid) + 1)
-	    farmer.save()
-	else:
-	    farmer.farmerid = '1000001'
-	    farmer.save()
-    except:
-	return render_to_response('index_fail_register.html',
+        if request.POST['password2'] != request.POST['password3']:
+            raise
+        first_name = request.POST['firstName']
+        last_name = request.POST['lastName']
+        password = request.POST['password2']
+        username = request.POST['username2']
+        farmer = Farmer.objects.create_user(username = username, password = password)
+        farmer.first_name = first_name
+        farmer.last_name = last_name
+
+        farmerlist = Farmer.objects.all()
+        if len(farmerlist != 0:
+            print("BALARLARSKHKGHSAKJSKJGFAKS")
+            lastid = farmerlist[0].farmerid
+            farmer.farmerid = str(int(lastid) + 1).zfill(7)
+            farmer.save()
+        else:
+            print "BALARLARSKHKGHSAKJSKJGFAKS"
+            farmer.farmerid = '1'.zfill(7)
+            farmer.save()
+    except RuntimeError as e:
+        print e
+        return render_to_response('index_fail_register.html',
 	    {},
 	    context_instance=RequestContext(request))
     return render_to_response('result.html',
