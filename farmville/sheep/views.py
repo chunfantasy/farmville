@@ -2,28 +2,25 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.http import HttpResponse, HttpResponseRedirect
-import datetime
+from datetime import date
 from farmville.farmer.models import Farmer
 from farmville.sheep.models import Sheep
 from django.contrib.auth.models import AbstractUser
 
 
-def generateSheep(request):
+def sheepGenerate(request):
     farmer = request.user
-    #farmer = farmer[len(farmer)-1]
-    s = Sheep.objects.all()\
-        #.get(Farmer = farmer)
+    s = Sheep.objects.all()
     s.delete()
     sheepList = []
     for i in range(50):
         sheep = Sheep()
         sheep.Farmer = farmer
         sheep.name = str(i)
-        sheep.birthday = "2013-01-01"
-        print(farmer.farmerid)
-        sheep.sheepID = farmer.farmerid+sheep.birthday[2:4]+str(sheep.nr)
+	sheep.birthday = date.today()
+        sheep.sheepid = farmer.farmerid + str(sheep.birthday)[2:4] + str(i).zfill(3)
         sheep.save()
-        print(sheep.name,sheep.birthday,sheep.sheepID)
+        print(sheep.name,sheep.birthday,sheep.sheepid)
         sheepList.append(sheep)
     return render_to_response('sheep/sheep.html',
 	{'sheepList': sheepList},

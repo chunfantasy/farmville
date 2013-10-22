@@ -9,5 +9,5 @@ urlpatterns = patterns('farmville.sheep.views',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    url(r'^generateSheep', 'generateSheep'),
+    url(r'^sheepGenerate', 'sheepGenerate'),
 )

@@ -24,21 +24,21 @@ def farmerRegister(request):
         farmer.last_name = last_name
 
         farmerlist = Farmer.objects.all()
-        if len(farmerlist != 0:
-            print("BALARLARSKHKGHSAKJSKJGFAKS")
-            lastid = farmerlist[0].farmerid
+	print len(farmerlist)
+        if len(farmerlist) <= 2:
+            for i in range(len(farmerlist)):
+            	farmerlist[i].farmerid = str(i+1).zfill(7)
+		farmerlist[i].save()
+        else:
+            lastid = farmerlist[len(farmerlist)-2].farmerid
             farmer.farmerid = str(int(lastid) + 1).zfill(7)
             farmer.save()
-        else:
-            print "BALARLARSKHKGHSAKJSKJGFAKS"
-            farmer.farmerid = '1'.zfill(7)
-            farmer.save()
-    except RuntimeError as e:
-        print e
+    except:
         return render_to_response('index_fail_register.html',
 	    {},
 	    context_instance=RequestContext(request))
     return render_to_response('result.html',
+	{'result':'success!'},
 	context_instance=RequestContext(request))
 
 def farmerLogin(request):
@@ -47,17 +47,14 @@ def farmerLogin(request):
 	password = request.POST['password']
 	farmer = authenticate(username=username, password=password)
 	if farmer is not None:
-	    print farmer
 	    login(request, farmer)
-	    result = 'success!'
-	    print "success"
 	else:
 	    raise
     except:
     	return render_to_response('index_fail_login.html',
 	    {},
 	    context_instance=RequestContext(request))
-    return render_to_response('result.html',
-	{'result':result},
+    return render_to_response('farmer/farmer.html',
+	{'farmer':farmer},
 	context_instance=RequestContext(request))
     
