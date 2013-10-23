@@ -8,13 +8,11 @@ function toggle_visibility(tbid,lnkid)
   else{document.getElementById(tbid).style.display = document.getElementById(tbid).style.display == "table" ? "none" : "table";}
   document.getElementById(lnkid).value = document.getElementById(lnkid).value == "[-] Collapse" ? "[+] Expand" : "[-] Collapse";
  }
-</script>
 <style type="text/css">
-#farmer,#sheep1, #sheep2 {display:none;}
-#lnkfarm1,#lnksheep2, #inksheep2 {border:none;background:none;width:85px;}
-td {FONT-SIZE: 12px; MARGIN: 0px; COLOR: #000000;}
-td {FONT-FAMILY: verdana,helvetica,arial,sans-serif}
-a {TEXT-DECORATION: none;}
+#farm1 {% for s in sheepList %}
+   , #sheep{{s.sheepid}}
+{% endfor %}
+{display:none;}
 </style>
 {% endblock head %}
 
@@ -24,15 +22,22 @@ a {TEXT-DECORATION: none;}
 <div id="loginDiv", class="container">
 <table>
     <tr>
-       <td bgcolor="#EEEEEE" align="right"><input id="lnkfarm1" type="button" value="[+] Expand" onclick="toggle_visibility('farmer','lnkfarm1');"></td>
+       <td bgcolor="#EEEEEE" align="right"><input id="lnkfarm1" type="button" value="[+] Expand" onclick="toggle_visibility('farm1','lnkfarm1');"></td>
     </tr>
     <tr>
-        <table id="farmer" >
+        <table id="farm1" >
             {% for s in sheepList %}
                 <tr class ="{%  cycle 'odd' 'even' %}">
-                    <td>{{s.name}}</td>
-                    <td>Birthday: {{ s.birthday }}</td>
+                    <td>Sheepname: {{s.name}}</td>
                     <td>SheepID: {{ s.sheepid }}</td>
+                    <td bgcolor="#EEEEEE" align="right"><input id="ink{{s.sheepid}}" type="button" value="[+] Expand" onclick="toggle_visibility('sheep{{s.sheepid}}','ink{{s.sheepid}}');"></td>
+                </tr>
+                <tr><td>
+                    <table id="sheep{{s.sheepid}}">
+                        <tr class="inner">
+                            <td>Birthday: {{s.birthday}}</td>
+                        </tr>
+                    </table></td>
                 </tr>
             {% endfor %}
         </table>
