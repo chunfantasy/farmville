@@ -10,16 +10,13 @@
         }
     </script>
 <style type="text/css">
-#farm1 {% for s in sheepList %}
-   , #sheep{{s.sheepid}}
-{% endfor %}
-{display:none;}
+    #farm1 {% for s in sheepList %}
+        , #sheep{{s.sheepId}}
+    {% endfor %}
+    {display:none;}
 </style>
 {% endblock head %}
-
-
 {% block main %}
-
 <div id="loginDiv", class="container">
 <table>
     <tr>
@@ -30,14 +27,24 @@
             {% for s in sheepList %}
                 <tr class ="{%  cycle 'odd' 'even' %}">
                     <td>Sheepname: {{s.name}}</td>
-                    <td>SheepID: {{ s.sheepid }}</td>
-                    <td bgcolor="#EEEEEE" align="right"><input id="ink{{s.sheepid}}" type="button" value="[+] Expand" onclick="toggle_visibility('sheep{{s.sheepid}}','ink{{s.sheepid}}');"></td>
+                    <td>SheepID: {{ s.sheepId }}</td>
+                    <td bgcolor="#EEEEEE" align="right"><input id="ink{{s.sheepId}}" type="button" value="[+] Expand" onclick="toggle_visibility('sheep{{s.sheepId}}','ink{{s.sheepId}}');"></td>
                 </tr>
                 <tr><td>
-                    <table id="sheep{{s.sheepid}}">
-                        <tr class="inner">
+                    <table class="inner" id="sheep{{s.sheepId}}">
+                        <tr >
                             <td>Birthday: {{s.birthday}}</td>
                         </tr>
+                        <tc>
+                            <td>Birthday: {{s.name}}</td>
+                        </tc>
+
+                        <tr >
+                            <td>Birthday: {{s.birthday}}</td>
+                        </tr>
+                        <tc>
+                            <td>Birthday: {{s.name}}</td>
+                        </tc>
                     </table></td>
                 </tr>
             {% endfor %}

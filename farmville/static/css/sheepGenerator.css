@@ -1,28 +1,9 @@
 tbody tr.even td {background-color: #bbeebb;}
 tbody tr.odd td {background-color: #e5f9e5;}
-
-
-
-/* HEADER */
-#header {
-	position:fixed;
-	left:0px;
-	top:0px;
-	height:40px;
-	width:100%;
-    margin:0px auto;
-    background-color: white;
-    /* DROP SHADOW */
-	-webkit-box-shadow: 0px 2px 1px 0px #05630D;
-	box-shadow: 0px 2px 1px 0px #05630D;
-}
-
-#title {
-	margin-top: 2px;
-	text-align: center;
-}
+table .inner td {background-color: #6BBB2C;}
 
 table {
     position: relative;
     top:40px;
 }
+.inner {top:0px}
