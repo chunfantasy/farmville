@@ -32,7 +32,7 @@ def sheepGenerate(request):
         sheep.birthday = date.today()
         sheep.sheepId = farmer.farmerid + str(sheep.birthday)[3] + str(i+1).zfill(4)
         sheep.save()
-        print(sheep.name,sheep.birthday,sheep.sheepid)
+        print(sheep.name,sheep.birthday,sheep.sheepId)
         sheepList.append(sheep)
     return render_to_response('sheep/sheep.html',
 	{'sheepList': sheepList},

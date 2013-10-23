@@ -24,11 +24,11 @@ def farmerRegister(request):
         farmer.last_name = last_name
 
         farmerlist = Farmer.objects.all()
-	print len(farmerlist)
+        print len(farmerlist)
         if len(farmerlist) <= 2:
             for i in range(len(farmerlist)):
-            	farmerlist[i].farmerid = str(i+1).zfill(7)
-		farmerlist[i].save()
+                farmerlist[i].farmerid = str(i+1).zfill(7)
+                farmerlist[i].save()
         else:
             lastid = farmerlist[len(farmerlist)-2].farmerid
             farmer.farmerid = str(int(lastid) + 1).zfill(7)
@@ -43,15 +43,15 @@ def farmerRegister(request):
 
 def farmerLogin(request):
     try:
-	username = request.POST['username']
-	password = request.POST['password']
-	farmer = authenticate(username=username, password=password)
-	if farmer is not None:
-	    login(request, farmer)
-	else:
-	    raise
+        username = request.POST['username']
+        password = request.POST['password']
+        farmer = authenticate(username=username, password=password)
+        if farmer is not None:
+            login(request, farmer)
+        else:
+            raise
     except:
-    	return render_to_response('index_fail_login.html',
+        return render_to_response('index_fail_login.html',
 	    {},
 	    context_instance=RequestContext(request))
     return render_to_response('farmer/farmer.html',
