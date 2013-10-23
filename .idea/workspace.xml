@@ -4,8 +4,6 @@
     <list default="true" id="ae04f545-93f5-4df8-bde9-c7abbffaba31" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sqlite3" afterPath="$PROJECT_DIR$/sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/farmville/templates/sheep/sheep.html" afterPath="$PROJECT_DIR$/farmville/templates/sheep/sheep.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/farmville/farmer/views.py" afterPath="$PROJECT_DIR$/farmville/farmer/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/farmville/sheep/views.py" afterPath="$PROJECT_DIR$/farmville/sheep/views.py" />
     </list>
     <ignored path="farmville.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,7 +35,7 @@
       <file leaf-file-name="sheep.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/farmville/templates/sheep/sheep.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="8" selection-start="946" selection-end="946" vertical-scroll-proportion="0.36253777" vertical-offset="0" max-vertical-offset="705">
+            <state line="10" column="13" selection-start="669" selection-end="669" vertical-scroll-proportion="0.2265861" vertical-offset="0" max-vertical-offset="810">
               <folding />
             </state>
           </provider>
@@ -733,7 +731,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/farmville/templates/sheep/sheep.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="8" selection-start="946" selection-end="946" vertical-scroll-proportion="0.36253777" vertical-offset="0" max-vertical-offset="705">
+        <state line="10" column="13" selection-start="669" selection-end="669" vertical-scroll-proportion="0.2265861" vertical-offset="0" max-vertical-offset="810">
           <folding />
         </state>
       </provider>
