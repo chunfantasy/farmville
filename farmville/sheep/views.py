@@ -18,7 +18,7 @@ def sheepGenerate(request):
         sheep.Farmer = farmer
         sheep.name = str(i)
 	sheep.birthday = date.today()
-        sheep.sheepid = farmer.farmerid + str(sheep.birthday)[2:4] + str(i).zfill(3)
+        sheep.sheepid = farmer.farmerid + str(sheep.birthday)[3] + str(i+1).zfill(4)
         sheep.save()
         print(sheep.name,sheep.birthday,sheep.sheepid)
         sheepList.append(sheep)
