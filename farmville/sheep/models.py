@@ -12,11 +12,11 @@ class Sheep(models.Model):
     birthday = models.DateField(auto_now_add=True,null=True)
     birthplace = models.CharField(max_length=15, null=True)
     farmer = models.ForeignKey(Farmer, null=True)
-    sheepid = models.CharField(max_length=12)
+    sheepId = models.CharField(max_length=12)
     weight = models.FloatField(null=True)
     status = models.IntegerField(max_length=1, choices=STATUS_CHOICES,default=0, null=True)
 
     def __unicode__(self):
-	return str(self.Farmer) + " " + str(self.name)
- 
+        return str(self.Farmer) + " " + str(self.name)
+
 admin.site.register(Sheep)

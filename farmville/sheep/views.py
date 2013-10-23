@@ -30,7 +30,7 @@ def sheepGenerate(request):
         sheep.Farmer = farmer
         sheep.name = common_names.pop(random.randint(0,50-i-1))
         sheep.birthday = date.today()
-        sheep.sheepid = farmer.farmerid + str(sheep.birthday)[3] + str(i+1).zfill(4)
+        sheep.sheepId = farmer.farmerid + str(sheep.birthday)[3] + str(i+1).zfill(4)
         sheep.save()
         print(sheep.name,sheep.birthday,sheep.sheepid)
         sheepList.append(sheep)

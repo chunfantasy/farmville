@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <head>
+	<meta charset="utf-8">
+	<title>Project Farmville SheepGenerator</title>
+	<meta name="description" content="SheepGenerator">
+	<meta name="author" content="gruppe5">
 	<link rel="stylesheet" type="text/css" href="/static/css/sheepGenerator.css" />
     <script type="text/javascript">
 function toggle_visibility(tbid,lnkid)
@@ -10,19 +14,23 @@ function toggle_visibility(tbid,lnkid)
  }
 </script>
 <style type="text/css">
-#farm1,#sheep1, #sheep2 {display:none;}
+#farmer,#sheep1, #sheep2 {display:none;}
 #lnkfarm1,#lnksheep2, #inksheep2 {border:none;background:none;width:85px;}
-td {FONT-SIZE: 75%; MARGIN: 0px; COLOR: #000000;}
+td {FONT-SIZE: 12px; MARGIN: 0px; COLOR: #000000;}
 td {FONT-FAMILY: verdana,helvetica,arial,sans-serif}
 a {TEXT-DECORATION: none;}
 </style>
 </head>
-<table>
+<body>
+	<div id="header">
+		<h1 id="title">Project Farmville</h1>
+	</div>
+    <table>
     <tr>
-       <td bgcolor="#EEEEEE" align="right"><input id="lnkfarm1" type="button" value="[+] Expand" onclick="toggle_visibility('farm1','lnkfarm1');"></td>
+       <td bgcolor="#EEEEEE" align="right"><input id="lnkfarm1" type="button" value="[+] Expand" onclick="toggle_visibility('farmer','lnkfarm1');"></td>
     </tr>
     <tr>
-        <table id="farm1" >
+        <table id="farmer" >
             {% for s in sheepList %}
                 <tr class ="{%  cycle 'odd' 'even' %}">
                     <td>{{s.name}}</td>
@@ -32,7 +40,5 @@ a {TEXT-DECORATION: none;}
             {% endfor %}
         </table>
     </tr>
-</table>
-<tbody>
-
-</tbody>
+    </table>
+</body>
