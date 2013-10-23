@@ -25,7 +25,7 @@ a {TEXT-DECORATION: none;}
         <table id="farm1" >
             {% for s in sheepList %}
                 <tr class ="{%  cycle 'odd' 'even' %}">
-                    <td>Sheepname: {{s.name}}</td>
+                    <td>{{s.name}}</td>
                     <td>Birthday: {{ s.birthday }}</td>
                     <td>SheepID: {{ s.sheepid }}</td>
                 </tr>
