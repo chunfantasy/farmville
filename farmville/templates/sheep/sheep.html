@@ -1,15 +1,38 @@
 <!DOCTYPE html>
 <head>
 	<link rel="stylesheet" type="text/css" href="/static/css/sheepGenerator.css" />
+    <script type="text/javascript">
+function toggle_visibility(tbid,lnkid)
+{
+  if(document.all){document.getElementById(tbid).style.display = document.getElementById(tbid).style.display == "block" ? "none" : "block";}
+  else{document.getElementById(tbid).style.display = document.getElementById(tbid).style.display == "table" ? "none" : "table";}
+  document.getElementById(lnkid).value = document.getElementById(lnkid).value == "[-] Collapse" ? "[+] Expand" : "[-] Collapse";
+ }
+</script>
+<style type="text/css">
+#farm1,#sheep1, #sheep2 {display:none;}
+#lnkfarm1,#lnksheep2, #inksheep2 {border:none;background:none;width:85px;}
+td {FONT-SIZE: 75%; MARGIN: 0px; COLOR: #000000;}
+td {FONT-FAMILY: verdana,helvetica,arial,sans-serif}
+a {TEXT-DECORATION: none;}
+</style>
 </head>
 <table>
-<tbody>
-{% for s in sheepList %}
-    <tr class ="{%  cycle 'odd' 'even' %}">
-        <td>{{s.name}}</td>
-        <td>Birthday: {{ s.birthday }}</td>
-        <td>SheepID: {{ s.sheepid }}</td>
+    <tr>
+       <td bgcolor="#EEEEEE" align="right"><input id="lnkfarm1" type="button" value="[+] Expand" onclick="toggle_visibility('farm1','lnkfarm1');"></td>
     </tr>
-{% endfor %}
-</tbody>
+    <tr>
+        <table id="farm1" >
+            {% for s in sheepList %}
+                <tr class ="{%  cycle 'odd' 'even' %}">
+                    <td>{{s.name}}</td>
+                    <td>Birthday: {{ s.birthday }}</td>
+                    <td>SheepID: {{ s.sheepid }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </tr>
 </table>
+<tbody>
+
+</tbody>

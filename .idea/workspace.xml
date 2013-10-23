@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae04f545-93f5-4df8-bde9-c7abbffaba31" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sqlite3" afterPath="$PROJECT_DIR$/sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/farmville/templates/sheep/sheep.html" afterPath="$PROJECT_DIR$/farmville/templates/sheep/sheep.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/farmville/sheep/views.py" afterPath="$PROJECT_DIR$/farmville/sheep/views.py" />
     </list>
     <ignored path="farmville.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,7 +45,7 @@
       <file leaf-file-name="sheep.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/farmville/templates/sheep/sheep.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="12" selection-start="209" selection-end="209" vertical-scroll-proportion="0.17777778" vertical-offset="0" max-vertical-offset="675">
+            <state line="32" column="16" selection-start="1401" selection-end="1401" vertical-scroll-proportion="0.72507554" vertical-offset="0" max-vertical-offset="662">
               <folding />
             </state>
           </provider>
@@ -696,7 +694,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/farmville/templates/sheep/sheep.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="12" selection-start="209" selection-end="209" vertical-scroll-proportion="0.17777778" vertical-offset="0" max-vertical-offset="675">
+        <state line="32" column="16" selection-start="1401" selection-end="1401" vertical-scroll-proportion="0.72507554" vertical-offset="0" max-vertical-offset="662">
           <folding />
         </state>
       </provider>
