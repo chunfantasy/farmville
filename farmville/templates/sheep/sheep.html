@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<head>
-	<meta charset="utf-8">
-	<title>Project Farmville SheepGenerator</title>
-	<meta name="description" content="SheepGenerator">
-	<meta name="author" content="gruppe5">
+{% extends "base.html" %}
+{% block head %}
 	<link rel="stylesheet" type="text/css" href="/static/css/sheepGenerator.css" />
     <script type="text/javascript">
 function toggle_visibility(tbid,lnkid)
@@ -20,12 +16,13 @@ td {FONT-SIZE: 12px; MARGIN: 0px; COLOR: #000000;}
 td {FONT-FAMILY: verdana,helvetica,arial,sans-serif}
 a {TEXT-DECORATION: none;}
 </style>
-</head>
-<body>
-	<div id="header">
-		<h1 id="title">Project Farmville</h1>
-	</div>
-    <table>
+{% endblock head %}
+
+
+{% block main %}
+
+<div id="loginDiv", class="container">
+<table>
     <tr>
        <td bgcolor="#EEEEEE" align="right"><input id="lnkfarm1" type="button" value="[+] Expand" onclick="toggle_visibility('farmer','lnkfarm1');"></td>
     </tr>
@@ -40,5 +37,6 @@ a {TEXT-DECORATION: none;}
             {% endfor %}
         </table>
     </tr>
-    </table>
-</body>
+</table>
+</div>
+{% endblock main %}
