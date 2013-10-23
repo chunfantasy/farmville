@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<head>
+{% extends "base.html" %}
+{% block head %}
 	<link rel="stylesheet" type="text/css" href="/static/css/sheepGenerator.css" />
     <script type="text/javascript">
 function toggle_visibility(tbid,lnkid)
@@ -16,7 +16,12 @@ td {FONT-SIZE: 75%; MARGIN: 0px; COLOR: #000000;}
 td {FONT-FAMILY: verdana,helvetica,arial,sans-serif}
 a {TEXT-DECORATION: none;}
 </style>
-</head>
+{% endblock head %}
+
+
+{% block main %}
+
+<div id="loginDiv", class="container">
 <table>
     <tr>
        <td bgcolor="#EEEEEE" align="right"><input id="lnkfarm1" type="button" value="[+] Expand" onclick="toggle_visibility('farm1','lnkfarm1');"></td>
@@ -33,6 +38,6 @@ a {TEXT-DECORATION: none;}
         </table>
     </tr>
 </table>
-<tbody>
 
-</tbody>
+</div>
+{% endblock main %}
