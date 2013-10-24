@@ -31,6 +31,10 @@ def sheepGenerate(request):
         sheep.name = common_names.pop(random.randint(0,50-i-1))
         sheep.birthday = date.today()
         sheep.sheepId = farmer.farmerid + str(sheep.birthday)[3] + str(i+1).zfill(4)
+        sheep.birthplace = sheep.name + "stad"
+        sheep.status = random.randint(0,3)
+        sheep.latitude = 65 + random.randint(-2,2)
+        sheep.longitude = 55 + random.randint(-2,2)
         sheep.save()
         print(sheep.name,sheep.birthday,sheep.sheepId)
         sheepList.append(sheep)

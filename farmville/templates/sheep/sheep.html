@@ -19,31 +19,32 @@
 {% block main %}
 <div id="loginDiv", class="container">
 <table>
-    <tr>
-       <td bgcolor="#EEEEEE" align="right"><input id="lnkfarm1" type="button" value="[+] Expand" onclick="toggle_visibility('farm1','lnkfarm1');"></td>
+    <tr class="table_top">
+        <td>{{farmer.name}}</td>
+       <td><input id="lnkfarm1" type="button" value="[+] Expand" onclick="toggle_visibility('farm1','lnkfarm1');"></td>
     </tr>
     <tr>
         <table id="farm1" >
             {% for s in sheepList %}
                 <tr class ="{%  cycle 'odd' 'even' %}">
-                    <td>Sheepname: {{s.name}}</td>
-                    <td>SheepID: {{ s.sheepId }}</td>
-                    <td bgcolor="#EEEEEE" align="right"><input id="ink{{s.sheepId}}" type="button" value="[+] Expand" onclick="toggle_visibility('sheep{{s.sheepId}}','ink{{s.sheepId}}');"></td>
-                </tr>
-                <tr><td>
+                    <td>SheepID: {{ s.sheepId }}:  Sheepname: {{s.name}}</td>
+                    <td align="right"><input id="ink{{s.sheepId}}" type="button" value="[+] Expand" onclick="toggle_visibility('sheep{{s.sheepId}}','ink{{s.sheepId}}');"></td>
+                    </tr>
+                <tr>
+                    <td>
                     <table class="inner" id="sheep{{s.sheepId}}">
                         <tr >
                             <td>Birthday: {{s.birthday}}</td>
                         </tr>
                         <tc>
-                            <td>Birthday: {{s.name}}</td>
+                            <td>Birthplace: {{s.birthplace}}</td>
                         </tc>
 
                         <tr >
-                            <td>Birthday: {{s.birthday}}</td>
+                            <td>Status: {{s.status}}</td>
                         </tr>
                         <tc>
-                            <td>Birthday: {{s.name}}</td>
+                            <td>Location: {{s.latitude}},{{s.longitude}}</td>
                         </tc>
                     </table></td>
                 </tr>
