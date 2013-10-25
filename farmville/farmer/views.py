@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Create your views here.
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -6,7 +7,34 @@ from django.contrib.auth import authenticate, login
 
 from farmville.farmer.models import Farmer
 
+common_names = ['Anne','Inger','Kari','Marit','Ingrid','Liv','Eva','Berit','Astrid',
+                'Bjørg','Hilde','Anna','Solveig','Marianne','Randi','Ida','Nina',
+                'Maria','Elisabeth','Kristin','Bente','Heidi','Silje','Hanne',
+                'Jan','Per','Bjørn','Ole','Lars','Kjell','Knut','Arne','Svein',
+                'Thomas','Hans','Geir','Tor','Morten','Terje','Odd','Erik','Martin',
+                'Andreas','John','Anders','Rune','Trond','Tore','Daniel','Jon']
+
 def index(request):
+    return render_to_response('index.html',
+    {},
+    context_instance=RequestContext(request))
+
+def initial(request):
+    farmerlist = Farmer.objects.all()
+    if len(farmerlist) <= 2:
+        for i in range(len(farmerlist)):
+                farmerlist[i].farmerid = str(i+1).zfill(7)
+                farmerlist[i].save()
+    lastid = len(farmerlist)
+    for i in range(len(common_names)):
+    	name = common_names[i]
+    	username = name + "@farmville.com"
+	password = "1"
+    	farmer = Farmer.objects.create_user(username = username, password = password)
+	farmer.first_name = name
+        farmer.last_name = name
+	farmer.farmerid = str(int(lastid) + int(i) + 1).zfill(7)
+        farmer.save()
     return render_to_response('index.html',
     {},
     context_instance=RequestContext(request))
