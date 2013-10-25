@@ -1,5 +1,7 @@
 {% extends "base.html" %}
-
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="/static/css/form.css" />
+{%  endblock head %}
 {% block main %}
 	<div id="loginDiv", class="container">
 		<form class="block" action="/farmer/farmerLogin" method="post">{% csrf_token %}
