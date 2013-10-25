@@ -9,18 +9,15 @@ from farmville.sheep.models import Sheep
 from django.contrib.auth.models import AbstractUser
 import random
 import string
-
-
-
-
-def sheepGenerate(request):
-    common_names = ['Anne','Inger','Kari','Marit','Ingrid','Liv','Eva','Berit','Astrid',
+common_names = ['Anne','Inger','Kari','Marit','Ingrid','Liv','Eva','Berit','Astrid',
                 'Bjørg','Hilde','Anna','Solveig','Marianne','Randi','Ida','Nina',
                 'Maria','Elisabeth','Kristin','Bente','Heidi','Silje','Hanne',
                 'Jan','Per','Bjørn','Ole','Lars','Kjell','Knut','Arne','Svein',
                 'Thomas','Hans','Geir','Tor','Morten','Terje','Odd','Erik','Martin',
                 'Andreas','John','Anders','Rune','Trond','Tore','Daniel','Jon']
 
+
+def sheepGenerate(request):
     farmer = request.user
     s = Sheep.objects.all()
     s.delete()
@@ -42,17 +39,42 @@ def sheepGenerate(request):
 	{'sheepList': sheepList},
 	context_instance=RequestContext(request)
     )
-"""
+
 def sheepRegister(request):
-    farmer = request.farmer
-    sheep = Sheep()
-    s = Sheep.objects.filter(farmer=farmer, date=thisyear)
-    if s == None:
-	    sheep.id = farmer.id + thisyear + "000"
+    farmer = request.user
+    quantity = int(request.POST['quantity'])
+    s = Sheep.objects.all()
+    sheepList = []
+    for sheep in s:
+    	sheepList.append(sheep)
+    print sheepList
+    if sheepList:
+	lastid = int(sheepList[-1].sheepId[8:12])
     else:
-	    sheep.id = farmer.id + thisyear + (s.id+1)
+    	lastid = 0
+    for i in range(quantity):
+        sheep = Sheep()
+        sheep.farmer = farmer
+        sheep.name = common_names[random.randint(0,50)]
+        sheep.birthday = date.today()
+        sheep.sheepId = farmer.farmerid + str(sheep.birthday)[3] + str(lastid + 1 + i).zfill(4)
+        sheep.birthplace = sheep.name + "stad"
+        sheep.status = random.randint(0,3)
+        sheep.latitude = 65 + random.randint(-2,2)
+        sheep.longitude = 55 + random.randint(-2,2)
+        sheep.save()
+        print(sheep.name,sheep.birthday,sheep.sheepId)
+        sheepList.append(sheep)
     return render_to_response('sheep/sheep.html',
 	{'sheepList': sheepList},
 	context_instance=RequestContext(request)
     )
-"""
+
+def sheepDelete(request):
+    farmer = request.user
+    sheepList = Sheep.objects.all()
+    sheepList.delete()
+    return render_to_response('sheep/sheep.html',
+	{'sheepList': sheepList},
+	context_instance=RequestContext(request)
+    )

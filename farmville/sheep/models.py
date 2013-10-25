@@ -19,6 +19,6 @@ class Sheep(models.Model):
     longitude = models.IntegerField()
 
     def __unicode__(self):
-        return str(self.Farmer) + " " + str(self.name)
+        return str(self.farmer) + " " + str(self.name)
 
 admin.site.register(Sheep)

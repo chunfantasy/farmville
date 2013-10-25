@@ -10,4 +10,6 @@ urlpatterns = patterns('farmville.sheep.views',
 
     # Uncomment the next line to enable the admin:
     url(r'^sheepGenerate', 'sheepGenerate'),
+    url(r'^sheepRegister', 'sheepRegister'),
+    url(r'^sheepDelete', 'sheepDelete'),
 )
