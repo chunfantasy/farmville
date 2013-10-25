@@ -3,11 +3,11 @@
 	<link rel="stylesheet" type="text/css" href="/static/css/form.css" />
 {%  endblock head %}
 {% block main %}
-<div id="loginDiv", class="container">
+<div id="loginDiv" class="container">
 <form action="/sheep/sheepRegister" method="post">{% csrf_token %}
-    <lable for="username">username: </lable>
-    <lable name ="username">{{farmer.username}}</br>
-    <input name ="quantity" type="text" value="1"></br>
+    <label for="username">username:</label>
+    <label name ="username">{{farmer.username}}</label><br>
+    <input name ="quantity" type="text" value="1"> <br>
     <input id ="submit" type="submit" value="Register Sheep">
 </form>
 </div>

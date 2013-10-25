@@ -27,13 +27,13 @@ def initial(request):
                 farmerlist[i].save()
     lastid = len(farmerlist)
     for i in range(len(common_names)):
-    	name = common_names[i]
-    	username = name + "@farmville.com"
-	password = "1"
-    	farmer = Farmer.objects.create_user(username = username, password = password)
-	farmer.first_name = name
+        name = common_names[i]
+        username = name + "@farmville.com"
+        password = "1"
+        farmer = Farmer.objects.create_user(username = username, password = password)
+        farmer.first_name = name
         farmer.last_name = name
-	farmer.farmerid = str(int(lastid) + int(i) + 1).zfill(7)
+        farmer.farmerId = str(int(lastid) + int(i) + 1).zfill(7)
         farmer.save()
     return render_to_response('index.html',
     {},

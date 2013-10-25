@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
 class Farmer(AbstractUser):
-    farmerid = models.CharField(max_length=7)
+    farmerId = models.CharField(max_length=7)
     #username = models.CharField(max_length=50, null=True)
     #password = models.CharField(max_length=50, null=True)
     #first_name = models.CharField(max_length=10, null=True)

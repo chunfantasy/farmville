@@ -1,3 +1,16 @@
+body{font:12px/1.231 arial,helvetica,clean,sans-serif;}
+
+
+#map_canvas {
+    position: absolute;
+    margin-left: 700px;
+    margin-top: 45px;
+    border: 1px solid black;
+}
+
+
+
+
 tbody tr.even td {background-color: #bbeebb;}
 tbody tr.odd td {background-color: #e5f9e5;}
 table .inner td {background-color: white;}
@@ -7,7 +20,6 @@ input {
     height: 100%;
     width: 100px;
 }
-
 table {
     position: relative;
     top:43px;
