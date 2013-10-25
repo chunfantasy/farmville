@@ -17,9 +17,8 @@
 </style>
 {% endblock head %}
 {% block main %}
-<div id="loginDiv", class="container">
 <table>
-    <tr class="table_top">
+    <tr>
         <td>{{farmer.name}}</td>
        <td><input id="lnkfarm1" type="button" value="[+] Expand" onclick="toggle_visibility('farm1','lnkfarm1');"></td>
     </tr>
@@ -27,26 +26,24 @@
         <table id="farm1" >
             {% for s in sheepList %}
                 <tr class ="{%  cycle 'odd' 'even' %}">
-                    <td>SheepID: {{ s.sheepId }}:  Sheepname: {{s.name}}</td>
-                    <td align="right"><input id="ink{{s.sheepId}}" type="button" value="[+] Expand" onclick="toggle_visibility('sheep{{s.sheepId}}','ink{{s.sheepId}}');"></td>
+                    <td>SheepID: {{ s.sheepId }}</td>
+                    <td>Sheepname: {{s.name}}</td>
+                    <td><input id="ink{{s.sheepId}}" type="button" value="[+] Expand" onclick="toggle_visibility('sheep{{s.sheepId}}','ink{{s.sheepId}}');"></td>
                     </tr>
                 <tr>
-                    <td>
+                    <td colspan="2">
                     <table class="inner" id="sheep{{s.sheepId}}">
-                        <tr >
+                        <tr>
                             <td>Birthday: {{s.birthday}}</td>
-                        </tr>
-                        <tc>
                             <td>Birthplace: {{s.birthplace}}</td>
-                        </tc>
-
-                        <tr >
-                            <td>Status: {{s.status}}</td>
                         </tr>
-                        <tc>
+                        <tr>
+                            <td>Status: {{s.status}}</td>
                             <td>Location: {{s.latitude}},{{s.longitude}}</td>
-                        </tc>
-                    </table></td>
+                        </tr>
+                    </table>
+                    </td>
+                    <td><input id="ink{{s.sheepId}}" type="button" value="Show in map"></td>
                 </tr>
             {% endfor %}
         </table>
