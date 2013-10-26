@@ -46,7 +46,7 @@ th {
 }
 
 thead tr th {background-color: #bbeebb;}
-thead tr th input {background-color: #bbeebb;}
+thead tr th input, tbody tr td input {background-color: #bbeebb;}
 tbody tr.even td {background-color: #bbeebb;}
 tbody tr.even input {background-color: #bbeebb;}
 
