@@ -46,14 +46,24 @@ th {
 }
 
 thead tr th {background-color: #bbeebb;}
-thead tr th input, tbody tr td input {background-color: #bbeebb;}
+thead tr th input {background-color: #bbeebb;}
+
 tbody tr.even td {background-color: #bbeebb;}
 tbody tr.even input {background-color: #bbeebb;}
-
 tbody tr.odd td {background-color: #e5f9e5;}
 tbody tr.odd input {background-color: #e5f9e5;}
 
-table .inner td {background-color: white;}
+table .inner {
+    height: 100px;
+}
+table .inner td {
+    background-color:inherit;
+}
+
+table .inner td input {
+    background-color: inherit;
+}
+
 
 input {
     height: 100%;
