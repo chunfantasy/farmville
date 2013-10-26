@@ -42,14 +42,15 @@ def sheepGenerate(request):
     )
 
 def sheepRegister(request):
+    names = common_names[::]
     farmer = request.user
     quantity = int(request.POST['quantity'])
     s = Sheep.objects.all()
-    print s
+    print(s)
     sheepList = []
     for sheep in s:
         sheepList.append(sheep)
-    print sheepList
+    print(sheepList)
     if sheepList:
         lastid = int(sheepList[-1].sheepId[8:12])
     else:

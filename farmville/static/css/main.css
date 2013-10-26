@@ -27,16 +27,12 @@ blockquote:before,blockquote:after,q:before,q:after {
 	content: none;
 }
 
-table {
-	border-collapse: collapse;
-	border-spacing: 2;
-}
 
 /* Main CSS */
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
 /********************* Colour reference chart****************
-*************************** comment ******** colour ********* 
+*************************** comment ******** colour *********
 
 box background colour       bbg             #C7EEA3
 box border colour           bb              #abcdef
@@ -61,13 +57,14 @@ body {
 	background-image: -moz-radial-gradient(center , ellipse cover, #09AB82, #05630D);
 	background-image: -webkit-radial-gradient(center , ellipse cover, #09AB82, #05630D);
 	/* FONTS */
-	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	font-weight: 300;
 
 }
 
 /* HEADER */
 #header {
+    z-index: 1;
 	position:fixed;
 	left:0px;
 	top:0px;
@@ -76,11 +73,10 @@ body {
     margin:0px auto;
     background-color: white;
     /* DROP SHADOW */
-	-webkit-box-shadow: 0px 2px 1px 0px #05630D;
-	box-shadow: 0px 2px 1px 0px #05630D;
-
-	
+	-webkit-box-shadow: 0px 3px 2px 0px #05630D;
+	box-shadow: 0px 3px 2px 0px #05630D;
 }
+
 /* IE 6 */
 * html #header {
    position:absolute;
@@ -93,7 +89,6 @@ body {
 }
 
 h1,h2,h3 {
-	position: relative;
 	margin-left: 30px;
 	text-align: left;
 }

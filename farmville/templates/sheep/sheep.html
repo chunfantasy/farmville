@@ -56,7 +56,9 @@
 </script>
 </head>
 <body onload="initialize()">
-    <div id="map_canvas" style="width:500px; height:400px"></div>
+    <div id="map_holder">
+        <div id="map_canvas"></div>
+    </div>
 </body>
 <style type="text/css">
     #farm1 {% for s in sheepList %}
@@ -66,38 +68,57 @@
 </style>
 {% endblock head %}
 {% block main %}
+<div id="mainTable">
 <table>
-    <tr>
-        <td>{{farmer.name}}</td>
-       <td><input id="lnkfarm1" type="button" value="[+] Expand" onclick="toggle_visibility('farm1','lnkfarm1');"></td>
-    </tr>
-    <tr>
+    <thead>
+       <tc>
+           <th>Farmer: {{ user.username }}</th>
+       </tc>
+       <tr>
+            <th>SheepID</th>
+            <th>Sheepname</th>
+            <th><input id="lnkfarm1" type="button" value="[+] Expand" onclick="toggle_visibility('farm1','lnkfarm1');"></th>
+       </tr>
+    </thead>
+    <tbody>
         <table id="farm1" >
             {% for s in sheepList %}
                 <tr class ="{%  cycle 'odd' 'even' %}">
-                    <td>SheepID: {{ s.sheepId }}</td>
-                    <td>Sheepname: {{s.name}}</td>
+                    <td>{{s.sheepId}}</td>
+                    <td>{{s.name}}</td>
                     <td><input id="ink{{s.sheepId}}" type="button" value="[+] Expand" onclick="toggle_visibility('sheep{{s.sheepId}}','ink{{s.sheepId}}');"></td>
-                    </tr>
+                </tr>
                 <tr>
-                    <td colspan="2">
+                    <td colspan="3">
                     <table class="inner" id="sheep{{s.sheepId}}">
-                        <tr>
-                            <td>Birthday: {{s.birthday}}</td>
-                            <td>Birthplace: {{s.birthplace}}</td>
-                        </tr>
-                        <tr>
-                            <td>Status: {{s.status}}</td>
-                            <td>Location: {{s.latitude}},{{s.longitude}}</td>
-                        </tr>
+                        <tc>
+                            <tr>
+                                <td>Birthday: {{s.birthday}}</td>
+                                <td>Birthplace: {{s.birthplace}}</td>
+                            </tr>
+                        </tc>
+                            <tr>
+                                <td>Status: {{s.status}}</td>
+                                <td>Latitude: {{s.latitude}}</td>
+                            </tr>
+                        </tc>
+                        <tc>
+                            <tr>
+                                <td>Status: {{s.status}}</td>
+                                <td><input id="sim{{s.sheepId}}" type="button" value="Show in map"></td>
+                            </tr>
+                        </tc>
+
+
                     </table>
                     </td>
-                    <td><input id="ink{{s.sheepId}}" type="button" value="Show in map"></td>
+
                 </tr>
             {% endfor %}
         </table>
-    </tr>
+    </tbody>
 </table>
+</div>
 </div>
 
 
