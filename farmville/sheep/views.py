@@ -60,7 +60,7 @@ def sheepRegister(request):
         sheep.farmer = farmer
         sheep.name = names[random.randint(0,50)]
         sheep.birthday = date.today()
-        sheep.sheepId = farmer.farmerid + str(sheep.birthday)[3] + str(lastid + 1 + i).zfill(4)
+        sheep.sheepId = farmer.farmerId + str(sheep.birthday)[3] + str(lastid + 1 + i).zfill(4)
         sheep.birthplace = sheep.name + "stad"
         sheep.status = random.randint(0,3)
         sheep.latitude = 65 + random.randint(-2,2)
