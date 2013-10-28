@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="ae04f545-93f5-4df8-bde9-c7abbffaba31" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sqlite3" afterPath="$PROJECT_DIR$/sqlite3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/farmville/static/css/main.css" afterPath="$PROJECT_DIR$/farmville/static/css/main.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/farmville/templates/sheep/sheep.html" afterPath="$PROJECT_DIR$/farmville/templates/sheep/sheep.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/farmville/static/css/sheepGenerator.css" afterPath="$PROJECT_DIR$/farmville/static/css/sheepGenerator.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="farmville.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,7 +41,7 @@
       <file leaf-file-name="sheep.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/farmville/templates/sheep/sheep.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="105" column="29" selection-start="4344" selection-end="4344" vertical-scroll-proportion="0.7703928" vertical-offset="1065" max-vertical-offset="1905">
+            <state line="60" column="0" selection-start="2763" selection-end="2763" vertical-scroll-proportion="0.5694864" vertical-offset="523" max-vertical-offset="2100">
               <folding />
             </state>
           </provider>
@@ -48,7 +50,7 @@
       <file leaf-file-name="sheepGenerator.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/farmville/static/css/sheepGenerator.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="29" selection-start="1078" selection-end="1078" vertical-scroll-proportion="0.0" vertical-offset="435" max-vertical-offset="1290">
+            <state line="68" column="17" selection-start="1090" selection-end="1090" vertical-scroll-proportion="0.0" vertical-offset="645" max-vertical-offset="1395">
               <folding />
             </state>
           </provider>
@@ -57,8 +59,10 @@
       <file leaf-file-name="main.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/farmville/static/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="21" selection-start="287" selection-end="287" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1725">
-              <folding />
+            <state line="66" column="14" selection-start="1639" selection-end="1639" vertical-scroll-proportion="0.0" vertical-offset="585" max-vertical-offset="1725">
+              <folding>
+                <marker date="1382795471000" expanded="true" signature="1936:2186" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -733,21 +737,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/farmville/static/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="21" selection-start="287" selection-end="287" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1725">
-          <folding />
+        <state line="66" column="14" selection-start="1639" selection-end="1639" vertical-scroll-proportion="0.0" vertical-offset="585" max-vertical-offset="1725">
+          <folding>
+            <marker date="1382795471000" expanded="true" signature="1936:2186" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/farmville/static/css/sheepGenerator.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="29" selection-start="1078" selection-end="1078" vertical-scroll-proportion="0.0" vertical-offset="435" max-vertical-offset="1290">
+        <state line="68" column="17" selection-start="1090" selection-end="1090" vertical-scroll-proportion="0.0" vertical-offset="645" max-vertical-offset="1395">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/farmville/templates/sheep/sheep.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="29" selection-start="4344" selection-end="4344" vertical-scroll-proportion="0.7703928" vertical-offset="1065" max-vertical-offset="1905">
+        <state line="60" column="0" selection-start="2763" selection-end="2763" vertical-scroll-proportion="0.5694864" vertical-offset="523" max-vertical-offset="2100">
           <folding />
         </state>
       </provider>

@@ -17,31 +17,35 @@ body{
 #mainTable {
     left:10px;
     position: absolute;
+    margin-top: 40px;
     margin-right: 50px;
     width:500px;
     height:400px;
-    margin-top: 50px;
 }
 
 table {
     width:400px;
-    position: relative;
     border-collapse:collapse;
 }
 
-table, th, td {
+table, th {
     border: 1px solid black;
     text-overflow:ellipsis;
     text-align: center;
 }
 
+thead {
+    background-color: #bbeebb;
+    position: fixed;
+    z-index: 1;
+    width: 400px;
+}
 td,th {
-    width:100px;
     vertical-align:middle;
 }
 
 th {
-    vertical-align: middle;
+    width:135px;
     height: 50px;
 }
 
@@ -53,8 +57,14 @@ tbody tr.even input {background-color: #bbeebb;}
 tbody tr.odd td {background-color: #e5f9e5;}
 tbody tr.odd input {background-color: #e5f9e5;}
 
+tbody {
+}
+
+
 table .inner {
     height: 100px;
+    background-color: #e5f9e5;
+    width:100%;
 }
 table .inner td {
     background-color:inherit;
@@ -70,12 +80,9 @@ input {
     width: 100%;
 }
 
-.even, .odd {
+table .even,table .odd {
     height: 30px;
 }
 
 .inner {
-    background-color: #e5f9e5;
-    top:0px;
-    width:100%;
 }

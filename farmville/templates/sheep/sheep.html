@@ -2,13 +2,13 @@
 {% block head %}
 	<link rel="stylesheet" type="text/css" href="/static/css/sheepGenerator.css" />
     <script type="text/javascript">
-        function toggle_visibility(tbid,lnkid)
-        {
+        function toggle_visibility(tbid,lnkid) {
             if(document.all){document.getElementById(tbid).style.display = document.getElementById(tbid).style.display == "block" ? "none" : "block";}
             else{document.getElementById(tbid).style.display = document.getElementById(tbid).style.display == "table" ? "none" : "table";}
             document.getElementById(lnkid).value = document.getElementById(lnkid).value == "[-] Collapse" ? "[+] Expand" : "[-] Collapse";
         }
     </script>
+
 
 
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
@@ -45,14 +45,27 @@
           map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
           map.mapTypes.set('topo2',new StatkartMapType("Topografisk", "topo2"));
           map.setMapTypeId('topo2');
-
+          var allMarkers = new Array();
+          var bounds = new google.maps.LatLngBounds ();
           {% for s in sheepList %}
               var marker = new google.maps.Marker({
                   position: new google.maps.LatLng({{ s.latitude }}, {{ s.longitude }}),
-                  map: map
+                  map: map,
+                  sheepId: {{ s.id }}
               });
+
+              bounds.extend (marker.position);
+              allMarkers.push(marker);
           {% endfor %}
+          map.fitBounds (bounds);
+
       }
+      function bounce(id) {
+          var mark = allMarkers[0];
+          mark.setAnimation(google.maps.Animation.BOUNCE);
+          setTimeout(function(){ mark.setAnimation(null); }, 750);
+      }
+
 </script>
 </head>
 <body onload="initialize()">
@@ -80,7 +93,7 @@
             <th><input id="lnkfarm1" type="button" value="[+] Expand" onclick="toggle_visibility('farm1','lnkfarm1');"></th>
        </tr>
     </thead>
-    <tbody>
+    <tbody id="subTable">
         <table id="farm1" >
             {% for s in sheepList %}
                 <tr class ="{%  cycle 'odd' 'even' %}">
@@ -101,7 +114,7 @@
                             <tr>
                                 <td>Latitude: {{s.latitude}}</td>
                                 <td>Longitude: {{s.longitude}}</td>
-                                <td><input id="sim{{s.sheepId}}" type="button" value="Show in map"></td>
+                                <td><input type="button" value="Show in map" onclick="bounce({{s.sheepId}});"></td>
                             </tr>
                         </tc>
 
