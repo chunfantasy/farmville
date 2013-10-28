@@ -122,3 +122,66 @@ form {
 	background-image: -ms-linear-gradient(bottom,		#94CF54 0%, #6BBB2C 100%);
 	background-image: linear-gradient(bottom,			#94CF54 0%, #6BBB2C 100%);
 }
+
+
+#farmer {
+	left: 825px;
+	margin-left: -350px;
+	height:400px;
+}
+
+#farmer table {
+	margin-left:20px;
+	margin-top:30px;
+}
+
+table .farmertd {
+	height: 30px;
+	background-color: #6BBB2C;
+	padding:5px 5px 5px 10px;
+	text-align:left;
+	border-radius: 6px;
+}
+
+.farmertd input{
+	width: 90%;
+	height: 25px;
+	position: relative;
+	margin-top: 0px;
+	margin-bottom: 5px;
+	font-size: 14px;
+	color: #8A858C;
+	outline: none;
+	border: 1px solid #8A858C;
+
+	padding-left: 20px;
+
+	-webkit-background-clip: padding-box;
+	-moz-background-clip: padding-box;
+	background-clip: padding-box;
+	border-radius: 6px;
+
+	-webkit-box-shadow: inset 0px 3px 3px #d9d9d9;
+	box-shadow: inset 0px 3px 3px #d9d9d9;
+}
+
+.farmersubmit input[type="submit"]{
+	height: 30px;
+	width:25%;
+	background-color: #6BBB2C;
+	padding:3px 5px 5px 5px;
+	text-align:center;
+	border-radius: 6px;
+}
+.farmersubmit input[type="submit"]:hover {
+	background-color: #3BBB2C;
+}
+
+.farmersubmit input[type="submit"]:active {
+	background-color:white;
+	background-image: -webkit-linear-gradient(bottom, 	#94CF54 0%, #6BBB2C 100%);
+	background-image: -moz-linear-gradient(bottom, 		#94CF54 0%, #6BBB2C 100%);
+	background-image: -o-linear-gradient(bottom, 		#94CF54 0%, #6BBB2C 100%);
+	background-image: -ms-linear-gradient(bottom,		#94CF54 0%, #6BBB2C 100%);
+	background-image: linear-gradient(bottom,			#94CF54 0%, #6BBB2C 100%);
+}

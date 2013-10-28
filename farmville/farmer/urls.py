@@ -11,4 +11,5 @@ urlpatterns = patterns('farmville.farmer.views',
     # Uncomment the next line to enable the admin:
     url(r'^farmerRegister$', 'farmerRegister'),
     url(r'^farmerLogin$', 'farmerLogin'),
+    url(r'^farmerUpdate$', 'farmerUpdate'),
 )

@@ -85,4 +85,23 @@ def farmerLogin(request):
     return render_to_response('farmer/farmer.html',
 	{'farmer':farmer},
 	context_instance=RequestContext(request))
-    
+ 
+def farmerUpdate(request):
+    farmer = request.user
+    try:
+    	result = "Please use correct telephone number."
+        farmer.tlf = request.POST['tlf']
+	result = "Reserve farmer does not exist."
+        reserve_name = request.POST['reserve']
+        farmer.reserve = Farmer.objects.get(username = reserve_name)
+	farmer.save()
+	result = "Update successfully!"
+    except:
+    	return render_to_response('farmer/farmer_result.html',
+	{'result':result,
+         'farmer':farmer},
+	context_instance=RequestContext(request))   
+    return render_to_response('farmer/farmer_result.html',
+	{'result':result,
+         'farmer':farmer},
+	context_instance=RequestContext(request))
