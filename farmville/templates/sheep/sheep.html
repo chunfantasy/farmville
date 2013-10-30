@@ -73,6 +73,20 @@
     <div id="map_holder">
         <div id="map_canvas"></div>
     </div>
+    <div id="Registrer_new_sheep" class="container">
+   <form class="block" action="/sheep/sheepRegister2" method="post">{% csrf_token %}
+			<h2>Nytt ?</h2>
+			<h3>Registrer sauen din her!</h3>
+			<label for="Name">username</label><input type="text" name="Name" class="placeholder" placeholder="Name">
+			<label for="birthday">username</label><input type="date" name="birthday" class="placeholder" placeholder="dd.mm.yyyy">
+            <label for="birthplace">username</label><input type="text" name="birthplace" class="placeholder" placeholder="birthplace">
+			<label for="sheepId">username</label><input type="number" name="sheepId" class="placeholder" placeholder="0000">
+			<label for="weight">password</label><input type="number" name="weight" class="placeholder" placeholder="weight">
+			<input type="submit" value="Register">
+			<!--<div class="vertical-line" />-->
+		</form>
+
+</div>
 </body>
 <style type="text/css">
     #farm1 {% for s in sheepList %}
