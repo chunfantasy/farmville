@@ -40,7 +40,6 @@ table, th {
 
 thead {
     background-color: #bbeebb;
-    position: fixed;
     z-index: 1;
     width: 400px;
 }

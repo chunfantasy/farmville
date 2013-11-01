@@ -15,8 +15,8 @@ class Sheep(models.Model):
     sheepId = models.CharField(max_length=12)
     weight = models.FloatField(null=True)
     status = models.IntegerField(max_length=1, choices=STATUS_CHOICES,default=0, null=True)
-    latitude = models.IntegerField()
-    longitude = models.IntegerField()
+    latitude = models.FloatField()
+    longitude = models.FloatField()
 
     def __unicode__(self):
         return str(self.farmer) + " " + str(self.name)

@@ -17,7 +17,7 @@ common_names = ['Anne','Inger','Kari','Marit','Ingrid','Liv','Eva','Berit','Astr
                 'Andreas','John','Anders','Rune','Trond','Tore','Daniel','Jon']
 
 
-def sheepGenerate(request):
+def sheepGenerateTest(request):
     names = common_names[::]
     farmer = request.user
     s = Sheep.objects.all()
@@ -41,16 +41,14 @@ def sheepGenerate(request):
 	context_instance=RequestContext(request)
     )
 
-def sheepRegister(request):
+def sheepGenerate(request):
     names = common_names[::]
     farmer = request.user
     quantity = int(request.POST['quantity'])
     s = Sheep.objects.all()
-    print(s)
     sheepList = []
     for sheep in s:
         sheepList.append(sheep)
-    print(sheepList)
     if sheepList:
         lastid = int(sheepList[-1].sheepId[8:12])
     else:
@@ -68,6 +66,54 @@ def sheepRegister(request):
         sheep.save()
         print(sheep.name,sheep.birthday,sheep.sheepId)
         sheepList.append(sheep)
+    return render_to_response('sheep/sheep.html',
+	{'sheepList': sheepList},
+	context_instance=RequestContext(request)
+    )
+
+def sheepRegister(request):
+    farmer = request.user
+    s = Sheep.objects.all()
+    print(s)
+    sheepList = []
+    for sheep in s:
+        sheepList.append(sheep)
+    if sheepList:
+        lastid = int(sheepList[-1].sheepId[8:12])
+    else:
+        lastid = 0
+    tempid = request.POST["lastid"]
+    
+    try:
+        if len(tempid) == 4:
+    	    print tempid
+	    print lastid
+    	    if int(tempid) > lastid:
+    	        lastid = int(tempid) - 1
+            else:
+                raise
+        else:
+    	    raise
+
+        sheep = Sheep()
+        sheep.farmer = farmer
+        sheep.name = request.POST["name"]
+        sheep.birthday = request.POST["birthday"]
+        sheep.sheepId = farmer.farmerId + str(sheep.birthday)[3] + str(lastid + 1).zfill(4)
+        sheep.birthplace = request.POST["birthplace"]
+        sheep.status = random.randint(0,3)
+        sheep.latitude = 65 + random.randint(-2,2)
+        sheep.longitude = 55 + random.randint(-2,2)
+        sheep.save()
+        print(sheep.name,sheep.birthday,sheep.sheepId)
+        sheepList.append(sheep)
+    except:
+    	result = "Please fill with correct information"
+    	return render_to_response('farmer/farmer_result_sheepRegister.html',
+	{'farmer': farmer,
+	  'result': result},
+	context_instance=RequestContext(request)
+	)
     return render_to_response('sheep/sheep.html',
 	{'sheepList': sheepList},
 	context_instance=RequestContext(request)
