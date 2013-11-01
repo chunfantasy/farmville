@@ -42,7 +42,6 @@ def sheepGenerateTest(request):
 
 def sheepGenerate(request):
     names = common_names[::]
-    len(names)
     farmer = request.user
     quantity = int(request.POST['quantity'])
     s = Sheep.objects.all()
