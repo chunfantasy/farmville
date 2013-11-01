@@ -72,7 +72,7 @@ def sheepGenerate(request):
 	location.sheep = sheep
 	location.save()
 
-	print sheep.location_history[0]
+	print sheep.location_history
         print(sheep.name,sheep.birthday,sheep.sheepId)
         sheepList.append(sheep)
 	
