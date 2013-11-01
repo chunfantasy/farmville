@@ -61,8 +61,8 @@ def sheepGenerate(request):
         sheep.sheepId = farmer.farmerId + str(sheep.birthday)[3] + str(lastid + 1 + i).zfill(4)
         sheep.birthplace = sheep.name + "stad"
         sheep.status = random.randint(0,3)
-        sheep.latitude = 65 + random.randint(-2,2)
-        sheep.longitude = 55 + random.randint(-2,2)
+        sheep.latitude = 59.5 + random.randint(-2,2)
+        sheep.longitude = 8.5 + random.randint(-2,2)
         sheep.save()
         print(sheep.name,sheep.birthday,sheep.sheepId)
         sheepList.append(sheep)
@@ -102,8 +102,8 @@ def sheepRegister(request):
         sheep.sheepId = farmer.farmerId + str(sheep.birthday)[3] + str(lastid + 1).zfill(4)
         sheep.birthplace = request.POST["birthplace"]
         sheep.status = random.randint(0,3)
-        sheep.latitude = 65 + random.randint(-2,2)
-        sheep.longitude = 55 + random.randint(-2,2)
+        sheep.latitude = 59.5 + random.randint(-2,2)
+        sheep.longitude = 8.5 + random.randint(-2,2)
         sheep.save()
         print(sheep.name,sheep.birthday,sheep.sheepId)
         sheepList.append(sheep)
