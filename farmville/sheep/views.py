@@ -16,7 +16,6 @@ common_names = ['Anne','Inger','Kari','Marit','Ingrid','Liv','Eva','Berit','Astr
                 'Thomas','Hans','Geir','Tor','Morten','Terje','Odd','Erik','Martin',
                 'Andreas','John','Anders','Rune','Trond','Tore','Daniel','Jon']
 
-
 def sheepGenerateTest(request):
     names = common_names[::]
     farmer = request.user
@@ -43,6 +42,7 @@ def sheepGenerateTest(request):
 
 def sheepGenerate(request):
     names = common_names[::]
+    len(names)
     farmer = request.user
     quantity = int(request.POST['quantity'])
     s = Sheep.objects.all()
