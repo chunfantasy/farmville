@@ -20,6 +20,7 @@ def sheepGenerateTest(request):
     names = common_names[::]
     farmer = request.user
     s = Sheep.objects.filter(farmer = farmer)
+    print s
     s.delete()
     sheepList = []
     for i in range(50):
@@ -65,6 +66,7 @@ def sheepGenerate(request):
         sheep.save()
         print(sheep.name,sheep.birthday,sheep.sheepId)
         sheepList.append(sheep)
+	
     return render_to_response('sheep/sheep.html',
 	{'sheepList': sheepList},
 	context_instance=RequestContext(request)
@@ -78,6 +80,7 @@ def sheepRegister(request):
     for sheep in s:
         sheepList.append(sheep)
     if sheepList:
+    	sheepList[-1].sheepId[8:12]
         lastid = int(sheepList[-1].sheepId[8:12])
     else:
         lastid = 0

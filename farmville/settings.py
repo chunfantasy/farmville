@@ -134,6 +134,7 @@ INSTALLED_APPS = (
     'farmville.sheep',
     'farmville.message',
     'farmville.wolf',
+    'farmville.location',
 )
 
 # A sample logging configuration. The only tangible logging

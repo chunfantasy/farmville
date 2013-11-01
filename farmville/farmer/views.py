@@ -23,8 +23,9 @@ def initial(request):
     farmerlist = Farmer.objects.all()
     if len(farmerlist) <= 2:
         for i in range(len(farmerlist)):
-                farmerlist[i].farmerid = str(i+1).zfill(7)
-                farmerlist[i].save()
+        	f = farmerlist[i]
+                f.farmerId = str(i+1).zfill(7)
+                f.save()
     lastid = len(farmerlist)
     for i in range(len(common_names)):
         name = common_names[i]
