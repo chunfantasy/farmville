@@ -6,6 +6,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from datetime import date
 from farmville.farmer.models import Farmer
 from farmville.sheep.models import Sheep
+from farmville.location.models import Location
 from django.contrib.auth.models import AbstractUser
 import random
 import string
@@ -20,7 +21,6 @@ def sheepGenerateTest(request):
     names = common_names[::]
     farmer = request.user
     s = Sheep.objects.filter(farmer = farmer)
-    print s
     s.delete()
     sheepList = []
     for i in range(50):
@@ -63,7 +63,16 @@ def sheepGenerate(request):
         sheep.status = random.randint(0,3)
         sheep.latitude = 59.5 + random.randint(-2,2)
         sheep.longitude = 8.5 + random.randint(-2,2)
+
         sheep.save()
+
+	location = Location()
+        location.latitude = 59.5 + random.randint(-2,2)
+        location.longitude = 8.5 + random.randint(-2,2)
+	location.sheep = sheep
+	location.save()
+
+	print sheep.location_history[0]
         print(sheep.name,sheep.birthday,sheep.sheepId)
         sheepList.append(sheep)
 	
