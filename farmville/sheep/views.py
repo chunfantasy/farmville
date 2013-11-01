@@ -19,7 +19,7 @@ common_names = ['Anne','Inger','Kari','Marit','Ingrid','Liv','Eva','Berit','Astr
 def sheepGenerateTest(request):
     names = common_names[::]
     farmer = request.user
-    s = Sheep.objects.all()
+    s = Sheep.objects.filter(farmer = farmer)
     s.delete()
     sheepList = []
     for i in range(50):
@@ -44,7 +44,7 @@ def sheepGenerate(request):
     names = common_names[::]
     farmer = request.user
     quantity = int(request.POST['quantity'])
-    s = Sheep.objects.all()
+    s = Sheep.objects.filter(farmer = farmer)
     sheepList = []
     for sheep in s:
         sheepList.append(sheep)
@@ -72,7 +72,7 @@ def sheepGenerate(request):
 
 def sheepRegister(request):
     farmer = request.user
-    s = Sheep.objects.all()
+    s = Sheep.objects.filter(farmer = farmer)
     print(s)
     sheepList = []
     for sheep in s:
