@@ -72,7 +72,11 @@ def sheepGenerate(request):
 	location.sheep = sheep
 	location.save()
 
-	print sheep.location_history
+	locationlist = sheep.location_history.all()
+	for l in locationlist:
+	    print l.latitude
+	    print l.longitude
+		
         print(sheep.name,sheep.birthday,sheep.sheepId)
         sheepList.append(sheep)
 	
