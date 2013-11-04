@@ -80,7 +80,13 @@ def sheepGenerate(request):
 	{'sheepList': sheepList},
 	context_instance=RequestContext(request)
     )
-
+def sheepGetList(request):
+    farmer = request.user
+    sheepList = Sheep.objects.filter(farmer = farmer)
+    return render_to_response('sheep/logg.html',
+	{'sheepList': sheepList},
+	context_instance=RequestContext(request)
+    )
 def sheepRegister(request):
     farmer = request.user
     s = Sheep.objects.filter(farmer = farmer)
