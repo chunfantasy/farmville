@@ -71,6 +71,11 @@ def sheepGenerate(request):
         location.longitude = 8.5 + random.randint(-2,2)
 	location.sheep = sheep
 	location.save()
+	location = Location()
+        location.latitude = 59.5 + random.randint(-2,2)
+        location.longitude = 8.5 + random.randint(-2,2)
+	location.sheep = sheep
+	location.save()
 
 	locationlist = sheep.location_history.all()
 	for l in locationlist:
