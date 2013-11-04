@@ -9,4 +9,5 @@ urlpatterns = patterns('farmville.location.views',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
+    url(r'^locationMove', 'locationMove'),
 )

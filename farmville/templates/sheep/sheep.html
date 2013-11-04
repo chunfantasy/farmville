@@ -95,6 +95,7 @@
        </tr>
     </thead>
     <tbody id="subTable">
+	
         <table id="farm1" >
             {% for s in sheepList %}
                 <tr class ="{%  cycle 'odd' 'even' %}">
@@ -104,12 +105,14 @@
                 </tr>
                 <tr>
                     <td colspan="3">
+		    <form action="/location/locationMove" method="post">{% csrf_token %}
                     <table class="inner" id="sheep{{s.sheepId}}">
                         <tc>
                             <tr>
                                 <td>Birthday: {{s.birthday}}</td>
                                 <td>Birthplace: {{s.birthplace}}</td>
                                 <td>Status: {{s.status}}</td>
+				<td><input name="move" type="submit" value="Move"><input name="sheepId" type="hidden" value="{{s.sheepId}}"></td>
                             </tr>
                         </tc>
                             <tr>
@@ -121,6 +124,7 @@
 
 
                     </table>
+	       	    </form>
                     </td>
 
                 </tr>

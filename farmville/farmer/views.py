@@ -19,7 +19,7 @@ def index(request):
     {},
     context_instance=RequestContext(request))
 
-def initial(request):
+def initiate(request):
     farmerlist = Farmer.objects.all()
     if len(farmerlist) <= 2:
         for i in range(len(farmerlist)):
@@ -36,6 +36,7 @@ def initial(request):
         farmer.last_name = name
         farmer.farmerId = str(int(lastid) + int(i) + 1).zfill(7)
         farmer.save()
+	print "initiating..."
     return render_to_response('index.html',
     {},
     context_instance=RequestContext(request))
