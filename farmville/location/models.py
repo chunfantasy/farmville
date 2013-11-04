@@ -7,7 +7,7 @@ class Location(models.Model):
     sheep = models.ForeignKey(Sheep, null=True, related_name="location_history")
     latitude = models.FloatField()
     longitude = models.FloatField()
-    tidspunkt = models.DateTimeField(auto_now_add=True,null=True)
+    tidspunkt = models.DateTimeField(auto_now_add=False,null=True)
 
     def __unicode__(self):
         return "Location for " + str(self.sheep)

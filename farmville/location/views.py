@@ -11,15 +11,29 @@ import random
 def locationMove(request):
     sheepId = request.POST["sheepId"]
     sheep = Sheep.objects.get(sheepId = sheepId)
-    sheep.latitude = 59.5 + random.randint(-2,2)
-    sheep.longitude = 8.5 + random.randint(-2,2)
+    sheep.latitude = 59.5 + random.random()
+    sheep.longitude = 8.5 + random.random()
     location = Location()
     location.sheep = sheep
-    location.latitude = 59.5 + random.randint(-2,2)
-    location.longitude = 8.5 + random.randint(-2,2)
+    location.latitude = 59.5 + random.random()
+    location.longitude = 8.5 + random.random()
     location.tidspunkt = datetime.now()
     location.save()
     sheep.save()
-    print "Sheep moved" + sheepId
+    print "Sheep moved " + sheepId
     return sheepGetList(request)
     
+def locationMoveAll(request):
+    sheepList = Sheep.objects.all()
+    for sheep in sheepList:
+        sheep.latitude = 59.5 + random.random()
+        sheep.longitude = 8.5 + random.random()
+        location = Location()
+        location.sheep = sheep
+        location.latitude = 59.5 + random.random()
+        location.longitude = 8.5 + random.random()
+        location.tidspunkt = datetime(2013, 11, 11, random.randint(0, 23), 0, 0)
+        location.save()
+        sheep.save()
+        print "Sheep moved " + sheep.sheepId
+    return sheepGetList(request)

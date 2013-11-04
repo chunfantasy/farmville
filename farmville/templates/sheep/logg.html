@@ -113,6 +113,7 @@
                             </tr>
                               {% for l in s.location_history.all %}
                             <tr>
+                                <td>Date: {{l.tidspunkt}}</td>
                                 <td>Latitude: {{l.latitude}}</td>
                                 <td>Longitude: {{l.longitude}}</td>
                                 <td><input type="button" value="Show in map" onclick="bounce({{s.sheepId}});"></td

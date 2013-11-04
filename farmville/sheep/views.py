@@ -61,26 +61,16 @@ def sheepGenerate(request):
         sheep.sheepId = farmer.farmerId + str(sheep.birthday)[3] + str(lastid + 1 + i).zfill(4)
         sheep.birthplace = sheep.name + "stad"
         sheep.status = random.randint(0,3)
-        sheep.latitude = 59.5 + random.randint(-2,2)
-        sheep.longitude = 8.5 + random.randint(-2,2)
-
-        sheep.save()
+        sheep.latitude = 59.5 + random.random()
+        sheep.longitude = 8.5 + random.random()
 
 	location = Location()
-        location.latitude = 59.5 + random.randint(-2,2)
-        location.longitude = 8.5 + random.randint(-2,2)
-	location.sheep = sheep
-	location.save()
-	location = Location()
-        location.latitude = 59.5 + random.randint(-2,2)
-        location.longitude = 8.5 + random.randint(-2,2)
+        location.latitude = sheep.latitude
+        location.longitude = sheep.longitude
 	location.sheep = sheep
 	location.save()
 
-	locationlist = sheep.location_history.all()
-	for l in locationlist:
-	    print l.latitude
-	    print l.longitude
+	sheep.save()
 		
         print(sheep.name,sheep.birthday,sheep.sheepId)
         sheepList.append(sheep)
