@@ -57,18 +57,18 @@ def farmerRegister(request):
         print len(farmerlist)
         if len(farmerlist) <= 2:
             for i in range(len(farmerlist)):
-                farmerlist[i].farmerid = str(i+1).zfill(7)
+                farmerlist[i].farmerId = str(i+1).zfill(7)
                 farmerlist[i].save()
         else:
-            lastid = farmerlist[len(farmerlist)-2].farmerid
-            farmer.farmerid = str(int(lastid) + 1).zfill(7)
+            lastid = farmerlist[len(farmerlist)-2].farmerId
+            farmer.farmerId = str(int(lastid) + 1).zfill(7)
             farmer.save()
     except:
         return render_to_response('index_fail_register.html',
 	    {},
 	    context_instance=RequestContext(request))
-    return render_to_response('result.html',
-	{'result':'success!'},
+    return render_to_response('farmer/farmer.html',
+	{},
 	context_instance=RequestContext(request))
 
 def farmerLogin(request):
