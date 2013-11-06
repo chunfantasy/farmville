@@ -87,7 +87,7 @@ def sheepGetList(request):
 	context_instance=RequestContext(request)
     )
     
-    def getSheep(request):
+def getSheep(request):
     farmer = request.user
     s = Sheep.objects.filter(farmer = farmer)
     sheepList = []
