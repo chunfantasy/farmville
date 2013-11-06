@@ -10,8 +10,8 @@ class Farmer(AbstractUser):
     #first_name = models.CharField(max_length=10, null=True)
     #last_name = models.CharField(max_length=10, null=True)
     #email = models.EmailField(max_length=50, null=True)
-    tlf = models.CharField(max_length=15, null=True)
-    reserve = models.ForeignKey('self', null=True)
+    tlf = models.CharField(max_length=15, null=True, blank=True)
+    reserve = models.ForeignKey('self', null=True, blank=True)
 
     def __unicode__(self):
 	return self.username

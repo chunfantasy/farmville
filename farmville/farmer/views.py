@@ -35,6 +35,7 @@ def initiate(request):
         farmer.first_name = name
         farmer.last_name = name
         farmer.farmerId = str(int(lastid) + int(i) + 1).zfill(7)
+	farmer.is_staff == True
         farmer.save()
 	print "initiating..."
     return render_to_response('index.html',
