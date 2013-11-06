@@ -15,5 +15,3 @@ class Farmer(AbstractUser):
 
     def __unicode__(self):
 	return self.username
-
-admin.site.register(Farmer)
