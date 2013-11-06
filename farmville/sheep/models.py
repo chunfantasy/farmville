@@ -21,4 +21,3 @@ class Sheep(models.Model):
     def __unicode__(self):
         return str(self.farmer) + " " + str(self.name)
 
-admin.site.register(Sheep)

@@ -12,4 +12,3 @@ class Location(models.Model):
     def __unicode__(self):
         return "Location for " + str(self.sheep)
 
-admin.site.register(Location)

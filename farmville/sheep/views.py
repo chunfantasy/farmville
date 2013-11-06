@@ -11,9 +11,9 @@ from django.contrib.auth.models import AbstractUser
 import random
 import string
 common_names = ['Anne','Inger','Kari','Marit','Ingrid','Liv','Eva','Berit','Astrid',
-                'Bjørg','Hilde','Anna','Solveig','Marianne','Randi','Ida','Nina',
+                'Bjorg','Hilde','Anna','Solveig','Marianne','Randi','Ida','Nina',
                 'Maria','Elisabeth','Kristin','Bente','Heidi','Silje','Hanne',
-                'Jan','Per','Bjørn','Ole','Lars','Kjell','Knut','Arne','Svein',
+                'Jan','Per','Bjorn','Ole','Lars','Kjell','Knut','Arne','Svein',
                 'Thomas','Hans','Geir','Tor','Morten','Terje','Odd','Erik','Martin',
                 'Andreas','John','Anders','Rune','Trond','Tore','Daniel','Jon']
 
