@@ -68,7 +68,7 @@ def farmerRegister(request):
 	    {},
 	    context_instance=RequestContext(request))
     return render_to_response('farmer/farmer.html',
-	{},
+	{'farmer': farmer},
 	context_instance=RequestContext(request))
 
 def farmerLogin(request):
