@@ -86,6 +86,22 @@ def sheepGetList(request):
 	{'sheepList': sheepList},
 	context_instance=RequestContext(request)
     )
+    
+    def getSheep(request):
+    farmer = request.user
+    s = Sheep.objects.filter(farmer = farmer)
+    sheepList = []
+    if len(request.POST["id"]) == 5:
+        id = farmer.farmerId + request.POST["id"]
+    elif len(request.POST["id"]) == 12:
+        id = request.POST["id"]
+    for sheep in s:
+        if sheep.sheepId == id:
+            sheepList.append(sheep)
+    return render_to_response('sheep/logg.html',
+    {'sheepList':sheepList},
+    context_instance=RequestContext(request))
+    
 def sheepRegister(request):
     farmer = request.user
     s = Sheep.objects.filter(farmer = farmer)
