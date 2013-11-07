@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae04f545-93f5-4df8-bde9-c7abbffaba31" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/farmville/static/js/map.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sqlite3" afterPath="$PROJECT_DIR$/sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/farmville/sheep/models.py" afterPath="$PROJECT_DIR$/farmville/sheep/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/farmville/templates/sheep/sheep.html" afterPath="$PROJECT_DIR$/farmville/templates/sheep/sheep.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/farmville/static/css/sheepGenerator.css" afterPath="$PROJECT_DIR$/farmville/static/css/sheepGenerator.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/farmville/sheep/views.py" afterPath="$PROJECT_DIR$/farmville/sheep/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/farmville/static/js/map.js" afterPath="$PROJECT_DIR$/farmville/static/js/map.js" />
     </list>
     <ignored path="farmville.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,10 +34,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sheep_detail.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="sheep_detail.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/farmville/templates/sheep/sheep_detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1200">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1200">
               <folding />
             </state>
           </provider>
@@ -67,10 +61,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="map.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="map.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/farmville/static/js/map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="28" selection-start="0" selection-end="1592" vertical-scroll-proportion="-18.0" vertical-offset="0" max-vertical-offset="885">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="676">
               <folding />
             </state>
           </provider>
@@ -132,11 +126,11 @@
         <option value="$PROJECT_DIR$/farmville/templates/farmer/farmer.html" />
         <option value="$PROJECT_DIR$/farmville/urls.py" />
         <option value="$PROJECT_DIR$/farmville/static/css/main.css" />
-        <option value="$PROJECT_DIR$/farmville/static/js/map.js" />
         <option value="$PROJECT_DIR$/farmville/sheep/views.py" />
         <option value="$PROJECT_DIR$/farmville/sheep/models.py" />
         <option value="$PROJECT_DIR$/farmville/static/css/sheepGenerator.css" />
         <option value="$PROJECT_DIR$/farmville/templates/sheep/sheep.html" />
+        <option value="$PROJECT_DIR$/farmville/static/js/map.js" />
       </list>
     </option>
   </component>
@@ -699,13 +693,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/farmville/static/js/map.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="28" selection-start="0" selection-end="1592" vertical-scroll-proportion="-18.0" vertical-offset="0" max-vertical-offset="885">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/farmville/templates/farmer/farmer.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="38" column="47" selection-start="1282" selection-end="1282" vertical-scroll-proportion="0.0" vertical-offset="570" max-vertical-offset="1560">
@@ -751,6 +738,13 @@
     <entry file="file://$PROJECT_DIR$/farmville/templates/sheep/sheep_detail.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1200">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/farmville/static/js/map.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="651">
           <folding />
         </state>
       </provider>
