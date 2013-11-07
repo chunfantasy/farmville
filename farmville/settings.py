@@ -7,7 +7,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+     ('Sondre', 'farmvillethesheepedition@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -26,6 +26,25 @@ DATABASES = {
     }
 }
 
+
+#Sends all emails to the Admin in this script
+MAILER_EMAIL_BACKEND = 'django_libs.test_email_backend.EmailBackend'
+TEST_EMAIL_BACKEND_RECIPIENTS = ADMINS
+
+FROM_EMAIL = ADMINS[0][1]
+EMAIL_SUBJECT_PREFIX = '[Farmville the sheep edition] '
+
+DEFAULT_FROM_EMAIL = 'farmvillethesheepedition@gmail.com'
+SERVER_EMAIL = 'farmvillethesheepedition@gmail.com'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = FROM_EMAIL
+
+# Enter your gmail PW from the ADMINS email entered above.
+EMAIL_HOST_PASSWORD = 'Farmville123TheSheep'
+EMAIL_PORT = 587
+
+EMAIL_USE_TLS = True
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = []
