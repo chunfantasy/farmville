@@ -10,12 +10,27 @@ from farmville.location.models import Location
 from django.contrib.auth.models import AbstractUser
 import random
 import string
+from django.core.mail import send_mail, BadHeaderError
 common_names = ['Anne','Inger','Kari','Marit','Ingrid','Liv','Eva','Berit','Astrid',
                 'Bjorg','Hilde','Anna','Solveig','Marianne','Randi','Ida','Nina',
                 'Maria','Elisabeth','Kristin','Bente','Heidi','Silje','Hanne',
                 'Jan','Per','Bjorn','Ole','Lars','Kjell','Knut','Arne','Svein',
                 'Thomas','Hans','Geir','Tor','Morten','Terje','Odd','Erik','Martin',
                 'Andreas','John','Anders','Rune','Trond','Tore','Daniel','Jon']
+               
+def sendMail(request):
+    subject = "Sau under angrep"
+    message = "test"
+    broadcaster = "sondre.erstad@gmail.com"
+    receiver = ['sondre_erstad@hotmail.com']
+    if receiver and broadcaster and message:
+        try:
+            send_mail(subject,message, broadcaster, receiver)
+        except BadHeaderError:
+            return "Invalid header found"
+        return HttpResponseRedirect('/farmer/farmerLogin')
+    else:
+        return "make sure all fields are valid!"
 
 def sheepGenerateTest(request):
     names = common_names[::]
