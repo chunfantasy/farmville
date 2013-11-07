@@ -1,8 +1,8 @@
-{% extends "base.html" %}
+{% extends "sheep/sheep.html" %}
 {% block head %}
 	<link rel="stylesheet" type="text/css" href="/static/css/form.css" />
 {%  endblock head %}
-{% block main %}
+{% block sub %}
 <div id="farmer" class="container">
 <form action="/farmer/farmerUpdate" method="post">{% csrf_token %}
     <table class="farmertb">
@@ -71,4 +71,4 @@
     </table>
 </form>
 </div>
-{% endblock main %}
+{% endblock sub %}
