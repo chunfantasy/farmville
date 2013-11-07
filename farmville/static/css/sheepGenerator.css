@@ -4,7 +4,7 @@ body{
 
 #map_holder {
     position: fixed;
-    right: 2%;
+    right: 10%;
     top: 15%;
     margin-top: -2.5em;
 }
@@ -15,7 +15,7 @@ body{
 }
 
 #mainTable {
-    left:10px;
+    left:10%;
     position: absolute;
     margin-top: 40px;
     margin-right: 50px;

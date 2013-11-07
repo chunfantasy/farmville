@@ -18,6 +18,10 @@ class Sheep(models.Model):
     latitude = models.FloatField()
     longitude = models.FloatField()
 
+
+    def getStatus(self):
+        return self.STATUS_CHOICES[self.status-1][1]
+
     def __unicode__(self):
         return str(self.farmer) + " " + str(self.name)
 

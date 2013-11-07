@@ -64,21 +64,21 @@ def sheepGenerate(request):
         sheep.latitude = 59.5 + random.random()
         sheep.longitude = 8.5 + random.random()
 
-	location = Location()
+        location = Location()
         location.latitude = sheep.latitude
         location.longitude = sheep.longitude
-	location.sheep = sheep
-	location.save()
-
-	sheep.save()
+        location.sheep = sheep
+        location.save()
+        sheep.save()
 		
         print(sheep.name,sheep.birthday,sheep.sheepId)
         sheepList.append(sheep)
 	
-    return render_to_response('sheep/sheep.html',
-	{'sheepList': sheepList},
-	context_instance=RequestContext(request)
-    )
+        return render_to_response('sheep/sheep.html',
+	    {'sheepList': sheepList},
+	    context_instance=RequestContext(request)
+        )
+
 def sheepGetList(request):
     farmer = request.user
     sheepList = Sheep.objects.filter(farmer = farmer)
@@ -101,7 +101,7 @@ def getSheep(request):
     return render_to_response('sheep/logg.html',
     {'sheepList':sheepList},
     context_instance=RequestContext(request))
-    
+
 def sheepRegister(request):
     farmer = request.user
     s = Sheep.objects.filter(farmer = farmer)
@@ -110,7 +110,7 @@ def sheepRegister(request):
     for sheep in s:
         sheepList.append(sheep)
     if sheepList:
-    	sheepList[-1].sheepId[8:12]
+        sheepList[-1].sheepId[8:12]
         lastid = int(sheepList[-1].sheepId[8:12])
     else:
         lastid = 0
@@ -118,14 +118,14 @@ def sheepRegister(request):
     
     try:
         if len(tempid) == 4:
-    	    print tempid
-	    print lastid
-    	    if int(tempid) > lastid:
-    	        lastid = int(tempid) - 1
+            print tempid
+            print lastid
+            if int(tempid) > lastid:
+                lastid = int(tempid) - 1
             else:
                 raise
         else:
-    	    raise
+            raise
 
         sheep = Sheep()
         sheep.farmer = farmer
@@ -140,12 +140,12 @@ def sheepRegister(request):
         print(sheep.name,sheep.birthday,sheep.sheepId)
         sheepList.append(sheep)
     except:
-    	result = "Please fill with correct information"
-    	return render_to_response('farmer/farmer_result_sheepRegister.html',
-	{'farmer': farmer,
-	  'result': result},
-	context_instance=RequestContext(request)
-	)
+        result = "Please fill with correct information"
+        return render_to_response('farmer/farmer_result_sheepRegister.html',
+	    {'farmer': farmer,
+	    'result': result},
+	    context_instance=RequestContext(request)
+	    )
     return render_to_response('sheep/sheep.html',
 	{'sheepList': sheepList},
 	context_instance=RequestContext(request)
