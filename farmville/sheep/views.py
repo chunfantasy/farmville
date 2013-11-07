@@ -44,7 +44,11 @@ def sheepGenerateTest(request):
 def sheepGenerate(request):
     names = common_names[::]
     farmer = request.user
-    quantity = int(request.POST['quantity'])
+    try:
+        quantity = int(request.POST['quantity'])
+    except:
+        quantity = 0
+
     s = Sheep.objects.filter(farmer = farmer)
     sheepList = []
     for sheep in s:
@@ -87,7 +91,7 @@ def sheepGetList(request):
 	context_instance=RequestContext(request)
     )
     
-def getSheep(request):
+def getMultipleSheep(request):
     farmer = request.user
     s = Sheep.objects.filter(farmer = farmer)
     sheepList = []
@@ -100,6 +104,22 @@ def getSheep(request):
             sheepList.append(sheep)
     return render_to_response('sheep/logg.html',
     {'sheepList':sheepList},
+    context_instance=RequestContext(request))
+
+def getSheep(request):
+    result = Sheep()
+    farmer = request.user
+    s = Sheep.objects.filter(farmer = farmer)
+    sheepList = []
+    if len(request.POST["id"]) == 5:
+        id = farmer.farmerId + request.POST["id"]
+    elif len(request.POST["id"]) == 12:
+        id = request.POST["id"]
+    for sheep in s:
+        if sheep.sheepId == id:
+            result = sheep
+    return render_to_response('sheep/sheep_detail.html',
+    {'sheepList':result},
     context_instance=RequestContext(request))
 
 def sheepRegister(request):
