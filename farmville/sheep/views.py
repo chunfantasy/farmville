@@ -10,6 +10,7 @@ from farmville.location.models import Location
 from django.contrib.auth.models import AbstractUser
 import random
 import string
+from django.core.mail import send_mail, BadHeaderError
 common_names = ['Anne','Inger','Kari','Marit','Ingrid','Liv','Eva','Berit','Astrid',
                 'Bjorg','Hilde','Anna','Solveig','Marianne','Randi','Ida','Nina',
                 'Maria','Elisabeth','Kristin','Bente','Heidi','Silje','Hanne',
