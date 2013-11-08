@@ -58,7 +58,7 @@ def sheepGenerate(request):
     for sheep in s:
         sheepList.append(sheep)
     if sheepList:
-        lastid = int(sheepList[-1].sheepId[8:12])
+        lastid = sheepList[-1].sheepId[8:12]
     else:
         lastid = 0
     for i in range(quantity):
@@ -81,7 +81,7 @@ def sheepGenerate(request):
         print(sheep.name,sheep.birthday,sheep.sheepId)
         sheepList.append(sheep)
         
-    return render_to_response('sheep/sheep.html',
+    return render_to_response('sheep/sheepList.html',
         {'sheepList': sheepList},
         context_instance=RequestContext(request)
         )
