@@ -16,7 +16,7 @@ common_names = ['Anne','Inger','Kari','Marit','Ingrid','Liv','Eva','Berit','Astr
 
 def index(request):
     if request.user.is_authenticated():
-    	return HttpResponseRedirect('/farmer/farmerLogin')
+            return HttpResponseRedirect('/farmer/farmerLogin')
     return render_to_response('index.html',
     {},
     context_instance=RequestContext(request))
@@ -38,6 +38,7 @@ def initiate(request):
         farmer.first_name = name
         farmer.last_name = name
         farmer.farmerId = str(int(lastid) + int(i) + 1).zfill(7)
+        farmer.email = username
         farmer.is_staff = True
         farmer.user_permissions.add(20) #change user
         farmer.user_permissions.add(22) #add sheep
@@ -75,15 +76,15 @@ def farmerRegister(request):
             farmer.save()
     except:
         return render_to_response('index_fail_register.html',
-	    {},
-	    context_instance=RequestContext(request))
+         {},
+         context_instance=RequestContext(request))
     return render_to_response('farmer/farmer.html',
-	{'farmer': farmer},
-	context_instance=RequestContext(request))
+        {'farmer': farmer},
+        context_instance=RequestContext(request))
 
 def farmerLogin(request):
     if request.user.is_authenticated():
-    	farmer = request.user
+            farmer = request.user
     else:
         try:
             username = request.POST['username']
@@ -95,15 +96,15 @@ def farmerLogin(request):
                 raise
         except:
             return render_to_response('index_fail_login.html',
-	        {},
-	        context_instance=RequestContext(request))
+         {},
+         context_instance=RequestContext(request))
     return render_to_response('farmer/farmer.html',
-	{'farmer':farmer},
-	context_instance=RequestContext(request))
+        {'farmer':farmer},
+        context_instance=RequestContext(request))
 
 def farmerLogout(request):
     if request.user.is_authenticated():
-    	farmer = request.user
+        farmer = request.user
         if farmer is not None:
             logout(request)
     return HttpResponseRedirect('/')
@@ -112,19 +113,19 @@ def farmerLogout(request):
 def farmerUpdate(request):
     farmer = request.user
     try:
-    	result = "Please use correct telephone number."
+        result = "Please use correct telephone number."
         farmer.tlf = request.POST['tlf']
-	result = "Reserve farmer does not exist."
+        result = "Reserve farmer does not exist."
         reserve_name = request.POST['reserve']
         farmer.reserve = Farmer.objects.get(username = reserve_name)
-	farmer.save()
-	result = "Update successfully!"
+        farmer.save()
+        result = "Update successfully!"
     except:
-    	return render_to_response('farmer/farmer_result.html',
-	{'result':result,
+            return render_to_response('farmer/farmer_result.html',
+        {'result':result,
          'farmer':farmer},
-	context_instance=RequestContext(request))   
+        context_instance=RequestContext(request))
     return render_to_response('farmer/farmer_result.html',
-	{'result':result,
+        {'result':result,
          'farmer':farmer},
-	context_instance=RequestContext(request))
+        context_instance=RequestContext(request))
