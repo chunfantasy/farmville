@@ -8,9 +8,6 @@ class FarmerAdmin(admin.ModelAdmin):
         if request.user.is_superuser:
             self.exclude = {}
             return qs
-        if request.user.is_superuser:
-            self.exclude = {}
-            return qs
         self.exclude = ['username', 'user_permissions', 'groups', 'last_login', 'password', 'staff', 'farmerId', 'date_joined', 'is_staff', 'is_superuser', 'is_active']
         return qs.filter( username = request.user.username)
 
