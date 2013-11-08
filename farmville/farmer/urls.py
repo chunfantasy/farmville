@@ -9,6 +9,7 @@ urlpatterns = patterns('farmville.farmer.views',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
+    url(r'^farmer$', 'farmer'),
     url(r'^farmerRegister$', 'farmerRegister'),
     url(r'^farmerLogin$', 'farmerLogin'),
     url(r'^farmerLogout$', 'farmerLogout'),

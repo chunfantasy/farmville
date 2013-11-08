@@ -16,7 +16,7 @@ common_names = ['Anne','Inger','Kari','Marit','Ingrid','Liv','Eva','Berit','Astr
 
 def index(request):
     if request.user.is_authenticated():
-            return HttpResponseRedirect('/farmer/farmerLogin')
+            return HttpResponseRedirect('/farmer/farmer')
     return render_to_response('index.html',
     {},
     context_instance=RequestContext(request))
@@ -82,22 +82,28 @@ def farmerRegister(request):
         {'farmer': farmer},
         context_instance=RequestContext(request))
 
-def farmerLogin(request):
+def farmer(request):
     if request.user.is_authenticated():
             farmer = request.user
     else:
-        try:
-            username = request.POST['username']
-            password = request.POST['password']
-            farmer = authenticate(username=username, password=password)
-            if farmer is not None:
-                login(request, farmer)
-            else:
-                raise
-        except:
-            return render_to_response('index_fail_login.html',
-         {},
-         context_instance=RequestContext(request))
+        return HttpResponseRedirct('farmer/farmerLogin')
+    return render_to_response('farmer/farmer.html',
+        {'farmer':farmer},
+        context_instance=RequestContext(request))
+
+def farmerLogin(request):
+    try:
+        username = request.POST['username']
+        password = request.POST['password']
+        farmer = authenticate(username=username, password=password)
+        if farmer is not None:
+            login(request, farmer)
+        else:
+            raise
+    except:
+        return render_to_response('index_fail_login.html',
+     {},
+     context_instance=RequestContext(request))
     return render_to_response('farmer/farmer.html',
         {'farmer':farmer},
         context_instance=RequestContext(request))
