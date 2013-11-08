@@ -13,10 +13,10 @@ class Sheep(models.Model):
     birthplace = models.CharField(max_length=15, null=True)
     farmer = models.ForeignKey(Farmer, null=True)
     sheepId = models.CharField(max_length=12)
-    weight = models.FloatField(null=True)
+    weight = models.FloatField(null=True, blank=True)
     status = models.IntegerField(max_length=1, choices=STATUS_CHOICES,default=0, null=True)
-    latitude = models.FloatField()
-    longitude = models.FloatField()
+    latitude = models.FloatField(blank=True, null=True)
+    longitude = models.FloatField(blank=True, null=True)
 
 
     def getStatus(self):
