@@ -54,27 +54,27 @@ def initiate(request):
         farmer.user_permissions.add(31) #add location
         farmer.user_permissions.add(33) #delete location
         farmer.save()
-    for i in range(50):
-        sheep = Sheep()
-        sheep.farmer = farmer
-        sheep.name = names[random.randint(0,49)]
-        sheep.birthday = date.today()
-        sheep.sheepId = farmer.farmerId + str(sheep.birthday)[3] + str(lastid+ i).zfill(4)
-        sheep.birthplace = sheep.name + "stad"
-        sheep.status = 0
-        sheep.latitude = 59.5 + random.random()
-        sheep.longitude = 8.5 + random.random()
-        sheep.save()
-        dag = datetime(2013,11,20,12,0,0,0)
-        dag2 = datetime(2013,11,20,8,0,0,0)
         for i in range(50):
-            location = Location()
-            location.latitude = sheep.latitude
-            location.longitude = sheep.longitude
-            location.sheep = sheep
-            location.tidspunkt = dag
-            location.save()
-            dag = dag - timedelta(hours = 8)
+            sheep = Sheep()
+            sheep.farmer = farmer
+            sheep.name = names[random.randint(0,49)]
+            sheep.birthday = date.today()
+            sheep.sheepId = farmer.farmerId + str(sheep.birthday)[3] + str(lastid+ i).zfill(4)
+            sheep.birthplace = sheep.name + "stad"
+            sheep.status = 0
+            sheep.latitude = 59.5 + random.random()
+            sheep.longitude = 8.5 + random.random()
+            sheep.save()
+            dag = datetime(2013,11,20,12,0,0,0)
+            dag2 = datetime(2013,11,20,8,0,0,0)
+            for i in range(50):
+                location = Location()
+                location.latitude = sheep.latitude
+                location.longitude = sheep.longitude
+                location.sheep = sheep
+                location.tidspunkt = dag
+                location.save()
+                dag = dag - timedelta(hours = 8)
 
 
 
@@ -84,6 +84,7 @@ def initiate(request):
     context_instance=RequestContext(request))
 
 def farmerRegister(request):
+    logout(request)
     try:
         if request.POST['password2'] != request.POST['password3']:
             raise
@@ -102,7 +103,6 @@ def farmerRegister(request):
         farmer.user_permissions.add(31) #add location
         farmer.user_permissions.add(33) #delete location
         farmerlist = Farmer.objects.all()
-        print len(farmerlist)
         if len(farmerlist) <= 2:
             for i in range(len(farmerlist)):
                 farmerlist[i].farmerId = str(i+1).zfill(7)
@@ -111,13 +111,17 @@ def farmerRegister(request):
             lastid = farmerlist[len(farmerlist)-2].farmerId
             farmer.farmerId = str(int(lastid) + 1).zfill(7)
             farmer.save()
+
+	farmer = authenticate(username=username, password=password)
+	if farmer is not None:
+            login(request, farmer)
+        else:
+            raise
     except:
         return render_to_response('index_fail_register.html',
          {},
          context_instance=RequestContext(request))
-    return render_to_response('farmer/farmer.html',
-        {'farmer': farmer},
-        context_instance=RequestContext(request))
+    return HttpResponseRedirect('/farmer/farmer')
 
 def farmer(request):
     if request.user.is_authenticated():
