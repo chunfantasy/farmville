@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 
-urlpatterns = patterns('farmville.sheep.views',
+urlpatterns = patterns('farmville.wolf.views',
     # Examples:
     # url(r'^$', 'farmville.views.home', name='home'),
     # url(r'^farmville/', include('farmville.foo.urls')),
@@ -9,11 +9,5 @@ urlpatterns = patterns('farmville.sheep.views',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    url(r'^sheepGenerateTest', 'sheepGenerateTest'),
-    url(r'^sheepGenerate', 'sheepGenerate'),
-    url(r'^sheepRegister', 'sheepRegister'),
-    url(r'^sheepDelete', 'sheepDelete'),
-    url(r'^sheepGetList', 'sheepGetList'),
-    url(r'^getSheep', 'getSheep'),
-    url(r'^sendMail', 'sendMail'),
+    url(r'^wolfAttackRandomSheep', 'wolfAttackRandomSheep'),
 )

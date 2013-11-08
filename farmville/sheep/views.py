@@ -6,6 +6,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from datetime import date
 from farmville.farmer.models import Farmer
 from farmville.sheep.models import Sheep
+from farmville.message.models import Message
+from farmville.wolf.models import Wolf
 from farmville.location.models import Location
 from django.contrib.auth.models import AbstractUser
 import random
@@ -17,19 +19,6 @@ common_names = ['Anne','Inger','Kari','Marit','Ingrid','Liv','Eva','Berit','Astr
                 'Thomas','Hans','Geir','Tor','Morten','Terje','Odd','Erik','Martin',
                 'Andreas','John','Anders','Rune','Trond','Tore','Daniel','Jon']
                
-def sendMail(request):
-    subject = "Sau under angrep"
-    message = "test"
-    broadcaster = "sondre.erstad@gmail.com"
-    receiver = ['sondre_erstad@hotmail.com']
-    if receiver and broadcaster and message:
-        try:
-            send_mail(subject,message, broadcaster, receiver)
-        except BadHeaderError:
-            return "Invalid header found"
-        return HttpResponseRedirect('/farmer/farmerLogin')
-    else:
-        return "make sure all fields are valid!"
 
 def sheepGenerateTest(request):
     names = common_names[::]
@@ -88,9 +77,9 @@ def sheepGenerate(request):
         print(sheep.name,sheep.birthday,sheep.sheepId)
         sheepList.append(sheep)
 	
-        return render_to_response('sheep/sheep.html',
-	    {'sheepList': sheepList},
-	    context_instance=RequestContext(request)
+    return render_to_response('sheep/sheep.html',
+	{'sheepList': sheepList},
+	context_instance=RequestContext(request)
         )
 
 def sheepGetList(request):
