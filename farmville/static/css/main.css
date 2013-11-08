@@ -85,7 +85,8 @@ body {
 
 #title {
 	margin-top: 2px;
-	text-align: center;
+	text-align: left;
+    left:40px;
 }
 
 h1,h2,h3 {

@@ -12,6 +12,7 @@ from farmville.location.models import Location
 from django.contrib.auth.models import AbstractUser
 import random
 import string
+from django.core.mail import send_mail, BadHeaderError
 common_names = ['Anne','Inger','Kari','Marit','Ingrid','Liv','Eva','Berit','Astrid',
                 'Bjorg','Hilde','Anna','Solveig','Marianne','Randi','Ida','Nina',
                 'Maria','Elisabeth','Kristin','Bente','Heidi','Silje','Hanne',
@@ -47,7 +48,11 @@ def sheepGenerateTest(request):
 def sheepGenerate(request):
     names = common_names[::]
     farmer = request.user
-    quantity = int(request.POST['quantity'])
+    try:
+        quantity = int(request.POST['quantity'])
+    except:
+        quantity = 0
+
     s = Sheep.objects.filter(farmer = farmer)
     sheepList = []
     for sheep in s:
@@ -101,9 +106,18 @@ def getSheep(request):
     for sheep in s:
         if sheep.sheepId == id:
             sheepList.append(sheep)
+    return sheepList
+
+def getSheepLog(request):
     return render_to_response('sheep/logg.html',
-    {'sheepList':sheepList},
+    {'sheepList':getSheep(request)},
     context_instance=RequestContext(request))
+
+def getSheepDetail(request):
+    return render_to_response('sheep/sheep_detail.html',
+    {'sheepList':getSheep(request)},
+    context_instance=RequestContext(request))
+
 
 def sheepRegister(request):
     farmer = request.user

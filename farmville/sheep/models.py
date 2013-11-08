@@ -5,8 +5,8 @@ from farmville.farmer.models import Farmer
 class Sheep(models.Model):
     STATUS_CHOICES=(
 	(0,"Normal"),
-	(1,"Under attack"),
-        (2,"Dead/Non-responsive")
+	(1,"Panicking"),
+    	(2,"Dead/Non-responsive")
     )
     name = models.CharField(max_length=20, null=True)
     birthday = models.DateField(auto_now_add=True,null=True)

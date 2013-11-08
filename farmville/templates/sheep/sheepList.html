@@ -1,0 +1,18 @@
+{% extends "sheep/sheep.html" %}
+{% block sub %}
+    <tbody id="subTable">
+        <form id="myForm" action="/sheep/getSheepDetail" method="post">{% csrf_token %}
+        <table id="farm1" >
+            {% for s in sheepList %}
+                <tr class ="{%  cycle 'odd' 'even' %}">
+                    <td>{{s.sheepId}}</td>
+                    <td>{{s.name}}</td>
+                    <td><input id="submitDetails" type="button" value="Details"><input name="sheepId" type="hidden" value="{{s.sheepId}}"></td>
+                    <td><input type="button" id="viewInMap" value="View in map" onclick="bounce({{ s.sheepId }});"></td>
+
+                </tr>
+            {% endfor %}
+        </table>
+        </form>
+    </tbody>
+{% endblock sub %}
