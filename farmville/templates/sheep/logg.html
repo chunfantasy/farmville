@@ -1,0 +1,39 @@
+{% extends "sheep/sheep.html" %}
+{% block sub %}
+    <tbody id="subTable">
+        <table id="farm1" >
+            {% for s in sheepList %}
+                <tr class ="{%  cycle 'odd' 'even' %}">
+                    <td>{{s.sheepId}}</td>
+                    <td>{{s.name}}</td>
+                    <td><input id="ink{{s.sheepId}}" type="button" value="[+] Expand" onclick="toggle_visibility('sheep{{s.sheepId}}','ink{{s.sheepId}}');"></td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                    <table class="inner" id="sheep{{s.sheepId}}">
+                        <tc>
+                            <tr>
+                                <td>Birthday: {{s.birthday}}</td>
+                                <td>Birthplace: {{s.birthplace}}</td>
+                                <td>Status: {{s.status}}</td>
+                            </tr>
+                              {% for l in s.location_history.all %}
+                            <tr>
+                                <td>Date: {{l.tidspunkt}}</td>
+                                <td>Latitude: {{l.latitude}}</td>
+                                <td>Longitude: {{l.longitude}}</td>
+                                <td><input type="button" value="Show in map" onclick="bounce({{s.sheepId}});"></td
+                            </tr>
+
+                            {% endfor %}
+                        </tc>
+
+
+                    </table>
+                    </td>
+
+                </tr>
+            {% endfor %}
+        </table>
+    </tbody>
+{% endblock sub %}
