@@ -13,6 +13,9 @@ class Sheep(models.Model):
     birthplace = models.CharField(max_length=15, null=True)
     farmer = models.ForeignKey(Farmer, null=True)
     sheepId = models.CharField(max_length=12)
+    #if len(sheepId) < 12:
+    #    if len(sheepId) < 5:
+    #        print
     weight = models.FloatField(null=True)
     status = models.IntegerField(max_length=1, choices=STATUS_CHOICES,default=0, null=True)
     latitude = models.FloatField()

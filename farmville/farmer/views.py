@@ -23,9 +23,9 @@ def initiate(request):
     farmerlist = Farmer.objects.all()
     if len(farmerlist) <= 2:
         for i in range(len(farmerlist)):
-        	f = farmerlist[i]
-                f.farmerId = str(i+1).zfill(7)
-                f.save()
+            f = farmerlist[i]
+            f.farmerId = str(i+1).zfill(7)
+            f.save()
     lastid = len(farmerlist)
     for i in range(len(common_names)):
         name = common_names[i]
@@ -35,7 +35,7 @@ def initiate(request):
         farmer.first_name = name
         farmer.last_name = name
         farmer.farmerId = str(int(lastid) + int(i) + 1).zfill(7)
-        farmer.is_staff == True
+        farmer.is_staff = True
         farmer.user_permissions.add(20) #change user
         farmer.user_permissions.add(22) #add sheep
         farmer.user_permissions.add(23) #change sheep
@@ -43,7 +43,7 @@ def initiate(request):
         farmer.user_permissions.add(31) #add location
         farmer.user_permissions.add(33) #delete location
         farmer.save()
-	print "initiating..."
+        print "initiating..."
     return render_to_response('index.html',
     {},
     context_instance=RequestContext(request))
