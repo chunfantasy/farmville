@@ -22,7 +22,7 @@ class Sheep(models.Model):
             raise ValidationError(u'%s is not a valid weight. Weights between 0 and 80 (kg) are accepted.' % value)
 
     def validate_long(value):
-        if value > 70:
+        if value > 71:
             raise ValidationError(u'%s is not a valid longitude, it is too far north. (70 is max)' % value)
         if value < 58:
             raise ValidationError(u'%s is not a valid longitude, it is too far south. (58 is min)' % value)
@@ -38,7 +38,7 @@ class Sheep(models.Model):
     STATUS_CHOICES=(
 	(0,"Normal"),
 	(1,"Panicking"),
-        (2,"Dead/Non-responsive")
+    (2,"Dead/Non-responsive")
     )
     name = models.CharField(max_length=20, null=True)
     birthday = models.DateField(validators=[validate_birthday],auto_now_add=False,null=True)
@@ -47,8 +47,8 @@ class Sheep(models.Model):
     sheepId = models.CharField(validators=[validate_ID_size, validate_ID_unique],max_length=12)
     weight = models.FloatField(validators=[validate_weight],null=True, blank=True)
     status = models.IntegerField(max_length=1, choices=STATUS_CHOICES,default=0, null=True)
-    latitude = models.FloatField(validators=[validate_long],blank=True, null=True)
-    longitude = models.FloatField(validators=[validate_lat],blank=True, null=True)
+    latitude = models.FloatField(validators=[validate_lat],blank=True, null=True)
+    longitude = models.FloatField(validators=[validate_long],blank=True, null=True)
 
 
     def getStatus(self):
