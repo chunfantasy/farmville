@@ -38,7 +38,6 @@ def initiate(request):
         farmer.first_name = name
         farmer.last_name = name
         farmer.farmerId = str(int(lastid) + int(i) + 1).zfill(7)
-	farmer.email = username
         farmer.is_staff = True
         farmer.user_permissions.add(20) #change user
         farmer.user_permissions.add(22) #add sheep
