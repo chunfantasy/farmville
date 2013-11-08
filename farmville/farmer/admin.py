@@ -5,6 +5,7 @@ class FarmerAdmin(admin.ModelAdmin):
     list_display = ('username', 'farmerId', 'first_name')
     def queryset(self, request):
         qs = super(FarmerAdmin, self).queryset(request)
+
         if request.user.is_superuser:
             self.exclude = {}
             return qs

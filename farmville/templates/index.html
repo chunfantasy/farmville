@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block head %}
 	<link rel="stylesheet" type="text/css" href="/static/css/form.css" />
-{% endblock head %}
+{%  endblock head %}
 {% block title %}
     Login
 {% endblock title %}
@@ -20,8 +20,6 @@
 			</h3>
 			<label for="username">username</label><input type="text" name="username" class="placeholder" placeholder="Your username">
 			<label for="password">password</label><input type="password" name="password" class="placeholder" placeholder="Password">
-			{% block fail_login %}
-			{% endblock fail_login %}
 			<input type="submit" value="Log In">
 		</form>
 	</div>
@@ -34,8 +32,6 @@
 			<label for="regUsername">username</label><input type="text" name="username2" class="placeholder" placeholder="me@projectfarmville.com">
 			<label for="regPassword">password</label><input type="password" name="password2" class="placeholder" placeholder="Choose a password">
 			<label for="testPassword">password</label><input type="password" name="password3" class="placeholder" placeholder="Repeat password">
-			{% block fail_register %}
-			{% endblock fail_register %}
 			<input type="submit" value="Register">
 			<!--<div class="vertical-line" />-->
 		</form>

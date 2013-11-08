@@ -20,5 +20,5 @@ urlpatterns = patterns('',
     url(r'^sheep/', include('farmville.sheep.urls')),
     url(r'^location/', include('farmville.location.urls')),
     #url(r'^message/', include('farmville.message.urls')),
-    url(r'^wolf/', include('farmville.wolf.urls')),
+    #url(r'^wolf/', include('farmville.wolf.urls')),
 )

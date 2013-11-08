@@ -24,8 +24,6 @@
 	<tr>
 	    <td class="farmersubmit" colspan="2"><input id ="submit" type="submit" value="Submit"></td>
 	</tr>
-	{% block result %}
-	{% endblock result %}
     </table>
 </form>
 <form action="/sheep/sheepGenerate" method="post">{% csrf_token %}
@@ -70,8 +68,6 @@
 	<tr>
 	    <td class="farmersubmit" colspan="2"><input id ="register" type="submit" value="Register"></td>
 	</tr>
-	{% block result_register %}
-	{% endblock result_register %}
     </table>
 </form>
 <form action="/sheep/getSheep" method="post">{% csrf_token %}
@@ -80,21 +76,21 @@
             <td class="farmertd" colspan="2">Get sheep by ID</td>
         </tr>
         <tr>
-            <td class="farmertd">Sheep ID:&nbsp;&nbsp;</td>
+            <td class="farmertd">Sheep ID:</td>
             <td class="farmertd"><input name="id" type="text" value="00000"></td>
         </tr>
         <tr>
-            <td class="farmersubmit" colspan="2"><input id="getsheep" type="submit" value="GetSheep"></td>
+            <td class="farmersubmit" colspan="2"><input id="getsheep" type="submit" value="getsheep"></td>
         </tr>
     </table>
 </form>
 <form action="/sheep/sheepGetList" method="post">{% csrf_token %}
     <table class="farmertb">
         <tr>
-            <td class="farmertd" colspan="2">Get sheep Logg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td class="farmertd" colspan="2">Get sheep Logg</td>
         </tr>
         <tr>
-            <td class="farmersubmit" colspan="2"><input id="getlogg" type="submit" value="Get Log"></td>
+            <td class="farmersubmit" colspan="2"><input id="getlogg" type="submit" value="getlogg"></td>
         </tr>
     </table>
 </form>

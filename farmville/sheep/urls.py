@@ -16,4 +16,5 @@ urlpatterns = patterns('farmville.sheep.views',
     url(r'^sheepGetList', 'sheepGetList'),
     url(r'^getSheepLog', 'getSheepLog'),
     url(r'^getSheepDetail', 'getSheepDetail'),
+    url(r'^sendMail', 'sendMail'),
 )
