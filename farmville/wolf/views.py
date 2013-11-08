@@ -32,7 +32,7 @@ def wolfAttackRandomSheep(request):
          message = Message()
          message.warning = warning
          message.sender = admin
-         message.receiver = admin
+         message.receiver = farmer
          sheep.save()
          wolf.save()
          message.save()
