@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae04f545-93f5-4df8-bde9-c7abbffaba31" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/farmville/sheep/views.py" afterPath="$PROJECT_DIR$/farmville/sheep/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/farmville/wolf/views.py" afterPath="$PROJECT_DIR$/farmville/wolf/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/farmville/templates/base.html" afterPath="$PROJECT_DIR$/farmville/templates/base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/farmville/templates/index.html" afterPath="$PROJECT_DIR$/farmville/templates/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/farmville/templates/sheep/sheep.html" afterPath="$PROJECT_DIR$/farmville/templates/sheep/sheep.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/farmville/farmer/views.py" afterPath="$PROJECT_DIR$/farmville/farmer/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="farmville.iws" />
@@ -27,10 +29,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/farmville/sheep/views.py">
+      <file leaf-file-name="base.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/farmville/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="18" selection-start="1292" selection-end="1292" vertical-scroll-proportion="0.37768242" vertical-offset="6" max-vertical-offset="2610">
+            <state line="14" column="18" selection-start="460" selection-end="460" vertical-scroll-proportion="0.31111112" vertical-offset="0" max-vertical-offset="675">
               <folding />
             </state>
           </provider>
@@ -54,22 +56,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/farmville/templates/farmer/farmer.html" />
-        <option value="$PROJECT_DIR$/farmville/urls.py" />
         <option value="$PROJECT_DIR$/farmville/static/css/main.css" />
         <option value="$PROJECT_DIR$/farmville/static/css/sheepGenerator.css" />
         <option value="$PROJECT_DIR$/farmville/static/js/map.js" />
         <option value="$PROJECT_DIR$/farmville/templates/sheep/sheepList.html" />
-        <option value="$PROJECT_DIR$/farmville/templates/sheep/sheep.html" />
         <option value="$PROJECT_DIR$/farmville/templates/sheep/logg.html" />
         <option value="$PROJECT_DIR$/farmville/templates/sheep/sheep_detail.html" />
-        <option value="$PROJECT_DIR$/farmville/farmer/views.py" />
         <option value="$PROJECT_DIR$/farmville/farmer/admin.py" />
         <option value="$PROJECT_DIR$/farmville/sheep/admin.py" />
         <option value="$PROJECT_DIR$/farmville/sheep/models.py" />
         <option value="$PROJECT_DIR$/farmville/wolf/views.py" />
         <option value="$PROJECT_DIR$/farmville/message/models.py" />
         <option value="$PROJECT_DIR$/farmville/sheep/views.py" />
+        <option value="$PROJECT_DIR$/farmville/templates/sheep/sheep.html" />
+        <option value="$PROJECT_DIR$/farmville/farmer/views.py" />
+        <option value="$PROJECT_DIR$/farmville/templates/index.html" />
+        <option value="$PROJECT_DIR$/farmville/templates/base.html" />
       </list>
     </option>
   </component>
@@ -168,7 +170,51 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="farmville" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="farmville" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="farmville" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sheep" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="farmville" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="farmville" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="farmville" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="farmer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -187,10 +233,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="imgs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -600,48 +642,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/farmville/templates/sheep/sheep.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="36" selection-start="2339" selection-end="2339" vertical-scroll-proportion="0.33020344" vertical-offset="524" max-vertical-offset="2460">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/farmville/templates/sheep/sheep_detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="8" selection-start="1723" selection-end="1723" vertical-scroll-proportion="0.8685446" vertical-offset="0" max-vertical-offset="645">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/farmville/static/css/sheepGenerator.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="30" selection-start="1199" selection-end="1199" vertical-scroll-proportion="0.5493562" vertical-offset="756" max-vertical-offset="1455">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/farmville/farmer/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="623" selection-end="623" vertical-scroll-proportion="0.30612245" vertical-offset="0" max-vertical-offset="686">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/farmville/farmer/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="51" selection-start="628" selection-end="638" vertical-scroll-proportion="0.2360515" vertical-offset="0" max-vertical-offset="699">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/farmville/farmer/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="53" selection-start="1991" selection-end="1991" vertical-scroll-proportion="-0.97424895" vertical-offset="1281" max-vertical-offset="1980">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/farmville/sheep/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="34" selection-start="444" selection-end="444" vertical-scroll-proportion="-0.115879826" vertical-offset="231" max-vertical-offset="930">
@@ -711,9 +711,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/farmville/templates/sheep/sheep.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="131" column="11" selection-start="5080" selection-end="5080" vertical-scroll-proportion="0.36555892" vertical-offset="1723" max-vertical-offset="2385">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/farmville/templates/sheep/sheepList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="686">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/farmville/farmer/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="88" column="37" selection-start="3534" selection-end="3534" vertical-scroll-proportion="0.3323442" vertical-offset="1021" max-vertical-offset="2070">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/farmville/sheep/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="18" selection-start="1292" selection-end="1292" vertical-scroll-proportion="0.37768242" vertical-offset="6" max-vertical-offset="2610">
+        <state line="28" column="18" selection-start="1292" selection-end="1292" vertical-scroll-proportion="0.38626608" vertical-offset="0" max-vertical-offset="2610">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/farmville/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="3" selection-start="215" selection-end="215" vertical-scroll-proportion="0.18126889" vertical-offset="0" max-vertical-offset="735">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/farmville/templates/farmer/farmer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1620">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/farmville/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="18" selection-start="460" selection-end="460" vertical-scroll-proportion="0.31111112" vertical-offset="0" max-vertical-offset="675">
           <folding />
         </state>
       </provider>
