@@ -58,7 +58,7 @@ def sheepGenerate(request):
     for sheep in s:
         sheepList.append(sheep)
     if sheepList:
-        lastid = sheepList[-1].sheepId[8:12]
+        lastid = int(str(sheepList[-1].sheepId)[8:12])
     else:
         lastid = 0
     for i in range(quantity):
@@ -66,7 +66,7 @@ def sheepGenerate(request):
         sheep.farmer = farmer
         sheep.name = names[random.randint(0,49)]
         sheep.birthday = date.today()
-        sheep.sheepId = formatSheepID(farmer,sheep,i)
+        sheep.sheepId = formatSheepID(farmer,sheep,lastid)
         sheep.birthplace = sheep.name + "stad"
         sheep.status = random.randint(0,3)
         sheep.latitude = 59.5 + random.random()
@@ -77,6 +77,8 @@ def sheepGenerate(request):
         location.sheep = sheep
         location.save()
         sheep.save()
+
+        lastid+=1
                 
         print(sheep.name,sheep.birthday,sheep.sheepId)
         sheepList.append(sheep)
@@ -102,19 +104,30 @@ def getSheep(request):
         id = farmer.farmerId + request.POST["id"]
     elif len(request.POST["id"]) == 12:
         id = request.POST["id"]
+    id = request.POST["id"]
     for sheep in s:
         if sheep.sheepId == id:
             sheepList.append(sheep)
-    return sheepList
-
-def getSheepLog(request):
     return render_to_response('sheep/logg.html',
-    {'sheepList':getSheep(request)},
+    {'sheepList':sheepList},
     context_instance=RequestContext(request))
 
+
 def getSheepDetail(request):
+    farmer = request.user
+    s = Sheep.objects.filter(farmer = farmer)
+    sheepList = []
+    if len(request.POST["id"]) == 5:
+        id = farmer.farmerId + request.POST["id"]
+    elif len(request.POST["id"]) == 12:
+        id = request.POST["id"]
+    id = request.POST["id"]
+    for sheep in s:
+        if sheep.sheepId == id:
+            sheepList.append(sheep)
+            print sheepList
     return render_to_response('sheep/sheep_detail.html',
-    {'sheepList':getSheep(request)},
+    {'sheepList':sheepList},
     context_instance=RequestContext(request))
 
 

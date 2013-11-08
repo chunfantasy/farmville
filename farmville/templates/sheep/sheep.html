@@ -126,28 +126,7 @@
 {% endblock title %}
 
 {% block main %}
-<div id="mainTable">
-<table>
-    <thead>
-       <tc>
-           <th>
-               <p>Du er logget inn som:</p>
-               <p><h1>{{ user.username }}</h1></p>
-           </th>
-       </tc>
-       <tr>
-            <th>Identification</th>
-            <th>Name</th>
-            <th>Status</th>
-            <th><input id="lnkfarm1" type="button" value="[+] Expand" onclick="toggle_visibility('farm1','lnkfarm1');"></th>
-       </tr>
-    </thead>
-
-    {% block sub %}
-    {% endblock sub %}
-</table>
-</div>
-</div>
-
+{% block sub %}
+{% endblock sub %}
 
 {% endblock main %}

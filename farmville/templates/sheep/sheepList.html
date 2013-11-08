@@ -1,5 +1,22 @@
 {% extends "sheep/sheep.html" %}
 {% block sub %}
+
+<div id="mainTable">
+<table>
+    <thead>
+       <tc>
+           <th>
+               <p>Du er logget inn som:</p>
+               <p><h1>{{ user.username }}</h1></p>
+           </th>
+       </tc>
+       <tr>
+            <th>Identification</th>
+            <th>Name</th>
+            <th>Status</th>
+            <th><input id="lnkfarm1" type="button" value="[+] Expand" onclick="toggle_visibility('farm1','lnkfarm1');"></th>
+       </tr>
+    </thead>
     <tbody id="subTable">
         <form id="myForm" action="/sheep/getSheepDetail" method="post">{% csrf_token %}
         <table id="farm1" >
@@ -7,7 +24,7 @@
                 <tr class ="{%  cycle 'odd' 'even' %}">
                     <td>{{s.sheepId}}</td>
                     <td>{{s.name}}</td>
-                    <td><input id="submitDetails" type="submit" value="Details"><input name="sheepId" type="hidden" value="{{s.sheepId}}"></td>
+                    <td><input id="submitDetails" type="submit" value="Details"><input name="id" type="hidden" value="{{s.sheepId}}"></td>
                     <td><input type="button" id="viewInMap" value="View in map" onclick="bounce({{ s.sheepId }});"></td>
 
                 </tr>
@@ -15,4 +32,8 @@
         </table>
         </form>
     </tbody>
+</table>
+</div>
+</div>
+
 {% endblock sub %}
