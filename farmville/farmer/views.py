@@ -53,6 +53,7 @@ def initiate(request):
     context_instance=RequestContext(request))
 
 def farmerRegister(request):
+    logout(request)
     try:
         if request.POST['password2'] != request.POST['password3']:
             raise
@@ -65,7 +66,6 @@ def farmerRegister(request):
         farmer.last_name = last_name
 
         farmerlist = Farmer.objects.all()
-        print len(farmerlist)
         if len(farmerlist) <= 2:
             for i in range(len(farmerlist)):
                 farmerlist[i].farmerId = str(i+1).zfill(7)
@@ -74,13 +74,17 @@ def farmerRegister(request):
             lastid = farmerlist[len(farmerlist)-2].farmerId
             farmer.farmerId = str(int(lastid) + 1).zfill(7)
             farmer.save()
+
+	farmer = authenticate(username=username, password=password)
+	if farmer is not None:
+            login(request, farmer)
+        else:
+            raise
     except:
         return render_to_response('index_fail_register.html',
          {},
          context_instance=RequestContext(request))
-    return render_to_response('farmer/farmer.html',
-        {'farmer': farmer},
-        context_instance=RequestContext(request))
+    return HttpResponseRedirect('/farmer/farmer')
 
 def farmer(request):
     if request.user.is_authenticated():
