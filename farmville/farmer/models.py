@@ -14,4 +14,4 @@ class Farmer(AbstractUser):
     reserve = models.ForeignKey('self', null=True, blank=True)
 
     def __unicode__(self):
-	return self.username
+        return self.username

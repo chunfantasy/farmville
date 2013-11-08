@@ -10,6 +10,6 @@ class Message(models.Model):
     time = models.DateTimeField(auto_now = True, auto_now_add = True)
 
     def __unicode__(self):
-	return "Message" + str(self.id)
+        return "Message" + str(self.id)
 
 admin.site.register(Message)

@@ -127,7 +127,7 @@ def farmer(request):
     if request.user.is_authenticated():
             farmer = request.user
     else:
-        return HttpResponseRedirct('farmer/farmerLogin')
+        return HttpResponseRedirect('farmerLogin')
     return render_to_response('farmer/farmer.html',
         {'farmer':farmer},
         context_instance=RequestContext(request))
