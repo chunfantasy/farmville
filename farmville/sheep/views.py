@@ -18,19 +18,8 @@ common_names = ['Anne','Inger','Kari','Marit','Ingrid','Liv','Eva','Berit','Astr
                 'Thomas','Hans','Geir','Tor','Morten','Terje','Odd','Erik','Martin',
                 'Andreas','John','Anders','Rune','Trond','Tore','Daniel','Jon']
                
-def sendMail(request):
-    subject = "Sau under angrep"
-    message = "test"
-    broadcaster = "sondre.erstad@gmail.com"
-    receiver = ['sondre_erstad@hotmail.com']
-    if receiver and broadcaster and message:
-        try:
-            send_mail(subject,message, broadcaster, receiver)
-        except BadHeaderError:
-            return "Invalid header found"
-        return HttpResponseRedirect('/farmer/farmerLogin')
-    else:
-        return "make sure all fields are valid!"
+def formatSheepID(farmer,sheep,i):
+    return farmer.farmerId + str(sheep.birthday)[3] + str(i+1).zfill(4)
 
 def sheepGenerateTest(request):
     names = common_names[::]
@@ -41,9 +30,9 @@ def sheepGenerateTest(request):
     for i in range(50):
         sheep = Sheep()
         sheep.Farmer = farmer
-        sheep.name = names.pop(random.randint(0,50-i-1))
+        sheep.name = names[random.randint(0,50-i-1)]
         sheep.birthday = date.today()
-        sheep.sheepId = farmer.farmerId + str(sheep.birthday)[3] + str(i+1).zfill(4)
+        sheep.sheepId = formatSheepID(farmer,sheep,i)
         sheep.birthplace = sheep.name + "stad"
         sheep.status = random.randint(0,3)
         sheep.latitude = 59.5 + random.random()
@@ -52,8 +41,8 @@ def sheepGenerateTest(request):
         print(sheep.name,sheep.birthday,sheep.sheepId)
         sheepList.append(sheep)
     return render_to_response('sheep/sheep.html',
-	{'sheepList': sheepList},
-	context_instance=RequestContext(request)
+        {'sheepList': sheepList},
+        context_instance=RequestContext(request)
     )
 
 def sheepGenerate(request):
@@ -77,33 +66,32 @@ def sheepGenerate(request):
         sheep.farmer = farmer
         sheep.name = names[random.randint(0,49)]
         sheep.birthday = date.today()
-        sheep.sheepId = farmer.farmerId + str(sheep.birthday)[3] + str(lastid + 1 + i).zfill(4)
+        sheep.sheepId = formatSheepID(farmer,sheep,i)
         sheep.birthplace = sheep.name + "stad"
         sheep.status = random.randint(0,3)
         sheep.latitude = 59.5 + random.random()
         sheep.longitude = 8.5 + random.random()
-
         location = Location()
         location.latitude = sheep.latitude
         location.longitude = sheep.longitude
         location.sheep = sheep
         location.save()
         sheep.save()
-		
+                
         print(sheep.name,sheep.birthday,sheep.sheepId)
         sheepList.append(sheep)
-	
-    return render_to_response('sheep/sheepList.html',
-	    {'sheepList': sheepList},
-	    context_instance=RequestContext(request)
+        
+    return render_to_response('sheep/sheep.html',
+        {'sheepList': sheepList},
+        context_instance=RequestContext(request)
         )
 
 def sheepGetList(request):
     farmer = request.user
     sheepList = Sheep.objects.filter(farmer = farmer)
     return render_to_response('sheep/logg.html',
-	{'sheepList': sheepList},
-	context_instance=RequestContext(request)
+        {'sheepList': sheepList},
+        context_instance=RequestContext(request)
     )
     
 def getSheep(request):
@@ -133,7 +121,6 @@ def getSheepDetail(request):
 def sheepRegister(request):
     farmer = request.user
     s = Sheep.objects.filter(farmer = farmer)
-    print(s)
     sheepList = []
     for sheep in s:
         sheepList.append(sheep)
@@ -159,7 +146,7 @@ def sheepRegister(request):
         sheep.farmer = farmer
         sheep.name = request.POST["name"]
         sheep.birthday = request.POST["birthday"]
-        sheep.sheepId = farmer.farmerId + str(sheep.birthday)[3] + str(lastid + 1).zfill(4)
+        sheep.sheepId = formatSheepID(farmer,sheep,lastid)
         sheep.birthplace = request.POST["birthplace"]
         sheep.status = random.randint(0,3)
         sheep.latitude = 59.5 + random.randint(-2,2)
@@ -170,13 +157,13 @@ def sheepRegister(request):
     except:
         result = "Please fill with correct information"
         return render_to_response('farmer/farmer_result_sheepRegister.html',
-	    {'farmer': farmer,
-	    'result': result},
-	    context_instance=RequestContext(request)
-	    )
+         {'farmer': farmer,
+         'result': result},
+         context_instance=RequestContext(request)
+         )
     return render_to_response('sheep/sheep.html',
-	{'sheepList': sheepList},
-	context_instance=RequestContext(request)
+        {'sheepList': sheepList},
+        context_instance=RequestContext(request)
     )
 
 def sheepDelete(request):
@@ -184,7 +171,8 @@ def sheepDelete(request):
     sheepList = Sheep.objects.all()
     sheepList.delete()
     return render_to_response('sheep/sheep.html',
-	{'sheepList': sheepList},
-	context_instance=RequestContext(request)
+        {'sheepList': sheepList},
+        context_instance=RequestContext(request)
     )
+
 
