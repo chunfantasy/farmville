@@ -6,8 +6,6 @@ from django.http import HttpResponse, HttpResponseRedirect
 from datetime import date
 from farmville.farmer.models import Farmer
 from farmville.sheep.models import Sheep
-from farmville.message.models import Message
-from farmville.wolf.models import Wolf
 from farmville.location.models import Location
 from django.contrib.auth.models import AbstractUser
 import random
