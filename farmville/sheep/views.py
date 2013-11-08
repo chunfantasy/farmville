@@ -18,6 +18,8 @@ common_names = ['Anne','Inger','Kari','Marit','Ingrid','Liv','Eva','Berit','Astr
                 'Thomas','Hans','Geir','Tor','Morten','Terje','Odd','Erik','Martin',
                 'Andreas','John','Anders','Rune','Trond','Tore','Daniel','Jon']
                
+def formatSheepID(farmer,sheep,i):
+    return farmer.farmerId + str(sheep.birthday)[3] + str(i+1).zfill(4)
 
 def sheepGenerateTest(request):
     names = common_names[::]
@@ -28,9 +30,9 @@ def sheepGenerateTest(request):
     for i in range(50):
         sheep = Sheep()
         sheep.Farmer = farmer
-        sheep.name = names.pop(random.randint(0,50-i-1))
+        sheep.name = names[random.randint(0,50-i-1)]
         sheep.birthday = date.today()
-        sheep.sheepId = farmer.farmerId + str(sheep.birthday)[3] + str(i+1).zfill(4)
+        sheep.sheepId = formatSheepID(farmer,sheep,i)
         sheep.birthplace = sheep.name + "stad"
         sheep.status = random.randint(0,3)
         sheep.latitude = 59.5 + random.random()
@@ -64,7 +66,7 @@ def sheepGenerate(request):
         sheep.farmer = farmer
         sheep.name = names[random.randint(0,49)]
         sheep.birthday = date.today()
-        sheep.sheepId = farmer.farmerId + str(sheep.birthday)[3] + str(lastid + 1 + i).zfill(4)
+        sheep.sheepId = formatSheepID(farmer,sheep,i)
         sheep.birthplace = sheep.name + "stad"
         sheep.status = random.randint(0,3)
         sheep.latitude = 59.5 + random.random()
@@ -144,7 +146,7 @@ def sheepRegister(request):
         sheep.farmer = farmer
         sheep.name = request.POST["name"]
         sheep.birthday = request.POST["birthday"]
-        sheep.sheepId = farmer.farmerId + str(sheep.birthday)[3] + str(lastid + 1).zfill(4)
+        sheep.sheepId = formatSheepID(farmer,sheep,lastid)
         sheep.birthplace = request.POST["birthplace"]
         sheep.status = random.randint(0,3)
         sheep.latitude = 59.5 + random.randint(-2,2)

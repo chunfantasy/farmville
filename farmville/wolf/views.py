@@ -12,6 +12,7 @@ from farmville.message.models import Message
 from django.core.mail import send_mail, BadHeaderError
 
 import random
+
 def wolfAttackRandomSheep(request):
     sheepList = Sheep.objects.all()
     l = len(sheepList)
