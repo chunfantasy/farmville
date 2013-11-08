@@ -40,7 +40,7 @@ class Sheep(models.Model):
 	(1,"Panicking"),
     (2,"Dead/Non-responsive")
     )
-    name = models.CharField(encoding='utf-8',max_length=20, null=True)
+    name = models.CharField(max_length=20, null=True)
     birthday = models.DateField(validators=[validate_birthday],auto_now_add=False,null=True)
     birthplace = models.CharField(max_length=15, null=True)
     farmer = models.ForeignKey(Farmer, null=True)

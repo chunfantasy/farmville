@@ -58,7 +58,7 @@ def sheepGenerate(request):
     for sheep in s:
         sheepList.append(sheep)
     if sheepList:
-        lastid = int(sheepList[-1].sheepId[8:12])
+        lastid = sheepList[-1].sheepId[8:12]
     else:
         lastid = 0
     for i in range(quantity):
