@@ -9,6 +9,6 @@ class Message(models.Model):
     receiver = models.ForeignKey(Farmer, related_name="receiver")
     time = models.TimeField()
     def __unicode__(self):
-	return "Message" + self.id
+	return "Message" + str(self.id)
 
 admin.site.register(Message)
