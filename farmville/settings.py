@@ -1,13 +1,18 @@
 # Django settings for farmville project.
 
+from os.path import abspath, basename, dirname, join, normpath
+ROOT = dirname(dirname(abspath(__file__)))
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+     ('Admin', 'farmvillethesheepedition@gmail.com'),
 )
 
 MANAGERS = ADMINS
+
+AUTH_USER_MODEL= 'farmer.Farmer'
 
 DATABASES = {
     'default': {
@@ -21,6 +26,25 @@ DATABASES = {
     }
 }
 
+
+#Sends all emails to the Admin in this script
+MAILER_EMAIL_BACKEND = 'django_libs.test_email_backend.EmailBackend'
+TEST_EMAIL_BACKEND_RECIPIENTS = ADMINS
+
+FROM_EMAIL = ADMINS[0][1]
+EMAIL_SUBJECT_PREFIX = '[Farmville the sheep edition] '
+
+DEFAULT_FROM_EMAIL = 'farmvillethesheepedition@gmail.com'
+SERVER_EMAIL = 'farmvillethesheepedition@gmail.com'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = FROM_EMAIL
+
+# Enter your gmail PW from the ADMINS email entered above.
+EMAIL_HOST_PASSWORD = 'Farmville123TheSheep'
+EMAIL_PORT = 587
+
+EMAIL_USE_TLS = True
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = []
@@ -62,13 +86,13 @@ MEDIA_URL = ''
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
 STATIC_ROOT = ''
-
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
 STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
+    normpath(join(ROOT, 'farmville', 'static')),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -108,6 +132,7 @@ ROOT_URLCONF = 'farmville.urls'
 WSGI_APPLICATION = 'farmville.wsgi.application'
 
 TEMPLATE_DIRS = (
+    normpath(join(ROOT, 'farmville', 'templates')),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -125,8 +150,10 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'farmville.farmer',
-    'farmville.barn',
     'farmville.sheep',
+    'farmville.message',
+    'farmville.wolf',
+    'farmville.location',
 )
 
 # A sample logging configuration. The only tangible logging
