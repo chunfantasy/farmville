@@ -54,27 +54,27 @@ def initiate(request):
         farmer.user_permissions.add(31) #add location
         farmer.user_permissions.add(33) #delete location
         farmer.save()
-    for i in range(50):
-        sheep = Sheep()
-        sheep.farmer = farmer
-        sheep.name = names[random.randint(0,49)]
-        sheep.birthday = date.today()
-        sheep.sheepId = farmer.farmerId + str(sheep.birthday)[3] + str(lastid+ i).zfill(4)
-        sheep.birthplace = sheep.name + "stad"
-        sheep.status = 0
-        sheep.latitude = 59.5 + random.random()
-        sheep.longitude = 8.5 + random.random()
-        sheep.save()
-        dag = datetime(2013,11,20,12,0,0,0)
-        dag2 = datetime(2013,11,20,8,0,0,0)
         for i in range(50):
-            location = Location()
-            location.latitude = sheep.latitude
-            location.longitude = sheep.longitude
-            location.sheep = sheep
-            location.tidspunkt = dag
-            location.save()
-            dag = dag - timedelta(hours = 8)
+            sheep = Sheep()
+            sheep.farmer = farmer
+            sheep.name = names[random.randint(0,49)]
+            sheep.birthday = date.today()
+            sheep.sheepId = farmer.farmerId + str(sheep.birthday)[3] + str(lastid+ i).zfill(4)
+            sheep.birthplace = sheep.name + "stad"
+            sheep.status = 0
+            sheep.latitude = 59.5 + random.random()
+            sheep.longitude = 8.5 + random.random()
+            sheep.save()
+            dag = datetime(2013,11,20,12,0,0,0)
+            dag2 = datetime(2013,11,20,8,0,0,0)
+            for i in range(50):
+                location = Location()
+                location.latitude = sheep.latitude
+                location.longitude = sheep.longitude
+                location.sheep = sheep
+                location.tidspunkt = dag
+                location.save()
+                dag = dag - timedelta(hours = 8)
 
 
 
