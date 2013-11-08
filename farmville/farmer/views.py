@@ -6,6 +6,12 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from farmville.farmer.models import Farmer
+from farmville.sheep.models import Sheep
+from farmville.location.models import Location
+from datetime import datetime
+from datetime import timedelta
+from datetime import date
+import random
 
 common_names = ['Anne','Inger','Kari','Marit','Ingrid','Liv','Eva','Berit','Astrid',
                 'Bjørg','Hilde','Anna','Solveig','Marianne','Randi','Ida','Nina',
@@ -23,6 +29,7 @@ def index(request):
 
 @login_required
 def initiate(request):
+    names = common_names[::]
     farmerlist = Farmer.objects.all()
     if len(farmerlist) <= 2:
         for i in range(len(farmerlist)):
@@ -30,7 +37,7 @@ def initiate(request):
             f.farmerId = str(i+1).zfill(7)
             f.save()
     lastid = len(farmerlist)
-    for i in range(len(common_names)):
+    for i in range(5):
         name = common_names[i]
         username = name + "@farmville.com"
         password = "1"
@@ -47,6 +54,30 @@ def initiate(request):
         farmer.user_permissions.add(31) #add location
         farmer.user_permissions.add(33) #delete location
         farmer.save()
+    for i in range(50):
+        sheep = Sheep()
+        sheep.farmer = farmer
+        sheep.name = names[random.randint(0,49)]
+        sheep.birthday = date.today()
+        sheep.sheepId = farmer.farmerId + str(sheep.birthday)[3] + str(lastid+ i).zfill(4)
+        sheep.birthplace = sheep.name + "stad"
+        sheep.status = 0
+        sheep.latitude = 59.5 + random.random()
+        sheep.longitude = 8.5 + random.random()
+        sheep.save()
+        dag = datetime(2013,11,20,12,0,0,0)
+        dag2 = datetime(2013,11,20,8,0,0,0)
+        for i in range(50):
+            location = Location()
+            location.latitude = sheep.latitude
+            location.longitude = sheep.longitude
+            location.sheep = sheep
+            location.tidspunkt = dag
+            location.save()
+            dag = dag - timedelta(hours = 8)
+
+
+
         print "initiating..."
     return render_to_response('index.html',
     {},
@@ -63,7 +94,13 @@ def farmerRegister(request):
         farmer = Farmer.objects.create_user(username = username, password = password)
         farmer.first_name = first_name
         farmer.last_name = last_name
-
+        farmer.is_staff = True
+        farmer.user_permissions.add(20) #change user
+        farmer.user_permissions.add(22) #add sheep
+        farmer.user_permissions.add(23) #change sheep
+        farmer.user_permissions.add(24) #delete sheep
+        farmer.user_permissions.add(31) #add location
+        farmer.user_permissions.add(33) #delete location
         farmerlist = Farmer.objects.all()
         print len(farmerlist)
         if len(farmerlist) <= 2:

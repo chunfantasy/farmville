@@ -9,6 +9,8 @@ class SheepAdmin(admin.ModelAdmin):
 
     def queryset(self, request):
         qs = super(SheepAdmin, self).queryset(request)
+        if request.user.is_superuser:
+            return qs
         return qs.filter(farmer=request.user)
 
     def save_model(self, request, obj, form, change):
@@ -28,3 +30,4 @@ class SheepAdmin(admin.ModelAdmin):
             formset.save()
 admin.site.register(Sheep, SheepAdmin)
 admin.site.register(Location)
+
