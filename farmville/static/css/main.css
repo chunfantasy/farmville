@@ -68,7 +68,7 @@ body {
 	position:fixed;
 	left:0px;
 	top:0px;
-	height:40px;
+	height:58px;
 	width:100%;
     margin:0px auto;
     background-color: white;
@@ -82,6 +82,7 @@ body {
    position:absolute;
    bottom:expression((0-(footer.offsetHeight)+(document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight)+(ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop))+'px');
 }
+
 
 #title {
 	margin-top: 2px;
@@ -106,5 +107,24 @@ h3{
 	margin-top: 12px;
 	font-size: 15px;
 	color: grey;
+}
+h4{
+	margin-right: 50px;
+	font-size: 15px;
+	color: grey;
+	text-align:right;
+	
+}
+h4 a{
+	font-size: 15px;
+	color: grey;
+	
+}
+h4 a:hoved{
+	margin-right: 50px;
+	font-size: 15px;
+	color: grey;
+	text-align:right;
+	
 }
 

@@ -3,8 +3,8 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.http import HttpResponse, HttpResponseRedirect
-from django.contrib.auth import authenticate, login
-
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from farmville.farmer.models import Farmer
 
 common_names = ['Anne','Inger','Kari','Marit','Ingrid','Liv','Eva','Berit','Astrid',
@@ -15,10 +15,13 @@ common_names = ['Anne','Inger','Kari','Marit','Ingrid','Liv','Eva','Berit','Astr
                 'Andreas','John','Anders','Rune','Trond','Tore','Daniel','Jon']
 
 def index(request):
+    if request.user.is_authenticated():
+    	return HttpResponseRedirect('/farmer/farmerLogin')
     return render_to_response('index.html',
     {},
     context_instance=RequestContext(request))
 
+@login_required
 def initiate(request):
     farmerlist = Farmer.objects.all()
     if len(farmerlist) <= 2:
@@ -80,22 +83,33 @@ def farmerRegister(request):
 	context_instance=RequestContext(request))
 
 def farmerLogin(request):
-    try:
-        username = request.POST['username']
-        password = request.POST['password']
-        farmer = authenticate(username=username, password=password)
-        if farmer is not None:
-            login(request, farmer)
-        else:
-            raise
-    except:
-        return render_to_response('index_fail_login.html',
-	    {},
-	    context_instance=RequestContext(request))
+    if request.user.is_authenticated():
+    	farmer = request.user
+    else:
+        try:
+            username = request.POST['username']
+            password = request.POST['password']
+            farmer = authenticate(username=username, password=password)
+            if farmer is not None:
+                login(request, farmer)
+            else:
+                raise
+        except:
+            return render_to_response('index_fail_login.html',
+	        {},
+	        context_instance=RequestContext(request))
     return render_to_response('farmer/farmer.html',
 	{'farmer':farmer},
 	context_instance=RequestContext(request))
- 
+
+def farmerLogout(request):
+    if request.user.is_authenticated():
+    	farmer = request.user
+        if farmer is not None:
+            logout(request)
+    return HttpResponseRedirect('/')
+
+@login_required
 def farmerUpdate(request):
     farmer = request.user
     try:
