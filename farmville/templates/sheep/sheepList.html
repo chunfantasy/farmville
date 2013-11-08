@@ -7,7 +7,7 @@
                 <tr class ="{%  cycle 'odd' 'even' %}">
                     <td>{{s.sheepId}}</td>
                     <td>{{s.name}}</td>
-                    <td><input id="submitDetails" type="button" value="Details"><input name="sheepId" type="hidden" value="{{s.sheepId}}"></td>
+                    <td><input id="submitDetails" type="submit" value="Details"><input name="sheepId" type="hidden" value="{{s.sheepId}}"></td>
                     <td><input type="button" id="viewInMap" value="View in map" onclick="bounce({{ s.sheepId }});"></td>
 
                 </tr>
