@@ -48,10 +48,12 @@
         map.mapTypes.set('topo2',new StatkartMapType("Topografisk", "topo2"));
         map.setMapTypeId('topo2');
         {% for sheep in sheepList %}
+            var image = '/static/imgs/sauen.png';
             var marker = new google.maps.Marker({
                 position: new google.maps.LatLng({{ sheep.latitude }}, {{ sheep.longitude }}),
                 map: map,
-                id: {{ sheep.sheepId }}
+                id: {{ sheep.sheepId }},
+                icon: image
             });
             var contentString = '<div>'+
                     '<div id="siteNotice">'+
@@ -118,6 +120,16 @@
     {display:none;}
 </style>
 {% endblock head %}
+
+{% block title %}
+    My sheep
+{% endblock title %}
+{% block header %}
+    <input type="button" value="My sheep">
+    <input type="button" value="osv">
+    <input type="button" value="osv">
+{% endblock header %}
+
 {% block main %}
 <div id="mainTable">
 <table>
