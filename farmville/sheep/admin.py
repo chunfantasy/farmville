@@ -8,6 +8,5 @@ class SheepAdmin(admin.ModelAdmin):
         return qs.filter(farmer=request.user)
     list_display = ('sheepId', 'name', 'farmer')
     
-
 admin.site.register(Sheep, SheepAdmin)
 admin.site.register(Location)
