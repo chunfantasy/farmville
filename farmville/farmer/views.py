@@ -39,14 +39,14 @@ def initiate(request):
     lastid = len(farmerlist)
     for i in range(5):
         name = common_names[i]
-        username = name + "@farmville.com"
+        username = name.lower() + "@farmville.com"
         password = "1"
         farmer = Farmer.objects.create_user(username = username, password = password)
         farmer.first_name = name
         farmer.last_name = name
         farmer.farmerId = str(int(lastid) + int(i) + 1).zfill(7)
         farmer.email = username
-	farmer.reserve = farmerlist[0]
+        farmer.reserve = farmerlist[0]
         farmer.is_staff = True
         farmer.user_permissions.add(20) #change user
         farmer.user_permissions.add(22) #add sheep
@@ -61,14 +61,13 @@ def initiate(request):
             sheep.farmer = farmer
             sheep.name = names[random.randint(0,49)]
             sheep.birthday = date.today()
-            sheep.sheepId = farmer.farmerId + str(sheep.birthday)[3] + str(lastid+ i).zfill(4)
+            sheep.sheepId = farmer.farmerId.zfill(7) + str(sheep.birthday)[3] + str(lastid+ i).zfill(4)
             sheep.birthplace = sheep.name + "stad"
             sheep.status = 0
             sheep.latitude = 59.5 + random.random()
             sheep.longitude = 8.5 + random.random()
             sheep.save()
             dag = datetime(2013,11,20,12,0,0,0)
-            dag2 = datetime(2013,11,20,8,0,0,0)
             for k in range(5):
                 location = Location()
                 location.latitude = sheep.latitude
@@ -78,7 +77,7 @@ def initiate(request):
                 location.save()
                 dag = dag - timedelta(hours = 8)
 
-	    print "initiating...", i
+        print "initiating...", i
     return render_to_response('index.html',
     {},
     context_instance=RequestContext(request))
@@ -112,8 +111,8 @@ def farmerRegister(request):
             farmer.farmerId = str(int(lastid) + 1).zfill(7)
             farmer.save()
 
-	farmer = authenticate(username=username, password=password)
-	if farmer is not None:
+        farmer = authenticate(username=username, password=password)
+        if farmer is not None:
             login(request, farmer)
         else:
             raise

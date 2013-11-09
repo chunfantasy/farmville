@@ -16,7 +16,7 @@ class SheepAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         obj.farmer = request.user
         birthyear = str(obj.birthday)[3]
-        obj.sheepId = int(str(obj.farmer.farmerId) + birthyear + str(obj.sheepId))
+        obj.sheepId = obj.farmer.farmerId.zfill(7) + birthyear + obj.sheepId
         obj.save()
 
     def save_formset(self, request, form, formset, change):
