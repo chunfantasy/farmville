@@ -1,6 +1,7 @@
 {% extends "sheep/sheep.html" %}
 {% block sub %}
 
+
 <div id="mainTable">
 <table>
     <thead>
@@ -17,17 +18,16 @@
        </tr>
     </thead>
     <tbody id="subTable">
-
-        <form id="myForm" action="/sheep/getSheepDetail" method="post">{% csrf_token %}
             {% for s in sheepList %}
+            <form id="myForm" action="/sheep/getSheepDetail" method="post">{% csrf_token %}
                 <tr colspan="4" class ="{%  cycle 'odd' 'even' %}">
                     <td>{{s.sheepId}}</td>
                     <td>{{s.name}}</td>
                     <td><input id="submitDetails" type="submit" value="Details"><input name="id" type="hidden" value="{{s.sheepId}}"></td>
                     <td><input type="button" id="viewInMap" value="View in map" onclick="bounce({{ s.sheepId }});"></td>
                 </tr>
+                </form>
             {% endfor %}
-        </form>
     </tbody>
 </table>
 </div>
