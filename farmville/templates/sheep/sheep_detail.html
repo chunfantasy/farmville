@@ -1,6 +1,7 @@
 {% extends "sheep/sheep.html" %}
 
 {% block sub %}
+{% load humanize %}
 <div id="mainTable">
 {% for s in sheepList %}
 <table>
@@ -13,7 +14,7 @@
     <tr>
         <td colspan="3">
         <table class="inner">
-                    <td>Birthday: {{s.birthday}}</td>
+                    <td>Birthday: {{s.birthday|timesince:dagensdato}}</td>
                     <td>Birthplace: {{s.birthplace}}</td>
                     <td>Status: {{s.status}}</td>
                     <td>Latitude: {{s.latitude}}</td>
