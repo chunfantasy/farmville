@@ -119,7 +119,7 @@ def getSheepDetail(request):
     s = Sheep.objects.filter(farmer = farmer, sheepId=request.POST["id"])
     dagensdato = datetime.datetime.today()
     return render_to_response('sheep/sheep_detail.html',
-    {'sheepList':sheepList, 'dagensdato':dagensdato},
+    {'sheepList':s, 'dagensdato':dagensdato},
     context_instance=RequestContext(request))
 
 
