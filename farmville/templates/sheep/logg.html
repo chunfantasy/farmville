@@ -1,4 +1,14 @@
 {% extends "sheep/sheep.html" %}
+
+{% block head %}
+<style type="text/css">
+    #farm1 {% for s in sheepList %}
+        , #sheep{{s.sheepId}}
+    {% endfor %}
+    {display:none;}
+</style>
+{% endblock head %}
+
 {% block sub %}
 
 <div id="mainTable">

@@ -5,35 +5,49 @@
 <table>
     <thead>
        <tc>
-           <th>
-               <p>Du er logget inn som:</p>
+           <th colspan="4">
                <p><h1>{{ user.username }}</h1></p>
            </th>
        </tc>
        <tr>
             <th>Identification</th>
             <th>Name</th>
-            <th>Status</th>
-            <th><input id="lnkfarm1" type="button" value="[+] Expand" onclick="toggle_visibility('farm1','lnkfarm1');"></th>
+            <!--<th>Status</th>-->
+            <th colspan="2"><input type="text" id="search" placeholder="Type to search"></th>
        </tr>
     </thead>
     <tbody id="subTable">
+
         <form id="myForm" action="/sheep/getSheepDetail" method="post">{% csrf_token %}
-        <table id="farm1" >
             {% for s in sheepList %}
-                <tr class ="{%  cycle 'odd' 'even' %}">
+                <tr colspan="4" class ="{%  cycle 'odd' 'even' %}">
                     <td>{{s.sheepId}}</td>
                     <td>{{s.name}}</td>
                     <td><input id="submitDetails" type="submit" value="Details"><input name="id" type="hidden" value="{{s.sheepId}}"></td>
                     <td><input type="button" id="viewInMap" value="View in map" onclick="bounce({{ s.sheepId }});"></td>
-
                 </tr>
             {% endfor %}
-        </table>
         </form>
     </tbody>
 </table>
 </div>
+    <!--
+<div id="datass">
+<input type="text" id="search" placeholder="Type to search">
+<table id="table">
+   <tr>
+      <td>Apple</td>
+      <td>Green</td>
+   </tr>
+   <tr>
+      <td>Grapes</td>
+      <td>Green</td>
+   </tr>
+   <tr>
+      <td>Orange</td>
+      <td>Orange</td>
+   </tr>
+</table>
 </div>
-
+-->
 {% endblock sub %}

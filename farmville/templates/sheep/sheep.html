@@ -1,13 +1,26 @@
 {% extends "base.html" %}
 {% block head %}
-	<link rel="stylesheet" type="text/css" href="/static/css/sheepGenerator.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript">
+        function searcher() {
+	        var $rows = $('#subTable tr');
+            $('#search').keyup(function() {
+                var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+                $rows.show().filter(function() {
+                var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+                return !~text.indexOf(val);
+                }).hide();
+            });
+	    }
+    </script>
+    <link rel="stylesheet" type="text/css" href="/static/css/sheepGenerator.css" />
+    <!--<script type="text/javascript">
         function toggle_visibility(tbid,lnkid) {
             if(document.all){document.getElementById(tbid).style.display = document.getElementById(tbid).style.display == "block" ? "none" : "block";}
             else{document.getElementById(tbid).style.display = document.getElementById(tbid).style.display == "table" ? "none" : "table";}
             document.getElementById(lnkid).value = document.getElementById(lnkid).value == "[-] Collapse" ? "[+] Expand" : "[-] Collapse";
         }
-    </script>
+    </script>-->
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript">
@@ -55,6 +68,9 @@
                 id: {{ sheep.sheepId }},
                 icon: image
             });
+            /*
+                    '<form id="myForm2" action="/sheep/getSheepDetail" method="post">{% csrf_token %}'++
+                    '</form>'*/
             var contentString = '<div>'+
                     '<div id="siteNotice">'+
                     '</div>'+
@@ -64,7 +80,7 @@
                     '<p>Name: {{ sheep.name }}</p>'+
                     '<p>Status: {{ sheep.getStatus }}</p>' +
                     '<p>For further details on this sheep:</p>' +
-                    '<p><input type="button" value="Details" onclick="bounce({{ sheep.sheepId }});"></p>'+
+                    '<p><input id="submitDetails" type="submit" value="Details"><input name="id" type="hidden" value="{{sheep.sheepId}}"></p>'+
                     '</div>';
             bindInfoWindow(marker, map, infowindow, contentString);
             bounds.extend(marker.position);
@@ -106,19 +122,13 @@
         }, 1450);
     }
     </script>
-
-</head>
-<body onload="initialize()">
+<body onload="searcher();initialize();">
     <div id="map_holder">
         <div id="map_canvas"></div>
     </div>
 </body>
-<style type="text/css">
-    #farm1 {% for s in sheepList %}
-        , #sheep{{s.sheepId}}
-    {% endfor %}
-    {display:none;}
-</style>
+</head>
+
 {% endblock head %}
 
 {% block title %}
