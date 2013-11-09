@@ -13,7 +13,6 @@
        <tr>
             <th>Identification</th>
             <th>Name</th>
-            <!--<th>Status</th>-->
             <th colspan="2"><input type="text" id="search" placeholder="Type to search"></th>
        </tr>
     </thead>
@@ -26,28 +25,9 @@
                     <td><input id="submitDetails" type="submit" value="Details"><input name="id" type="hidden" value="{{s.sheepId}}"></td>
                     <td><input type="button" id="viewInMap" value="View in map" onclick="bounce({{ s.sheepId }});"></td>
                 </tr>
-                </form>
+            </form>
             {% endfor %}
     </tbody>
 </table>
 </div>
-    <!--
-<div id="datass">
-<input type="text" id="search" placeholder="Type to search">
-<table id="table">
-   <tr>
-      <td>Apple</td>
-      <td>Green</td>
-   </tr>
-   <tr>
-      <td>Grapes</td>
-      <td>Green</td>
-   </tr>
-   <tr>
-      <td>Orange</td>
-      <td>Orange</td>
-   </tr>
-</table>
-</div>
--->
 {% endblock sub %}

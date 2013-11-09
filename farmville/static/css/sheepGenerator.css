@@ -5,13 +5,12 @@ body{
 #map_holder {
     position: fixed;
     right: 10%;
-    top: 15%;
-    margin-top: -25px;
+    margin-top: 65px;
 }
 #map_canvas {
     border: 1px solid black;
-    width:500px;
-    height:400px
+    width:600px;
+    height:500px;
 }
 
 #mainTable {
@@ -23,16 +22,6 @@ body{
     height:400px;
 }
 
-#datass {
-    background: white;
-    left:20%;
-    position: absolute;
-    margin-top: 65px;
-    margin-right: 50px;
-    width:400px;
-    height:100px;
-    z-index: 4;
-}
 #Registrer_new_sheep{
     width:400px;
 }
@@ -62,8 +51,17 @@ td,th {
 }
 
 th {
-    width:135px;
+    width:100px;
     height: 50px;
+}
+#search {
+    width: 200px;
+    text-align: center;
+}
+
+#search:focus {
+    background-color:#e5f9e5;
+    outline: #bbeebb;
 }
 
 thead tr th {background-color: #bbeebb;}

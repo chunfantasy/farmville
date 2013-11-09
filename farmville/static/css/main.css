@@ -85,9 +85,16 @@ body {
 
 
 #title {
+    color:grey;
 	margin-top: 2px;
 	text-align: left;
-    left:40px;
+    margin-left:10%;
+}
+#title a:hover{
+    color:darkgray;
+}
+#title a:visited{
+    color:grey;;
 }
 
 h1,h2,h3 {
