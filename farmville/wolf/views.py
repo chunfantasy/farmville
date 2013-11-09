@@ -19,29 +19,31 @@ def wolfAttackRandomSheep(request):
     sheep = sheepList[random.randint(0, l-1)]
     sheep.status = 1
     farmer = Farmer.objects.get(username = sheep.farmer.username)
-    admin = Farmer.objects.get(username = 'a')
     wolf = Wolf()
     wolf.target = sheep
+    sheep.save()
+    wolf.save()
 
-    subject = "Sau under angrep"
-    warning = "test"
-    broadcaster = admin.username
-    receiver = [farmer.username]
+    subject = "Sheep under attack"
+    warning = "Your sheep " + sheep.sheepId + " " + sheep.name + " is under attack at " + str(wolf.time)[0:19]
+    broadcaster = 'Farmville Administration'
+    receiver = []
+    receiver.append(farmer.email)
+    if farmer.reserve:
+    	receiver.append(farmer.reserve.email)
     if receiver and broadcaster and warning:
         try:
-            #send_mail(subject,message, broadcaster, receiver)
-         message = Message()
-         message.warning = warning
-         message.sender = admin
-         message.receiver = farmer
-         sheep.save()
-         wolf.save()
-         message.save()
-         print str(wolf.time)[0:19] + " Wolf " + str(wolf.id) + " is attacking"
-         print str(wolf.time)[0:19] + " Sheep " + sheep.sheepId + " is under attack"
-         print str(message.time)[0:19] + " Message: " + message.warning
+            message = Message()
+            message.warning = warning
+            message.receiver_reverse = farmer.reserve
+            message.receiver = farmer
+            message.save()
+	    send_mail(subject, warning, broadcaster, receiver)
+            print str(wolf.time)[0:19] + " Wolf " + str(wolf.id) + " is attacking"
+            print str(wolf.time)[0:19] + " Sheep " + sheep.sheepId + " is under attack"
+            print str(message.time)[0:19] + " Warning!! " + message.warning
         except BadHeaderError:
             return "Invalid header found"
-        return HttpResponseRedirect('/farmer/farmerLogin')
+        return HttpResponseRedirect('/')
     else:
         return "make sure all fields are valid!"

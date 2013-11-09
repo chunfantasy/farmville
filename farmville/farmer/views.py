@@ -46,6 +46,7 @@ def initiate(request):
         farmer.last_name = name
         farmer.farmerId = str(int(lastid) + int(i) + 1).zfill(7)
         farmer.email = username
+	farmer.reserve = farmerlist[0]
         farmer.is_staff = True
         farmer.user_permissions.add(20) #change user
         farmer.user_permissions.add(22) #add sheep
@@ -54,7 +55,7 @@ def initiate(request):
         farmer.user_permissions.add(31) #add location
         farmer.user_permissions.add(33) #delete location
         farmer.save()
-        for i in range(50):
+        for j in range(5):
             sheep = Sheep()
             sheep.farmer = farmer
             sheep.name = names[random.randint(0,49)]
@@ -67,7 +68,7 @@ def initiate(request):
             sheep.save()
             dag = datetime(2013,11,20,12,0,0,0)
             dag2 = datetime(2013,11,20,8,0,0,0)
-            for i in range(50):
+            for k in range(5):
                 location = Location()
                 location.latitude = sheep.latitude
                 location.longitude = sheep.longitude
@@ -76,9 +77,7 @@ def initiate(request):
                 location.save()
                 dag = dag - timedelta(hours = 8)
 
-
-
-        print "initiating..."
+	    print "initiating...", i
     return render_to_response('index.html',
     {},
     context_instance=RequestContext(request))
