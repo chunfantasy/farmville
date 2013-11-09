@@ -1,7 +1,3 @@
-body{
-    font:12px/1.231 arial,helvetica,clean,sans-serif;
-}
-
 #map_holder {
     position: fixed;
     right: 10%;
@@ -22,10 +18,10 @@ body{
     height:400px;
 }
 
-#Registrer_new_sheep{
+/*#Registrer_new_sheep{
     width:400px;
 }
-
+*/
 #mainTable td {
     width: 100px;
 }

@@ -9,12 +9,11 @@ form {
         position: absolute;
         text-align: center;
 
-        /*                                                                                                         white                 grey        */
-        background-image: -webkit-linear-gradient(top,         #FFFFFF 70%, #F4F4F4 100%);
-        background-image: -moz-linear-gradient(top,         #FFFFFF 70%, #F4F4F4 100%);
-        background-image: -o-linear-gradient(top,                 #FFFFFF 70%, #F4F4F4 100%);
-        background-image: -ms-linear-gradient(top,                 #FFFFFF 70%, #F4F4F4 100%);
-        background-image: linear-gradient(top,                         #FFFFFF 70%, #F4F4F4 100%);
+        background-image: -webkit-linear-gradient(top,#FFFFFF 70%, #F4F4F4 100%);
+        background-image: -moz-linear-gradient(top,#FFFFFF 70%, #F4F4F4 100%);
+        background-image: -o-linear-gradient(top,#FFFFFF 70%, #F4F4F4 100%);
+        background-image: -ms-linear-gradient(top,#FFFFFF 70%, #F4F4F4 100%);
+        background-image: linear-gradient(top,#FFFFFF 70%, #F4F4F4 100%);
 
         -moz-border-radius: 8px;
         border-radius: 8px;

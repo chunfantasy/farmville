@@ -12,6 +12,10 @@
                 }).hide();
             });
         }
+        function details(sheepId) {
+            $('#search').val(sheepId);
+            $('#search').keyup();
+        }
     </script>
     <link rel="stylesheet" type="text/css" href="/static/css/sheepGenerator.css" />
     <!--<script type="text/javascript">
@@ -68,15 +72,12 @@
                 id: {{ sheep.sheepId }},
                 icon: image
             });
-            var contentString = '<div>'+
-                    '<div>'+
-                    '</div>'+
+            var contentString =
                     '<h1>{{ sheep.name }}</h1>'+
-                    '<div>'+
                     '<p>ID: {{ sheep.sheepId }}</p>'+
                     '<p>Name: {{ sheep.name }}</p>'+
                     '<p>Status: {{ sheep.getStatus }}</p>'+
-                    '</div>';
+                    '<p><input type="button" value="Details" onclick="details(\'{{ sheep.sheepId }}\')"></p>';
 
             bindInfoWindow(marker, map, infowindow, contentString);
             bounds.extend(marker.position);

@@ -133,6 +133,7 @@ WSGI_APPLICATION = 'farmville.wsgi.application'
 
 TEMPLATE_DIRS = (
     normpath(join(ROOT, 'farmville', 'templates')),
+    '/farmville/templates/'
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
