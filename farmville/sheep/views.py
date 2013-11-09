@@ -115,19 +115,10 @@ def getSheep(request):
 
 def getSheepDetail(request):
     farmer = request.user
-    s = Sheep.objects.filter(farmer = farmer)
-    sheepList = []
-    if len(request.POST["id"]) == 5:
-        id = farmer.farmerId + request.POST["id"]
-    elif len(request.POST["id"]) == 12:
-        id = request.POST["id"]
-    id = request.POST["id"]
-    for sheep in s:
-        if sheep.sheepId == id:
-            sheepList.append(sheep)
-            print sheepList
+    s = Sheep.objects.filter(farmer = farmer, sheepId=request.POST["id"])
+    dagensdato = datetime.datetime.today()
     return render_to_response('sheep/sheep_detail.html',
-    {'sheepList':sheepList},
+    {'sheepList':sheepList, 'dagensdato':dagensdato},
     context_instance=RequestContext(request))
 
 
