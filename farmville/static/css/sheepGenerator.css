@@ -6,7 +6,7 @@ body{
     position: fixed;
     right: 10%;
     top: 15%;
-    margin-top: -2.5em;
+    margin-top: -25px;
 }
 #map_canvas {
     border: 1px solid black;
@@ -17,15 +17,29 @@ body{
 #mainTable {
     left:10%;
     position: absolute;
-    margin-top: 40px;
+    margin-top: 65px;
     margin-right: 50px;
-    width:500px;
+    width:400px;
     height:400px;
+}
+
+#datass {
+    background: white;
+    left:20%;
+    position: absolute;
+    margin-top: 65px;
+    margin-right: 50px;
+    width:400px;
+    height:100px;
+    z-index: 4;
 }
 #Registrer_new_sheep{
     width:400px;
 }
 
+#mainTable td {
+    width: 100px;
+}
 
 table {
     width:400px;
