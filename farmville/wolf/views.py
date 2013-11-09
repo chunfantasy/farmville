@@ -35,7 +35,7 @@ def wolfAttackRandomSheep(request):
         try:
             message = Message()
             message.warning = warning
-            message.receiver_reverse = farmer.reserve
+            message.receiver_reserve = farmer.reserve
             message.receiver = farmer
             message.save()
 	    send_mail(subject, warning, broadcaster, receiver)

@@ -52,8 +52,9 @@ def initiate(request):
         farmer.user_permissions.add(22) #add sheep
         farmer.user_permissions.add(23) #change sheep
         farmer.user_permissions.add(24) #delete sheep
-        farmer.user_permissions.add(31) #add location
-        farmer.user_permissions.add(33) #delete location
+        farmer.user_permissions.add(28) #add location
+        farmer.user_permissions.add(30) #delete location
+        farmer.user_permissions.add(26) #change message
         farmer.save()
         for j in range(5):
             sheep = Sheep()
