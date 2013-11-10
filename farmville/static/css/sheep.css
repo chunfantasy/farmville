@@ -62,13 +62,33 @@ th {
 
 thead tr th {background-color: #bbeebb;}
 thead tr th input {background-color: #bbeebb;}
-
+/*
 tbody tr.even td {background-color: #bbeebb;}
 tbody tr.even input {background-color: #bbeebb;}
 tbody tr.odd td {background-color: #e5f9e5;}
 tbody tr.odd input {background-color: #e5f9e5;}
 
 tbody {
+}
+*/
+
+tbody tr td input{
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+	border:1px solid gray;
+	display:inline-block;
+	color:black;
+	font-style:normal;
+	line-height:30px;
+	width:100px;
+}
+
+tbody tr td input:active {
+	position:relative;
+	top:1px;
 }
 
 
@@ -77,6 +97,12 @@ table .inner {
     background-color: #e5f9e5;
     width:100%;
 }
+table input {
+    height: 100%;
+    width: 100%;
+
+}
+/*
 table .inner td {
     background-color:inherit;
 }
@@ -86,14 +112,8 @@ table .inner td input {
 }
 
 
-table input {
-    height: 100%;
-    width: 100%;
-}
-
+*/
+/*
 table .even,table .odd {
     height: 30px;
-}
-
-.inner {
-}
+}*/

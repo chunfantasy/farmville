@@ -780,31 +780,39 @@ table#change-history tbody th {
 .dashboard #content {
     width: 500px;
 }
-
+input{
+    outline:none;
+}
 /* HEADER */
 
 #header {
-    background: white;
-    color: #ffc;
+    background: -moz-linear-gradient(top, #9dd53a 5%, #a1d54f 50%, #80c217 51%, #7cbc0a 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#9dd53a), color-stop(50%,#a1d54f), color-stop(51%,#80c217), color-stop(100%,#7cbc0a)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,#9dd53a 0%,#a1d54f 50%,#80c217 51%,#7cbc0a 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,#9dd53a 0%,#a1d54f 50%,#80c217 51%,#7cbc0a 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #9dd53a 0%,#a1d54f 50%,#80c217 51%,#7cbc0a 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #9dd53a 0%,#a1d54f 50%,#80c217 51%,#7cbc0a 100%);
+    /*color: #ffc;*/
     overflow: hidden;
     -webkit-box-shadow: 0px 3px 2px 0px #05630D;
 	box-shadow: 0px 3px 2px 0px #05630D;
 }
 
 #header a:link, #header a:visited {
-	color: grey;
+	color: whitesmoke;
 }
 
 #header a:hover {
     text-decoration: underline;
 }
 
+
 #branding h1 {
     padding: 0 10px;
     font-size: 18px;
     margin: 8px 0;
     font-weight: normal;
-	color: grey;
+	color: whitesmoke;
 }
 
 #branding h2 {
@@ -822,7 +830,7 @@ table#change-history tbody th {
     padding: 1.2em 10px;
     font-size: 11px;
     text-align: right;
-	color: grey;
+	color: white;
 }
 /* SIDEBAR */
 

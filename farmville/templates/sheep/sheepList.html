@@ -19,7 +19,7 @@
     <tbody id="subTable">
             {% for s in sheepList %}
             <form id="myForm" action="/sheep/getSheepDetail" method="post">{% csrf_token %}
-                <tr colspan="4" class ="{%  cycle 'odd' 'even' %}">
+                <tr colspan="4">
                     <td>{{s.sheepId}}</td>
                     <td>{{s.name}}</td>
                     <td><input id="submitDetails" type="submit" value="Details"><input name="id" type="hidden" value="{{s.sheepId}}"></td>

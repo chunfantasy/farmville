@@ -53,9 +53,6 @@ class Sheep(models.Model):
     longitude = models.FloatField(validators=[validate_long],blank=True, null=True)
 
 
-    def getID(self):
-        return self.sheepId
-
     def getStatus(self):
         return self.STATUS_CHOICES[self.status-1][1]
 

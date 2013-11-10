@@ -30,7 +30,7 @@ def wolfAttackRandomSheep(request):
     receiver = []
     receiver.append(farmer.email)
     if farmer.reserve:
-    	receiver.append(farmer.reserve.email)
+        receiver.append(farmer.reserve.email)
     if receiver and broadcaster and warning:
         try:
             message = Message()
@@ -38,7 +38,7 @@ def wolfAttackRandomSheep(request):
             message.receiver_reserve = farmer.reserve
             message.receiver = farmer
             message.save()
-	    send_mail(subject, warning, broadcaster, receiver)
+            send_mail(subject, warning, broadcaster, receiver)
             print str(wolf.time)[0:19] + " Wolf " + str(wolf.id) + " is attacking"
             print str(wolf.time)[0:19] + " Sheep " + sheep.sheepId + " is under attack"
             print str(message.time)[0:19] + " Warning!! " + message.warning

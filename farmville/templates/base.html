@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <head>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 	<meta charset="utf-8">
 	<title>[Farmville] {% block title %}{% endblock title %}</title>
 	<meta name="description" content="login">
@@ -13,20 +15,20 @@
 <body>
 	<div id="header">
 	<h1 id="title">
-        <a href="/farmer/farmer">Farmville</a>
+        <a href="/farmer/farmer">FARMVILLE</a>
         {% block header %}{% endblock header %}
         </h1>
 	<h4>
 	{% if user.is_authenticated %}
-	<a href="/farmer/farmer">{{user}}</a>&nbsp;
-	<a href="/sheep/sheepGenerate">My Sheep</a>&nbsp;
-	<a href="/admin">Settings</a>&nbsp;
+	    <a href="/farmer/farmer">{{user}}</a>&nbsp;
+	    <a href="/sheep/sheepGenerate">My Sheep</a>&nbsp;
+	    <a href="/admin">Settings</a>&nbsp;
 	{% endif %}
 	
 	{% if user.is_authenticated %}
-	<a href="/farmer/farmerLogout">Logout</a>
+	    <a href="/farmer/farmerLogout">Logout</a>
 	{% else %}
-	<a href="/">Login</a>
+	    <a href="/">Login</a>
 	{% endif %}
 	</h4>
 	</div>

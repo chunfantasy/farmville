@@ -20,7 +20,7 @@ common_names = ['Anne','Inger','Kari','Marit','Ingrid','Liv','Eva','Berit','Astr
                 'Andreas','John','Anders','Rune','Trond','Tore','Daniel','Jon']
                
 def formatSheepID(farmer,sheep,i):
-    return farmer.farmerId + sheep.birthday[3] + str(i+1).zfill(4)
+    return farmer.farmerId + str(sheep.birthday)[3] + str(i+1).zfill(4)
 
 def sheepGenerateTest(request):
     names = common_names[::]

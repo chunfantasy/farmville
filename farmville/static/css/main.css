@@ -17,6 +17,8 @@ ol,ul {
 	list-style: none;
 }
 
+input:focus { outline: none; }
+
 blockquote,q {
 	quotes: none;
 }
@@ -55,6 +57,9 @@ body {
 	background-image: -ms-radial-gradient(center , ellipse cover, #09AB82, #05630D);
 	background-image: -moz-radial-gradient(center , ellipse cover, #09AB82, #05630D);
 	background-image: -webkit-radial-gradient(center , ellipse cover, #09AB82, #05630D);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
 	/* FONTS */
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	font-weight: 300;
@@ -67,11 +72,18 @@ body {
 	position:fixed;
 	left:0px;
 	top:0px;
-	height:58px;
+	height:60px;
 	width:100%;
     margin:0px auto;
-    background-color: white;
-    /* DROP SHADOW */
+    background-color: whitesmoke;
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(top, #ffffff 0%, #f3f3f3 50%, #ededed 51%, #ffffff 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(50%,#f3f3f3), color-stop(51%,#ededed), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #ffffff 0%,#f3f3f3 50%,#ededed 51%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #ffffff 0%,#f3f3f3 50%,#ededed 51%,#ffffff 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #ffffff 0%,#f3f3f3 50%,#ededed 51%,#ffffff 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #ffffff 0%,#f3f3f3 50%,#ededed 51%,#ffffff 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
 	-webkit-box-shadow: 0px 3px 2px 0px #05630D;
 	box-shadow: 0px 3px 2px 0px #05630D;
 }
@@ -82,18 +94,18 @@ body {
    bottom:expression((0-(footer.offsetHeight)+(document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight)+(ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop))+'px');
 }
 
-
-#title a {
-    color:grey;
-	margin-top: 2px;
+#title a, #title h4 {
+    font-size: 30px;
+    font-family: bold, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    color:green;
 	text-align: left;
     margin-left:10%;
 }
-#title a:hover{
-    color:darkgray;
+#title h4:hover, #title h1 a:hover{
+    color: darkgrey;
 }
-#title a:visited{
-    color:grey;;
+#title h4:visited, #title a:visited{
+    color:green;
 }
 
 h1,h2,h3 {
@@ -106,7 +118,6 @@ h1{
 h2{
 	margin-top: 20px;
 	font-size: 18px;
-	/*font-style: bold;*/
 	color: black;
 }
 h3{
@@ -115,7 +126,7 @@ h3{
 	color: grey;
 }
 h4{
-	margin-right: 50px;
+	margin-right: 140px;
 	font-size: 15px;
 	color: grey;
 	text-align:right;
