@@ -38,10 +38,13 @@ table, th {
 }
 
 thead {
+    position:relative;
     background-color: #bbeebb;
     z-index: 1;
     width: 400px;
 }
+
+
 td,th {
     vertical-align:middle;
 }
@@ -56,12 +59,12 @@ th {
 }
 
 #search:focus {
-    background-color:#e5f9e5;
-    outline: #bbeebb;
+    background-color:#F7FDFF;
+    outline: #E1F9FF;
 }
 
-thead tr th {background-color: #bbeebb;}
-thead tr th input {background-color: #bbeebb;}
+thead tr th {background-color: #E1F9FF;}
+thead tr th input {background-color: #F7FDFF;}
 /*
 tbody tr.even td {background-color: #bbeebb;}
 tbody tr.even input {background-color: #bbeebb;}
@@ -100,20 +103,4 @@ table .inner {
 table input {
     height: 100%;
     width: 100%;
-
 }
-/*
-table .inner td {
-    background-color:inherit;
-}
-
-table .inner td input {
-    background-color: inherit;
-}
-
-
-*/
-/*
-table .even,table .odd {
-    height: 30px;
-}*/

@@ -8,7 +8,7 @@
 {% block header %}
 {% endblock header %}
 {% block main %}
-        <div id="loginDiv", class="container">
+        <div id="loginDiv" class="container">
                 <form class="block" action="/farmer/farmerLogin" method="post">{% csrf_token %}
                         <h2>Welcome to Farmville!</h2>
                         <h3>
@@ -24,7 +24,7 @@
                         <input type="submit" value="Log In">
                 </form>
         </div>
-        <div id="regDiv", class="container">
+        <div id="regDiv" class="container">
                 <form class="block" action="/farmer/farmerRegister" method="post">{% csrf_token %}
                         <h2>Ny på Farmville?</h2>
                         <h3>Registrer deg her!</h3>

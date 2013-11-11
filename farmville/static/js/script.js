@@ -14,8 +14,8 @@ function details(sheepId) {
     $('#search').keyup();
 }
 function setRowColours(){
-    $('tbody tr:visible:odd,tbody tr:visible:odd input').css({"background": "#bbeebb"});
-    $('tbody tr:visible:even,tbody tr:visible:even input').css({"background": "#e5f9e5"});
+    $('tbody tr:visible:odd,tbody tr:visible:odd input').css({"background": "#E1F9FF"});
+    $('tbody tr:visible:even,tbody tr:visible:even input').css({"background": "#F7FDFF"});
 }
 
 $(document).ready(function(){

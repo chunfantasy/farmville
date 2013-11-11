@@ -784,22 +784,21 @@ input{
     outline:none;
 }
 /* HEADER */
-
 #header {
-    background: -moz-linear-gradient(top, #9dd53a 5%, #a1d54f 50%, #80c217 51%, #7cbc0a 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#9dd53a), color-stop(50%,#a1d54f), color-stop(51%,#80c217), color-stop(100%,#7cbc0a)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,#9dd53a 0%,#a1d54f 50%,#80c217 51%,#7cbc0a 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,#9dd53a 0%,#a1d54f 50%,#80c217 51%,#7cbc0a 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, #9dd53a 0%,#a1d54f 50%,#80c217 51%,#7cbc0a 100%); /* IE10+ */
-    background: linear-gradient(to bottom, #9dd53a 0%,#a1d54f 50%,#80c217 51%,#7cbc0a 100%);
-    /*color: #ffc;*/
+    background: -moz-linear-gradient(top, #ffffff 0%, #f3f3f3 50%, #ededed 51%, #ffffff 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(50%,#f3f3f3), color-stop(51%,#ededed), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #ffffff 0%,#f3f3f3 50%,#ededed 51%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #ffffff 0%,#f3f3f3 50%,#ededed 51%,#ffffff 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #ffffff 0%,#f3f3f3 50%,#ededed 51%,#ffffff 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #ffffff 0%,#f3f3f3 50%,#ededed 51%,#ffffff 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
     overflow: hidden;
     -webkit-box-shadow: 0px 3px 2px 0px #05630D;
 	box-shadow: 0px 3px 2px 0px #05630D;
 }
 
 #header a:link, #header a:visited {
-	color: whitesmoke;
+	color: green;
 }
 
 #header a:hover {
@@ -812,7 +811,7 @@ input{
     font-size: 18px;
     margin: 8px 0;
     font-weight: normal;
-	color: whitesmoke;
+	color: green;
 }
 
 #branding h2 {
@@ -820,7 +819,7 @@ input{
     font-size: 14px;
     margin: -8px 0 8px 0;
     font-weight: normal;
-    color: #ffc;
+    color: green;
 }
 
 #user-tools {
@@ -830,13 +829,13 @@ input{
     padding: 1.2em 10px;
     font-size: 11px;
     text-align: right;
-	color: white;
+	color: green;
 }
 /* SIDEBAR */
 
 #content-related h3 {
     font-size: 12px;
-    color: #666;
+    color: green;
     margin-bottom: 3px;
 }
 
@@ -846,6 +845,6 @@ input{
 
 #content-related .module h2 {
     background: #eee url(../img/nav-bg.gif) bottom left repeat-x;
-    color: #666;
+    color: green;
 }
 
