@@ -1,46 +1,64 @@
 {% extends "base.html" %}
 {% block head %}
-        <link rel="stylesheet" type="text/css" href="/static/css/form.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/farmer.css" />
 {% endblock head %}
 {% block main %}
 <div id="farmer" class="container">
-<form action="/farmer/farmerUpdate" method="post">{% csrf_token %}
-    <table class="farmertb">
-        <tr>
-         <td class="farmertd" colspan="2">Farmer Information</td>
-        </tr>
-        <tr>
-         <td class="farmertd">Username:&nbsp;</td>
-         <td class="farmertd">{{farmer.username}}</td>
-        </tr>
-        <tr>
-         <td class="farmertd">Telephone:&nbsp;</td>
-         <td class="farmertd"><input name ="tlf" type="text" value="{{farmer.tlf}}"></td>
-        </tr>
-        <tr>
-         <td class="farmertd">Reserve:&nbsp;</td>
-         <td class="farmertd"><input name ="reserve" type="text" value="{{farmer.reserve}}"></td>
-        </tr>
-        <tr>
-         <td class="farmersubmit" colspan="2"><input id ="submit" type="submit" value="Submit"></td>
-        </tr>
-        {% block result %}
-        {% endblock result %}
-    </table>
-</form>
+        <section>
+            <div id="top">
+                <h1>
+                    {% if farmer.first_name %}
+                        Welcome {{ farmer.first_name }}!
+                    {% else %}
+                        Welcome {{farmer.username}}!
+                    {% endif %}
+                </h1>
+            </div>
+            <div class="sub">
+                <p>Farmer Information:</p>
+                <div class="sub">
+                    <p>First name: {{ farmer.first_name }}</p>
+                    <p>{% if farmer.last_name %}
+                        Last name: {{ farmer.last_name }}
+                    {% else %}
+                        Last name: not registered
+                    {% endif %}</p>
+                    <p>Username: {{farmer.username}}</p>
+                    <p>
+                    {% if farmer.tlf %}
+                        Telephone: {{ farmer.tlf }}
+                    {% else %}
+                        Telephone: not registered
+                    {% endif %}
+                    </p>
+                    <p>
+                    {% if farmer.reserve %}
+                        Reserve: {{ farmer.reserve }}
+                    {% else %}
+                        Reserve: not registered
+                    {% endif %}
+                </div>
+                <p><a href="/admin/farmer/farmer">edit</a></p>
+            </div>
+            {% block result %}
+            {% endblock result %}
+        </section>
+    </form>
 <form action="/sheep/sheepGenerate" method="post">{% csrf_token %}
-    <table class="farmertb">
-        <tr>
-         <td class="farmertd" colspan="2">Sheep Generation</td>
-        </tr>
-        <tr>
-         <td class="farmertd">Quantity:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-         <td class="farmertd"><input name ="quantity" type="text" value="1"></td>
-        </tr>
-        <tr>
-         <td class="farmersubmit" colspan="2"><input id ="generate" type="submit" value="Generate"></td>
-        </tr>
-    </table>
+<table class="farmertb">
+    <tr>
+     <td class="" colspan="2">Create dummysheep</td>
+    </tr>
+    <tr>
+     <td class="">Quantity:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+     <td class=""><input name="quantity" type="text" value="1"></td>
+    </tr>
+    <tr>
+     <td class="farmersubmit" colspan="2"><input id ="generate" type="submit" value="Generate"></td>
+    </tr>
+</table>
 </form>
+</section>
 </div>
+
 {% endblock main %}
