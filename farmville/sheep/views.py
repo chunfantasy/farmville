@@ -78,7 +78,14 @@ def sheepGenerate(request):
         location.sheep = sheep
         location.save()
         sheep.save()
-
+        location = Location()
+        location.latitude = sheep.latitude
+        location.longitude = sheep.longitude
+        location.sheep = sheep
+        location.tidspunkt = datetime.datetime.now()
+        location.temperature = (float(random.randint(384,400)))/10
+        location.pulse = random.randint(60,90)
+        location.save()
         lastid+=1
                 
         print(sheep.name,sheep.birthday,sheep.sheepId)
