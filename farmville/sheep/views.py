@@ -84,7 +84,7 @@ def sheepGenerate(request):
         print(sheep.name,sheep.birthday,sheep.sheepId)
         sheepList.append(sheep)
         
-    return render_to_response('sheep/sheepList.html',
+    return render_to_response('sheep/sheep_list.html',
         {'sheepList': sheepList},
         context_instance=RequestContext(request)
         )

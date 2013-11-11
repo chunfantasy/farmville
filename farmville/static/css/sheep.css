@@ -1,27 +1,19 @@
 #map_holder {
     position: fixed;
-    right: 10%;
     margin-top: 65px;
+    margin-left: 45%;
 }
 #map_canvas {
     border: 1px solid black;
-    width:600px;
-    height:500px;
+    width:550px;
+    height:520px;
 }
 
 #mainTable {
-    left:10%;
-    position: absolute;
+    float: left;
     margin-top: 65px;
-    margin-right: 50px;
-    width:400px;
-    height:400px;
 }
 
-/*#Registrer_new_sheep{
-    width:400px;
-}
-*/
 #mainTable td {
     width: 100px;
 }
@@ -37,13 +29,10 @@ table, th {
     text-align: center;
 }
 
-thead {
-    position:relative;
+thead {;
     background-color: #bbeebb;
-    z-index: 1;
     width: 400px;
 }
-
 
 td,th {
     vertical-align:middle;
@@ -52,6 +41,9 @@ td,th {
 th {
     width:100px;
     height: 50px;
+}
+th h1 {
+    text-align: center;
 }
 #search {
     width: 200px;
@@ -65,15 +57,6 @@ th {
 
 thead tr th {background-color: #E1F9FF;}
 thead tr th input {background-color: #F7FDFF;}
-/*
-tbody tr.even td {background-color: #bbeebb;}
-tbody tr.even input {background-color: #bbeebb;}
-tbody tr.odd td {background-color: #e5f9e5;}
-tbody tr.odd input {background-color: #e5f9e5;}
-
-tbody {
-}
-*/
 
 tbody tr td input{
 	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;

@@ -69,6 +69,11 @@ body {
 
 }
 
+#baseInner {
+    width: 75%;
+    margin: 0 auto;
+}
+
 /* HEADER */
 #header {
     z-index: 2;
@@ -90,6 +95,10 @@ body {
 	-webkit-box-shadow: 0px 3px 2px 0px #05630D;
 	box-shadow: 0px 3px 2px 0px #05630D;
 }
+#headerInner {
+    width: 75%;
+    margin: 0 auto;
+}
 
 /* IE 6 */
 * html #header {
@@ -102,7 +111,6 @@ body {
     font-family: bold, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     color:green;
 	text-align: left;
-    margin-left:10%;
 }
 #title h4:hover, #title h1 a:hover{
     color: darkgrey;
@@ -112,8 +120,11 @@ body {
 }
 
 h1,h2,h3 {
-	margin-left: 30px;
 	text-align: left;
+    margin-left:20px;
+}
+h2,h3 {
+    margin-left:20px;
 }
 h1{
 	font-size: 25px;
@@ -129,7 +140,6 @@ h3{
 	color: grey;
 }
 h4{
-	margin-right: 140px;
 	font-size: 15px;
 	color: grey;
 	text-align:right;
@@ -141,7 +151,6 @@ h4 a{
 	
 }
 h4 a:hover{
-	/*margin-right: 50px;*/
 	font-size: 15px;
 	color: darkgray;
 	text-align:right;
