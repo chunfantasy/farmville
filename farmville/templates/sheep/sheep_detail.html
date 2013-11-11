@@ -18,21 +18,16 @@
                 <td>Age: {{s.birthday|timesince:dagensdato}}</td>
                 <td>Birthplace: {{s.birthplace}}</td>
             </tr>
-            <tr>
-                 <td>Latitude: {{s.latitude|floatformat:"2" }}</td>
-                 <td>Longitude: {{s.longitude|floatformat:"2"}}</td>
-            </tr>
-                      {% for l in s.location_history.all %}
-                            <tr>
-                                <td>Date: {{l.tidspunkt}}</td>
-                                <td>Latitude: {{l.latitude|floatformat:"2"}}</td>
-                                <td>Longitude: {{l.longitude|floatformat:"2"}}</td>
-                                <td>Temperature: {{l.temperature}}</td>
-                                <td>Pulse: {{l.pulse}}</td>
-                                <td><input type="button" value="Show in map" onclick="bounce({{s.sheepId}});"></td>
-                            </tr>
-
-                            {% endfor %}
+            {% for l in s.location_history.all %}
+                <tr>
+                    <td>Date: {{l.tidspunkt}}</td>
+                    <td>Latitude: {{l.latitude|floatformat:"2"}}</td>
+                    <td>Longitude: {{l.longitude|floatformat:"2"}}</td>
+                    <td>Temperature: {{l.temperature}}</td>
+                    <td>Pulse: {{l.pulse}}</td>
+                    <td><input type="button" value="Show in map" onclick="bounce({{s.sheepId}});"></td>
+                </tr>
+            {% endfor %}
         </tbody>
 </table>
 {% endfor %}
