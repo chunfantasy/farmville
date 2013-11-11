@@ -53,8 +53,7 @@ def initiate(request):
         farmer.user_permissions.add(22) #add sheep
         farmer.user_permissions.add(23) #change sheep
         farmer.user_permissions.add(24) #delete sheep
-        farmer.user_permissions.add(28) #add location
-        farmer.user_permissions.add(30) #delete location
+        farmer.user_permissions.add(33) #delete location
         farmer.user_permissions.add(26) #change message
         farmer.save()
         for j in range(5):
@@ -114,8 +113,7 @@ def initiate2(request):
         farmer.user_permissions.add(22) #add sheep
         farmer.user_permissions.add(23) #change sheep
         farmer.user_permissions.add(24) #delete sheep
-        farmer.user_permissions.add(28) #add location
-        farmer.user_permissions.add(30) #delete location
+        farmer.user_permissions.add(33) #delete location
         farmer.user_permissions.add(26) #change message
         farmer.save()
         for j in range(5):
@@ -168,8 +166,7 @@ def farmerRegister(request):
         farmer.user_permissions.add(22) #add sheep
         farmer.user_permissions.add(23) #change sheep
         farmer.user_permissions.add(24) #delete sheep
-        farmer.user_permissions.add(28) #add location
-        farmer.user_permissions.add(30) #delete location
+        farmer.user_permissions.add(33) #delete location
         farmer.user_permissions.add(26) #change message
         farmerlist = Farmer.objects.all()
         if len(farmerlist) <= 2:
