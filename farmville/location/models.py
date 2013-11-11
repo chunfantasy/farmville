@@ -8,6 +8,8 @@ class Location(models.Model):
     latitude = models.FloatField()
     longitude = models.FloatField()
     tidspunkt = models.DateTimeField(auto_now_add=False,null=True)
+    pulse = models.IntegerField(blank=True, null=True)
+    temperature = models.FloatField(blank=True, null=True)
 
     def __unicode__(self):
         return "Location for " + str(self.sheep)
