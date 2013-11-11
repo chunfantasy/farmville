@@ -69,10 +69,6 @@ body {
 
 }
 
-#baseInner {
-    width: 75%;
-    margin: 0 auto;
-}
 
 /* HEADER */
 #header {
@@ -95,15 +91,9 @@ body {
 	-webkit-box-shadow: 0px 3px 2px 0px #05630D;
 	box-shadow: 0px 3px 2px 0px #05630D;
 }
-#headerInner {
-    width: 75%;
+#headerInner,#baseInner {
+    width: 1000px;
     margin: 0 auto;
-}
-
-/* IE 6 */
-* html #header {
-   position:absolute;
-   bottom:expression((0-(footer.offsetHeight)+(document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight)+(ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop))+'px');
 }
 
 #title a, #title h4 {

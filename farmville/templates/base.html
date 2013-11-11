@@ -22,6 +22,7 @@
             <h4>
                 {% if user.is_authenticated %}
                     <a href="/farmer/farmer">{{user}}</a>&nbsp;
+                    <a href="/farmer/farmer">Messages({{ user.getWarnings }})</a>&nbsp;
                     <a href="/sheep/sheepGenerate">My Sheep</a>&nbsp;
                     <a href="/admin">Settings</a>&nbsp;
                     <a href="/farmer/farmerLogout">Logout</a>

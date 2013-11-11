@@ -1,7 +1,7 @@
 #map_holder {
     position: fixed;
     margin-top: 65px;
-    margin-left: 45%;
+    margin-left: 450px;
 }
 #map_canvas {
     border: 1px solid black;
@@ -11,6 +11,7 @@
 
 #mainTable {
     float: left;
+    margin-left:20px;
     margin-top: 65px;
 }
 
@@ -29,12 +30,13 @@ table, th {
     text-align: center;
 }
 
-thead {;
+thead {
     background-color: #bbeebb;
     width: 400px;
 }
 
 td,th {
+    padding-right:2px;
     vertical-align:middle;
 }
 
@@ -42,10 +44,8 @@ th {
     width:100px;
     height: 50px;
 }
-th h1 {
-    text-align: center;
-}
 #search {
+    background:#E1F9FF;
     width: 200px;
     text-align: center;
 }
@@ -58,7 +58,7 @@ th h1 {
 thead tr th {background-color: #E1F9FF;}
 thead tr th input {background-color: #F7FDFF;}
 
-tbody tr td input{
+tbody tr td input, .histContent ul li p input {
 	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
 	box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -72,11 +72,10 @@ tbody tr td input{
 	width:100px;
 }
 
-tbody tr td input:active {
+tbody tr td input:active, .histContent ul li p input:active {
 	position:relative;
 	top:1px;
 }
-
 
 table .inner {
     height: 100px;
@@ -86,4 +85,43 @@ table .inner {
 table input {
     height: 100%;
     width: 100%;
+}
+
+.histHeader {
+    cursor: pointer;
+    padding: 2px;
+    text-align: center;
+    -moz-border-bottom-radius: 6px;
+    -webkit-border-radius: 6px;
+	border-bottom:1px solid black;
+	border-left:1px solid black;
+	border-right:1px solid black;
+}
+.histContainer {
+    width:100%;
+}
+.histContainer div {
+    width:100%;
+}
+.histContainer .histHeader {
+    border-collapse:collapse;
+    background-color:#E1F9FF;
+    padding-bottom: 2px;
+    cursor: pointer;
+}
+.histContainer .histContent {
+    display: none;
+}
+
+.histContent ul {
+    width:100%;
+	border-bottom:1px solid black;
+	border-left:1px solid black;
+	border-right:1px solid black;
+}
+.histContent ul li p {
+    padding-left: 5px;
+}
+.histContent ul li p input {
+    float: right;
 }

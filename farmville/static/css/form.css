@@ -21,13 +21,13 @@ form {
 }
 
 #regDiv {
-    position: absolute;
-    margin-left: 40%;
+    float:right;
+    margin-right: 100px;
 }
 
 #loginDiv {
-    position: absolute;
-    margin-left: 10%;
+    float: left;
+    margin-left: 100px;
 }
 
 .block label {

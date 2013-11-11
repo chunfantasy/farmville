@@ -124,9 +124,10 @@ def getSheep(request):
 def getSheepDetail(request):
     farmer = request.user
     s = Sheep.objects.filter(farmer = farmer, sheepId=request.POST["id"])
+    l = Location.objects.filter(sheep=s)
     dagensdato = datetime.datetime.today()
     return render_to_response('sheep/sheep_detail.html',
-    {'sheepList':s, 'dagensdato':dagensdato},
+    {'sheepList':s,'locationList':l, 'dagensdato':dagensdato},
     context_instance=RequestContext(request))
 
 
@@ -186,5 +187,3 @@ def sheepDelete(request):
         {'sheepList': sheepList},
         context_instance=RequestContext(request)
     )
-
-

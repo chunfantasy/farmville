@@ -10,7 +10,6 @@ from farmville.sheep.models import Sheep
 from farmville.location.models import Location
 from datetime import datetime
 from datetime import timedelta
-from datetime import date
 import random
 
 common_names = ['Anne','Inger','Kari','Marit','Ingrid','Liv','Eva','Berit','Astrid',
@@ -73,6 +72,7 @@ def initiate(request):
             latitude = sheep.latitude
             for k in range(5):
                 location = Location()
+                location.locId = k
                 location.latitude = latitude + random.random()/2*(float(random.randint(-1,1)))
                 location.longitude = longitude + random.random()/2*(float(random.randint(-1,1)))
                 location.sheep = sheep

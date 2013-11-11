@@ -1,42 +1,140 @@
 {% extends "sheep/sheep.html" %}
-
+{% block jsload %}addHistory();{% endblock jsload %}
 {% block sub %}
 {% load humanize %}
 <div id="mainTable">
-{% for s in sheepList %}
-<table>
-    <thead>
-    <th>{{s.sheepId}}</th>
-    <th>{{ s.name }}</th>
-    </thead>
-        <tbody class="inner" colspan="3">
-            <tr>
-                <td>Status: {{s.getStatus}}</td>
-                <td><input type="button" value="View in map" onclick="bounce({{ s.sheepId }});"></td>
-            </tr>
-            <tr>
-                <td>Age: {{s.birthday|timesince:dagensdato}}</td>
-                <td>Birthplace: {{s.birthplace}}</td>
-            </tr>
-            <tr>
-                 <td>Latitude: {{s.latitude|floatformat:"2" }}</td>
-                 <td>Longitude: {{s.longitude|floatformat:"2"}}</td>
-            </tr>
-                      {% for l in s.location_history.all %}
-                            <tr>
-                                <td>Date: {{l.tidspunkt}}</td>
-                                <td>Latitude: {{l.latitude|floatformat:"2"}}</td>
-                                <td>Longitude: {{l.longitude|floatformat:"2"}}</td>
-                                <td>Temperature: {{l.temperature}}</td>
-                                <td>Pulse: {{l.pulse}}</td>
-                                <td><input type="button" value="Show in map" onclick="bounce({{s.sheepId}});"></td>
-                            </tr>
+    {% for s in sheepList %}
+        <table>
+            <thead>
+            <th>{{s.sheepId}}</th>
+            <th>{{ s.name }}</th>
+            </thead>
+                <tbody class="inner" colspan="3">
+                    <tr>
+                        <td>Status: {{s.getStatus}}</td>
+                        <td><input type="button" value="View in map" onclick="bounce({{ s.sheepId }});"></td>
+                    </tr>
+                    <tr>
+                        <td>Age: {{s.birthday|timesince:dagensdato}}</td>
+                        <td>Birthplace: {{s.birthplace}}</td>
+                    </tr>
+                    <tr>
+                         <td>Latitude: {{s.latitude|floatformat:"3" }}</td>
+                         <td>Longitude: {{s.longitude|floatformat:"3"}}</td>
+                    </tr>
+                </tbody>
+        </table>
 
-                            {% endfor %}
-        </tbody>
-</table>
-{% endfor %}
+        <div class="histContainer">
+            <div class="histHeader">Click here to show history</div>
+            <div class="histContent">
+                {% for l in locationList %}
+                    <ul>
+                        <li>
+                            <p id="histFirst">{{l.tidspunkt}}<input type="button" value="Show in map" onclick="historicBounce('{{ l.locId }}');"></p>
+                            <p>Lat / Long: ({{l.latitude|floatformat:"3"}} , {{l.longitude|floatformat:"3"}})</p>
+                            <p>Temperature: {{l.temperature}}</p>
+                            <p>Pulse: {{l.pulse}}</p>
+                        </li>
+                    </ul>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
 </div>
-</div>
+<script type="text/javascript">
+function addHistory() {
+    {% for s in sheepList %}
+        var lineSymbol = {
 
+        };
+        var polyOptions = {
+            strokeColor: '#FF0000',
+            strokeOpacity: 1.0,
+            strokeWeight: 3,
+            icons: [{
+                icon: {
+                    path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+                    fillColor:'#FF0000',
+                    fillOpacity:1,
+                    rotation: 180
+                },
+                repeat: '150px',
+                path:[]
+            }]
+        };
+        poly = new google.maps.Polyline(polyOptions);
+        poly.setMap(map);
+        var image = '/static/imgs/sauen.png';
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng({{ s.latitude }}, {{ s.longitude }}),
+            map: map,
+            id: {{ s.sheepId }},
+            icon: image
+        });
+        addLatLng(marker);
+        var contentString =
+                '<h1>{{ s.name }}</h1>'+
+                '<p>Current position!</p>'+
+                '<p>ID: {{ s.sheepId }}</p>'+
+                '<p>Status: {{ s.getStatus }}</p>';
+
+        bindInfoWindow(marker, map, infowindow, contentString);
+        bounds.extend(marker.position);
+        markers.push(marker);
+        {% for l in locationList %}
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng({{ l.latitude }}, {{ l.longitude }}),
+                map: map,
+                id: {{ l.locId }},
+                icon: image
+            });
+            addLatLng(marker);
+            var contentString =
+                    '<h1>{{ s.name }}</h1>'+
+                    '<p>Current position!</p>'+
+                    '<p>Move #'+{{ locationList|length }}-{{ l.locId }}+'</p>'+
+                    '<p>Temperature: {{ l.temperature }}</p>'+
+                    '<p>Pulse: {{ l.pulse }}</p>'+
+                    '<p>Date: {{l.tidspunkt}}</p>';
+            bindInfoWindow(marker, map, infowindow, contentString);
+            bounds.extend(marker.position);
+            markers.push(marker);
+        {% endfor %}
+        map.fitBounds(bounds);
+    {% endfor %}
+}
+
+function addLatLng(marker) {
+    var path = poly.getPath();
+    path.push(marker.position);
+}
+function historicBounce(id) {
+    /*Stops all bouncing markers and bounces a marker twice*/
+    for (var i=0; i<markers.length; i++) {
+        var marker = markers[i]
+        if(marker.id==id) {
+            if (getAnimation(marker) != null) {
+                stopAnimation(marker);
+            } else {
+                marker.setAnimation(google.maps.Animation.BOUNCE);
+                stopAnimation(marker);
+                google.maps.event.trigger(marker, 'click', {});
+            }
+        }
+    }
+}
+</script>
+
+<script type="text/javascript">
+$(".histHeader").click(function () {
+    $histHeader = $(this);
+    $histContent = $histHeader.next();
+    $histHeader.text(function () {
+            return $histContent.is(":visible") ? "Click here to show history" : "Click here to hide history";
+    });
+    $histContent.slideToggle(200, function () {
+    });
+});
+</script>
 {% endblock sub %}
