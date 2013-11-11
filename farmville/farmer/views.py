@@ -4,7 +4,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required,user_passes_test
 from farmville.farmer.models import Farmer
 from farmville.sheep.models import Sheep
 from farmville.location.models import Location
@@ -27,7 +27,8 @@ def index(request):
     {},
     context_instance=RequestContext(request))
 
-@login_required
+
+@user_passes_test(lambda user: user.is_superuser)
 def initiate(request):
     names = common_names[::]
     farmerlist = Farmer.objects.all()

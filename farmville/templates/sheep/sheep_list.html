@@ -5,7 +5,13 @@
     <thead>
        <tc>
            <th colspan="4">
-               <p><h1>{{ user.first_name }}'s sheep</h1></p>
+               <h1>
+                   {% if farmer.first_name %}
+                        {{ farmer.first_name }}' sheep
+                    {% else %}
+                        Your sheep
+                    {% endif %}
+                </h1>
            </th>
        </tc>
        <tr>
