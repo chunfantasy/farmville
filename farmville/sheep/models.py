@@ -40,7 +40,8 @@ class Sheep(models.Model):
     STATUS_CHOICES=(
 	(0,"Normal"),
 	(1,"Panicking"),
-    (2,"Dead/Non-responsive")
+    (2,"Dead/Non-responsive"),
+    (3,"nothring")
     )
     name = models.CharField(max_length=20, null=True)
     birthday = models.DateField(validators=[validate_birthday],auto_now_add=False,null=True)
