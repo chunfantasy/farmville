@@ -35,7 +35,7 @@ def sheepGenerateTest(request):
         sheep.birthday = date.today()
         sheep.sheepId = formatSheepID(farmer,sheep,i)
         sheep.birthplace = sheep.name + "stad"
-        sheep.status = random.randint(0,3)
+        sheep.status = 0
         sheep.latitude = 59.5 + random.random()
         sheep.longitude = 8.5 + random.random()
         sheep.save()
@@ -69,16 +69,12 @@ def sheepGenerate(request):
         sheep.birthday = date.today()
         sheep.sheepId = formatSheepID(farmer,sheep,lastid)
         sheep.birthplace = sheep.name + "stad"
-        sheep.status = random.randint(0,3)
+        sheep.status = 0
         sheep.latitude = 59.5 + random.random()
         sheep.longitude = 8.5 + random.random()
-        location = Location()
-        location.latitude = sheep.latitude
-        location.longitude = sheep.longitude
-        location.sheep = sheep
-        location.save()
         sheep.save()
         location = Location()
+        location.locId = 0
         location.latitude = sheep.latitude
         location.longitude = sheep.longitude
         location.sheep = sheep

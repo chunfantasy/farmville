@@ -54,7 +54,7 @@ class Sheep(models.Model):
 
 
     def getStatus(self):
-        return self.STATUS_CHOICES[self.status-1][1]
+        return self.STATUS_CHOICES[self.status][1]
 
     def __unicode__(self):
         return str(self.farmer) + " " + str(self.name)
