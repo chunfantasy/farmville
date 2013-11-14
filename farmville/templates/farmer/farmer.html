@@ -21,28 +21,32 @@
                 <p>Farmer Information:</p>
                 <div class="sub">
                     <p>{% if farmer.first_name %}
-                        First name: {{ farmer.first_name }}
+                        First name: <span>{{ farmer.first_name }}</span>
                     {% else %}
-                        First name: not registered
+                        First name: <span>not registered</span>
                     {% endif %}</p>
                     <p>{% if farmer.last_name %}
-                        Last name: {{ farmer.last_name }}
+                        Last name: <span>{{ farmer.last_name }}</span>
                     {% else %}
-                        Last name: not registered
+                        Last name: <span>not registered</span>
                     {% endif %}</p>
-                    <p>Username: {{farmer.username}}</p>
+                    <p>Username: <span>{{farmer.username}}</span></p>
                     <p>
                     {% if farmer.tlf %}
-                        Telephone: {{ farmer.tlf }}
+                        Telephone: <span>{{ farmer.tlf }}</span>
                     {% else %}
-                        Telephone: not registered
+                        Telephone: <span>not registered</span>
                     {% endif %}
                     </p>
                     <p>
                     {% if farmer.reserve %}
-                        Reserve: {{ farmer.reserve }}
+                        {% if farmer.reserve.username == "admin" %}
+                            Reserve: <span>not registered</span>
+                        {% else %}
+                        Reserve: <span>{{ farmer.reserve }}</span>
+                        {% endif %}
                     {% else %}
-                        Reserve: not registered
+                        Reserve: <span>not registered</span>
                     {% endif %}
                 </div>
                 <p><a href="/admin/farmer/farmer">edit</a></p>
@@ -50,7 +54,7 @@
             {% block result %}
             {% endblock result %}
         </section>
-    </form>
+    {% if farmer.username == "admin" %}
     <form action="/sheep/sheepGenerate" method="post">{% csrf_token %}
         <section>
             <div id="top">
@@ -63,6 +67,7 @@
             </div>
         </section>
     </form>
+    <a href="/initiate">Initialise database (Only use once!)</a>
+    {% endif %}
 </div>
-
 {% endblock main %}

@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -*- encoding: utf-8 -*-
 # Create your views here.
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -36,8 +36,8 @@ def sheepGenerateTest(request):
         sheep.sheepId = formatSheepID(farmer,sheep,i)
         sheep.birthplace = sheep.name + "stad"
         sheep.status = 0
-        sheep.latitude = 59.5 + random.random()
-        sheep.longitude = 8.5 + random.random()
+        sheep.latitude = 59.5 + random.random() + (random.random()/10)
+        sheep.longitude = 8.5 + random.random() + (random.random()/10)
         sheep.save()
         print(sheep.name,sheep.birthday,sheep.sheepId)
         sheepList.append(sheep)
@@ -70,15 +70,15 @@ def sheepGenerate(request):
         sheep.sheepId = formatSheepID(farmer,sheep,lastid)
         sheep.birthplace = sheep.name + "stad"
         sheep.status = 0
-        sheep.latitude = 59.5 + random.random()
-        sheep.longitude = 8.5 + random.random()
+        sheep.latitude = 59.5 + random.random() + (random.random()/10)
+        sheep.longitude = 8.5 + random.random() + (random.random()/10)
         sheep.save()
         location = Location()
         location.locId = 0
         location.latitude = sheep.latitude
         location.longitude = sheep.longitude
         location.sheep = sheep
-        location.tidspunkt = datetime.datetime.now()
+        location.timestamp = datetime.datetime.now()
         location.temperature = (float(random.randint(384,400)))/10
         location.pulse = random.randint(60,90)
         location.save()
@@ -142,8 +142,6 @@ def sheepRegister(request):
     
     try:
         if len(tempid) == 4:
-            print tempid
-            print lastid
             if int(tempid) > lastid:
                 lastid = int(tempid) - 1
             else:
@@ -157,9 +155,9 @@ def sheepRegister(request):
         sheep.birthday = request.POST["birthday"]
         sheep.sheepId = formatSheepID(farmer,sheep,lastid)
         sheep.birthplace = request.POST["birthplace"]
-        sheep.status = random.randint(0,3)
-        sheep.latitude = 59.5 + random.randint(-2,2)
-        sheep.longitude = 8.5 + random.randint(-2,2)
+        sheep.status = 0
+        sheep.latitude = 59.5 + random.randint(-2,2) + (random.random()/10)
+        sheep.longitude = 8.5 + random.randint(-2,2) + (random.random()/10)
         sheep.save()
         print(sheep.name,sheep.birthday,sheep.sheepId)
         sheepList.append(sheep)

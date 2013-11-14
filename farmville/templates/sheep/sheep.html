@@ -1,13 +1,6 @@
 {% extends "base.html" %}
 {% block head %}
 <link rel="stylesheet" type="text/css" href="/static/css/sheep.css" />
-<!--<script type="text/javascript">
-    function toggle_visibility(tbid,lnkid) {
-        if(document.all){document.getElementById(tbid).style.display = document.getElementById(tbid).style.display == "block" ? "none" : "block";}
-        else{document.getElementById(tbid).style.display = document.getElementById(tbid).style.display == "table" ? "none" : "table";}
-        document.getElementById(lnkid).value = document.getElementById(lnkid).value == "[-] Collapse" ? "[+] Expand" : "[-] Collapse";
-    }
-</script>-->
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 <script type="text/javascript" src="/static/js/script.js"></script>
 <script type="text/javascript">
@@ -87,9 +80,10 @@ function bounce(id) {
             if (getAnimation(marker) != null) {
                 stopAnimation(marker);
             } else {
+                google.maps.event.trigger(marker, 'click', {});
+                stopAnimation(marker);
                 marker.setAnimation(google.maps.Animation.BOUNCE);
                 stopAnimation(marker);
-                google.maps.event.trigger(marker, 'click', {});
             }
         }
     }

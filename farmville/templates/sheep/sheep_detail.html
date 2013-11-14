@@ -30,7 +30,7 @@
                 {% for l in locationList %}
                     <ul>
                         <li>
-                            <p id="histFirst">{{l.tidspunkt}}<input type="button" value="Show in map" onclick="historicBounce('{{ l.locId }}');"></p>
+                            <p id="histFirst">{{l.timestamp}}<input type="button" value="Show in map" onclick="historicBounce('{{ l.locId }}');"></p>
                             <p>Lat / Long: ({{l.latitude|floatformat:"3"}} , {{l.longitude|floatformat:"3"}})</p>
                             <p>Temperature: {{l.temperature}}</p>
                             <p>Pulse: {{l.pulse}}</p>
@@ -78,7 +78,9 @@ function addHistory() {
         bindInfoWindow(marker, map, infowindow, contentString);
         bounds.extend(marker.position);
         markers.push(marker);
+        var i={{ locationList | length }}+1;
         {% for l in locationList %}
+            i-=1;
             var marker = new google.maps.Marker({
                 position: new google.maps.LatLng({{ l.latitude }}, {{ l.longitude }}),
                 map: map,
@@ -88,11 +90,11 @@ function addHistory() {
             addLatLng(marker);
             var contentString =
                     '<h1>{{ s.name }}</h1>'+
-                    '<p>Current position!</p>'+
-                    '<p>Move #'+{{ locationList|length }}-{{ l.locId }}+'</p>'+
+                    '<p>Move #'+i+'</p>'+
                     '<p>Temperature: {{ l.temperature }}</p>'+
                     '<p>Pulse: {{ l.pulse }}</p>'+
-                    '<p>Date: {{l.tidspunkt}}</p>';
+                    '<p>Status: {{ l.getStatus }}'+
+                    '<p>Date: {{l.timestamp}}</p>';
             bindInfoWindow(marker, map, infowindow, contentString);
             bounds.extend(marker.position);
             markers.push(marker);

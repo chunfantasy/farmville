@@ -13,9 +13,9 @@ from datetime import timedelta
 import random
 
 common_names = ['Anne','Inger','Kari','Marit','Ingrid','Liv','Eva','Berit','Astrid',
-                'Bjørg','Hilde','Anna','Solveig','Marianne','Randi','Ida','Nina',
+                'Bjorg','Hilde','Anna','Solveig','Marianne','Randi','Ida','Nina',
                 'Maria','Elisabeth','Kristin','Bente','Heidi','Silje','Hanne',
-                'Jan','Per','Bjørn','Ole','Lars','Kjell','Knut','Arne','Svein',
+                'Jan','Per','Bjorn','Ole','Lars','Kjell','Knut','Arne','Svein',
                 'Thomas','Hans','Geir','Tor','Morten','Terje','Odd','Erik','Martin',
                 'Andreas','John','Anders','Rune','Trond','Tore','Daniel','Jon']
 
@@ -67,22 +67,23 @@ def initiate(request):
             sheep.latitude = 59.5 + random.random()
             sheep.longitude = 8.5 + random.random()
             sheep.save()
-            dag = datetime(2013,11,20,12,0,0,0)
-            longitude = sheep.longitude
+            timestamp = datetime(2013,11,20,12,0,0,0)
             latitude = sheep.latitude
+            longitude = sheep.longitude
             for k in range(5):
                 location = Location()
                 location.locId = k
-                location.latitude = latitude + random.random()/2*(float(random.randint(-1,1)))
-                location.longitude = longitude + random.random()/2*(float(random.randint(-1,1)))
+                location.latitude = latitude + random.random()/20*float(random.randint(-2,2))
+                location.longitude = longitude + random.random()/20*float(random.randint(-2,2))
                 location.sheep = sheep
-                location.tidspunkt = dag
+                location.timestamp = timestamp
                 location.temperature = (float(random.randint(384,400)))/10
                 location.pulse = random.randint(60,90)
+                location.status = random.randint(0,1)
                 location.save()
                 longitude = location.longitude
                 latitude = location.latitude
-                dag = dag - timedelta(hours = 8)
+                timestamp = timestamp - timedelta(hours = 8)
 
 
     return render_to_response('index.html',
@@ -136,7 +137,7 @@ def initiate2(request):
                 location.latitude = latitude + random.random()/2*(float(random.randint(-1,1)))
                 location.longitude = longitude + random.random()/2*(float(random.randint(-1,1)))
                 location.sheep = sheep
-                location.tidspunkt = dag
+                location.timestamp = dag
                 location.temperature = (float(random.randint(384,400)))/10
                 location.pulse = random.randint(60,90)
                 location.save()
