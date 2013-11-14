@@ -37,10 +37,10 @@ def initiate(request):
             f.farmerId = str(i+1).zfill(7)
             f.save()
     lastid = len(farmerlist)
-    print "initiating...", i
-    for i in range(5):
-        name = common_names[i]
-        username = name.lower() + "@farmville.com"
+    for i in range(200):
+        print "initiating...", i
+        name = common_names[random.randint(0,49)]
+        username = name.lower()+str(i)+ "@farmville.com"
         password = "1"
         farmer = Farmer.objects.create_user(username = username, password = password)
         farmer.first_name = name
@@ -56,7 +56,7 @@ def initiate(request):
         farmer.user_permissions.add(33) #delete location
         farmer.user_permissions.add(26) #change message
         farmer.save()
-        for j in range(5):
+        for j in range(50):
             sheep = Sheep()
             sheep.farmer = farmer
             sheep.name = names[random.randint(0,49)]

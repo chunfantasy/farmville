@@ -53,7 +53,7 @@ function initialize() {
                 '<h1>{{ sheep.name }}</h1>'+
                 '<p>ID: {{ sheep.sheepId }}</p>'+
                 '<p>Status: {{ sheep.getStatus }}</p>'+
-                '<p><input type="button" value="Details" onclick="details(\'{{ sheep.sheepId }}\')"></p>';
+                '<p><input style="margin-top:4px;color:white;padding-right:3px;padding-left:3px;background-color:green" type="button" value="Details" onclick="details(\'{{ sheep.sheepId }}\')"></p>';
 
         bindInfoWindow(marker, map, infowindow, contentString);
         bounds.extend(marker.position);
