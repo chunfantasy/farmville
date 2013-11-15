@@ -54,11 +54,10 @@
             {% block result %}
             {% endblock result %}
         </section>
-    {% if farmer.username == "admin" %}
     <form action="/sheep/sheepGenerate" method="post">{% csrf_token %}
         <section>
             <div id="top">
-                <h2>Create dummysheep</h2>
+                <h2>Create multiple new sheep</h2>
             </div>
             <div class="sub">
                 <p>Quantity:</p>
@@ -67,6 +66,7 @@
             </div>
         </section>
     </form>
+    {% if farmer.username == "admin" %}
     <a href="/initiate">Initialise database (Only use once!)</a>
     {% endif %}
 </div>

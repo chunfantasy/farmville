@@ -14,8 +14,8 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^$', 'farmville.farmer.views.index'),
+    url(r'^initiateMax$', 'farmville.farmer.views.initiateMax'),
     url(r'^initiate$', 'farmville.farmer.views.initiate'),
-    url(r'^initiate2$', 'farmville.farmer.views.initiate2'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^farmer/', include('farmville.farmer.urls')),
     url(r'^sheep/', include('farmville.sheep.urls')),

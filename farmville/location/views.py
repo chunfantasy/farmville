@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Create your views here.
+"""
 from datetime import datetime
-
 from farmville.sheep.views import sheepGetList
 from farmville.sheep.models import Sheep
 from farmville.location.models import Location
@@ -45,3 +45,4 @@ def locationMoveAll(request):
         sheep.save()
         print "Sheep moved " + sheep.sheepId
     return sheepGetList(request)
+"""

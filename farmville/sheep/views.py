@@ -18,9 +18,7 @@ common_names = ['Anne','Inger','Kari','Marit','Ingrid','Liv','Eva','Berit','Astr
                 'Jan','Per','Bjorn','Ole','Lars','Kjell','Knut','Arne','Svein',
                 'Thomas','Hans','Geir','Tor','Morten','Terje','Odd','Erik','Martin',
                 'Andreas','John','Anders','Rune','Trond','Tore','Daniel','Jon']
-               
-def formatSheepID(farmer,sheep,i):
-    return farmer.farmerId + str(sheep.birthday)[3] + str(i+1).zfill(4)
+
 
 def sheepGenerateTest(request):
     names = common_names[::]
@@ -33,7 +31,7 @@ def sheepGenerateTest(request):
         sheep.Farmer = farmer
         sheep.name = names[random.randint(0,50-i-1)]
         sheep.birthday = date.today()
-        sheep.sheepId = formatSheepID(farmer,sheep,i)
+        sheep.sheepId = str(i+1).zfill(4)
         sheep.birthplace = sheep.name + "stad"
         sheep.status = 0
         sheep.latitude = 59.5 + random.random() + (random.random()/10)
@@ -59,7 +57,7 @@ def sheepGenerate(request):
     for sheep in s:
         sheepList.append(sheep)
     if sheepList:
-        lastid = int(str(sheepList[-1].sheepId)[8:12])
+        lastid = int(str(sheepList[-1].sheepId))
     else:
         lastid = 0
     for i in range(quantity):
@@ -67,7 +65,7 @@ def sheepGenerate(request):
         sheep.farmer = farmer
         sheep.name = names[random.randint(0,49)]
         sheep.birthday = date.today()
-        sheep.sheepId = formatSheepID(farmer,sheep,lastid)
+        sheep.sheepId = str(lastid+1).zfill(4)
         sheep.birthplace = sheep.name + "stad"
         sheep.status = 0
         sheep.latitude = 59.5 + random.random() + (random.random()/10)
@@ -99,23 +97,6 @@ def sheepGetList(request):
         {'sheepList': sheepList},
         context_instance=RequestContext(request)
     )
-    
-def getSheep(request):
-    farmer = request.user
-    s = Sheep.objects.filter(farmer = farmer)
-    sheepList = []
-    if len(request.POST["id"]) == 5:
-        id = farmer.farmerId + request.POST["id"]
-    elif len(request.POST["id"]) == 12:
-        id = request.POST["id"]
-    id = request.POST["id"]
-    for sheep in s:
-        if sheep.sheepId == id:
-            sheepList.append(sheep)
-    return render_to_response('sheep/logg.html',
-    {'sheepList':sheepList},
-    context_instance=RequestContext(request))
-
 
 def getSheepDetail(request):
     farmer = request.user
@@ -125,7 +106,6 @@ def getSheepDetail(request):
     return render_to_response('sheep/sheep_detail.html',
     {'sheepList':s,'locationList':l, 'dagensdato':dagensdato},
     context_instance=RequestContext(request))
-
 
 def sheepRegister(request):
     farmer = request.user

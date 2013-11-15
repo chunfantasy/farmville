@@ -9,14 +9,12 @@ class Sheep(models.Model):
     def validate_ID_size(value):
         valSize = len(str(value))
         if valSize != 4 and valSize != 12:
-            raise ValidationError(u'Ensure this value is either 4 or 12 characters (it has %s).' % valSize)
+            raise ValidationError(u'Ensure this value is either 4 or 12 characters long (it has %s).' % valSize)
 
     def validate_ID_unique(value):
-        print("wat: ",value)
         s = Sheep.objects.filter(farmer = Farmer)
         for sheep in s:
-            print sheep.id + " vs " + value
-            if sheep.id == value:
+            if sheep.sheepId == value:
                 raise ValidationError(u'%s is not a unique ID' % value)
 
     def validate_weight(value):
@@ -35,17 +33,14 @@ class Sheep(models.Model):
         if value < 5:
             raise ValidationError(u'%s is not a valid longitude, it is too far west. (5 is min)' % value)
 
-    def validate_birthday(date):
-        print 'date'
-
     STATUS_CHOICES=(
 	(0,"Normal"),
 	(1,"Panicking"),
     (2,"Dead/Non-responsive")
     )
-    name = models.CharField(max_length=20, null=True)
-    birthday = models.DateField(validators=[validate_birthday],auto_now_add=False,null=True)
-    birthplace = models.CharField(max_length=15, null=True)
+    name = models.CharField(max_length=20, null=True, blank=True)
+    birthday = models.DateField(auto_now_add=False,null=True)
+    birthplace = models.CharField(max_length=15, null=True, blank=True)
     farmer = models.ForeignKey(Farmer, null=True)
     sheepId = models.CharField(validators=[validate_ID_size, validate_ID_unique],max_length=12)
     weight = models.FloatField(validators=[validate_weight],null=True, blank=True)
@@ -53,6 +48,9 @@ class Sheep(models.Model):
     latitude = models.FloatField(validators=[validate_lat],blank=True, null=True)
     longitude = models.FloatField(validators=[validate_long],blank=True, null=True)
 
+
+    def getFullId(self):
+        return str(self.birthday)[3] + self.sheepId
 
     def getStatus(self):
         return self.STATUS_CHOICES[self.status][1]

@@ -28,7 +28,7 @@ def index(request):
 
 
 @user_passes_test(lambda user: user.is_superuser)
-def initiate(request):
+def initiateMax(request):
     names = common_names[::]
     farmerlist = Farmer.objects.all()
     if len(farmerlist) <= 2:
@@ -39,8 +39,7 @@ def initiate(request):
     lastid = len(farmerlist)
     for i in range(200):
         print "initiating...", i
-        name = common_names[random.randint(0,49)]
-        username = name.lower()+str(i)+ "@farmville.com"
+        username = str(i)+ "@farmville.com"
         password = "1"
         farmer = Farmer.objects.create_user(username = username, password = password)
         farmer.first_name = name
@@ -53,7 +52,8 @@ def initiate(request):
         farmer.user_permissions.add(22) #add sheep
         farmer.user_permissions.add(23) #change sheep
         farmer.user_permissions.add(24) #delete sheep
-        farmer.user_permissions.add(33) #delete location
+        farmer.user_permissions.add(30) #delete location
+        farmer.user_permissions.add(25) #add message
         farmer.user_permissions.add(26) #change message
         farmer.save()
         for j in range(50):
@@ -61,7 +61,7 @@ def initiate(request):
             sheep.farmer = farmer
             sheep.name = names[random.randint(0,49)]
             sheep.birthday = datetime(random.randint(2008,2013),random.randint(1,11),random.randint(1,11))
-            sheep.sheepId = farmer.farmerId.zfill(7) + str(sheep.birthday)[3] + str(lastid+j).zfill(4)
+            sheep.sheepId = farmer.farmerId + str(sheep.birthday)[3] + str(lastid+j).zfill(4)
             sheep.birthplace = sheep.name + "stad"
             sheep.status = 0
             sheep.latitude = 59.5 + random.random()
@@ -90,8 +90,8 @@ def initiate(request):
     {},
     context_instance=RequestContext(request))
 
-@login_required
-def initiate2(request):
+@user_passes_test(lambda user: user.is_superuser)
+def initiate(request):
     names = common_names[::]
     farmerlist = Farmer.objects.all()
     if len(farmerlist) <= 2:
@@ -100,12 +100,12 @@ def initiate2(request):
             f.farmerId = str(i+1).zfill(7)
             f.save()
     lastid = len(farmerlist)
-    for i in range(200):
+    for i in range(5):
         name = common_names[i]
-        username = str(i) + "@farmville.com"
+        username = name.lower() + "@farmville.com"
         password = "1"
         farmer = Farmer.objects.create_user(username = username, password = password)
-        farmer.first_name = str(i)
+        farmer.first_name = name
         farmer.last_name = str(i)
         farmer.farmerId = str(int(lastid) + int(i) + 1).zfill(7)
         farmer.email = username
@@ -115,7 +115,8 @@ def initiate2(request):
         farmer.user_permissions.add(22) #add sheep
         farmer.user_permissions.add(23) #change sheep
         farmer.user_permissions.add(24) #delete sheep
-        farmer.user_permissions.add(33) #delete location
+        farmer.user_permissions.add(30) #delete location
+        farmer.user_permissions.add(25) #add message
         farmer.user_permissions.add(26) #change message
         farmer.save()
         for j in range(5):
@@ -123,7 +124,7 @@ def initiate2(request):
             sheep.farmer = farmer
             sheep.name = names[random.randint(0,49)]
             sheep.birthday = datetime(random.randint(2008,2013),random.randint(1,11),random.randint(1,11))
-            sheep.sheepId = farmer.farmerId.zfill(7) + str(sheep.birthday)[3] + str(lastid+j).zfill(4)
+            sheep.sheepId = farmer.farmerId + str(sheep.birthday)[3] + str(lastid+j).zfill(4)
             sheep.birthplace = sheep.name + "stad"
             sheep.status = 2
             sheep.latitude = 59.5 + random.random()
@@ -134,8 +135,9 @@ def initiate2(request):
             latitude = sheep.latitude
             for k in range(5):
                 location = Location()
-                location.latitude = latitude + random.random()/2*(float(random.randint(-1,1)))
-                location.longitude = longitude + random.random()/2*(float(random.randint(-1,1)))
+                location.locId = k
+                location.latitude = latitude + random.random()/20*(float(random.randint(-2,2)))
+                location.longitude = longitude + random.random()/20*(float(random.randint(-2,2)))
                 location.sheep = sheep
                 location.timestamp = dag
                 location.temperature = (float(random.randint(384,400)))/10
@@ -168,7 +170,8 @@ def farmerRegister(request):
         farmer.user_permissions.add(22) #add sheep
         farmer.user_permissions.add(23) #change sheep
         farmer.user_permissions.add(24) #delete sheep
-        farmer.user_permissions.add(33) #delete location
+        farmer.user_permissions.add(30) #delete location
+        farmer.user_permissions.add(25) #add message
         farmer.user_permissions.add(26) #change message
         farmerlist = Farmer.objects.all()
         if len(farmerlist) <= 2:

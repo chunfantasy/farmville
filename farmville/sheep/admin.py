@@ -5,7 +5,7 @@ from farmville.location.models import Location
 
 class SheepAdmin(admin.ModelAdmin):
 
-    list_display = ('sheepId', 'name', 'farmer')
+    list_display = ('birthday','sheepId', 'name', 'farmer')
     exclude = ('farmer',)
 
     def queryset(self, request):
@@ -17,8 +17,12 @@ class SheepAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         obj.farmer = request.user
         birthyear = str(obj.birthday)[3]
+        if (len(str(obj.sheepId)) == 12):
+            if (obj.sheepId[0:6] != obj.farmer.farmerId.zfill(7) or obj.sheepId[8] != birthyear):
+                obj.sheepId = obj.farmer.farmerId.zfill(7) + birthyear + obj.sheepId[8:12]
         if (len(str(obj.sheepId)) == 4):
             obj.sheepId = obj.farmer.farmerId.zfill(7) + birthyear + obj.sheepId
+
         obj.save()
 
     def save_formset(self, request, form, formset, change):
