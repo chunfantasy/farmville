@@ -65,7 +65,7 @@ def sheepGenerate(request):
         sheep.farmer = farmer
         sheep.name = names[random.randint(0,49)]
         sheep.birthday = date.today()
-        sheep.sheepId = str(lastid+1).zfill(4)
+        sheep.sheepId = str(farmer.farmerId).zfill(7) + str(sheep.birthday)[3] + str(lastid+1).zfill(4)
         sheep.birthplace = sheep.name + "stad"
         sheep.status = 0
         sheep.latitude = 59.5 + random.random() + (random.random()/10)
