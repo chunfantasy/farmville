@@ -52,7 +52,8 @@ def initiateMax(request):
         farmer.user_permissions.add(22) #add sheep
         farmer.user_permissions.add(23) #change sheep
         farmer.user_permissions.add(24) #delete sheep
-        farmer.user_permissions.add(30) #delete location
+        farmer.user_permissions.add(30) #delete Wolf
+        farmer.user_permissions.add(33) #delete location
         farmer.user_permissions.add(25) #add message
         farmer.user_permissions.add(26) #change message
         farmer.save()
@@ -115,7 +116,8 @@ def initiate(request):
         farmer.user_permissions.add(22) #add sheep
         farmer.user_permissions.add(23) #change sheep
         farmer.user_permissions.add(24) #delete sheep
-        farmer.user_permissions.add(30) #delete location
+        farmer.user_permissions.add(30) #delete Wolf
+        farmer.user_permissions.add(33) #delete location
         farmer.user_permissions.add(25) #add message
         farmer.user_permissions.add(26) #change message
         farmer.save()
@@ -170,7 +172,8 @@ def farmerRegister(request):
         farmer.user_permissions.add(22) #add sheep
         farmer.user_permissions.add(23) #change sheep
         farmer.user_permissions.add(24) #delete sheep
-        farmer.user_permissions.add(30) #delete location
+        farmer.user_permissions.add(30) #delete Wolf
+        farmer.user_permissions.add(33) #delete location
         farmer.user_permissions.add(25) #add message
         farmer.user_permissions.add(26) #change message
         farmerlist = Farmer.objects.all()
