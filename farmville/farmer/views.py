@@ -42,8 +42,8 @@ def initiateMax(request):
         username = str(i)+ "@farmville.com"
         password = "1"
         farmer = Farmer.objects.create_user(username = username, password = password)
-        farmer.first_name = name
-        farmer.last_name = name
+        farmer.first_name = str(i)
+        farmer.last_name = str(i)
         farmer.farmerId = str(int(lastid) + int(i) + 1).zfill(7)
         farmer.email = username
         farmer.reserve = farmerlist[0]
