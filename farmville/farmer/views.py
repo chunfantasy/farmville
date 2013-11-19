@@ -176,6 +176,7 @@ def farmerRegister(request):
         farmer.user_permissions.add(33) #delete location
         farmer.user_permissions.add(25) #add message
         farmer.user_permissions.add(26) #change message
+        farmer.save()
         farmerlist = Farmer.objects.all()
         if len(farmerlist) <= 2:
             for i in range(len(farmerlist)):
