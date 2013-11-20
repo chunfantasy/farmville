@@ -42,8 +42,8 @@ def initiateMax(request):
         username = str(i)+ "@farmville.com"
         password = "1"
         farmer = Farmer.objects.create_user(username = username, password = password)
-        farmer.first_name = name
-        farmer.last_name = name
+        farmer.first_name = str(i)
+        farmer.last_name = str(i)
         farmer.farmerId = str(int(lastid) + int(i) + 1).zfill(7)
         farmer.email = username
         farmer.reserve = farmerlist[0]
@@ -52,7 +52,8 @@ def initiateMax(request):
         farmer.user_permissions.add(22) #add sheep
         farmer.user_permissions.add(23) #change sheep
         farmer.user_permissions.add(24) #delete sheep
-        farmer.user_permissions.add(30) #delete location
+        farmer.user_permissions.add(30) #delete Wolf
+        farmer.user_permissions.add(33) #delete location
         farmer.user_permissions.add(25) #add message
         farmer.user_permissions.add(26) #change message
         farmer.save()
@@ -102,20 +103,28 @@ def initiate(request):
     lastid = len(farmerlist)
     for i in range(5):
         name = common_names[i]
-        username = name.lower() + "@farmville.com"
+        if (i == 0):
+            username = "vetlefalch_@hotmail.com"
+        else:
+            username = name.lower() + "@farmville.com"
         password = "1"
         farmer = Farmer.objects.create_user(username = username, password = password)
         farmer.first_name = name
         farmer.last_name = str(i)
         farmer.farmerId = str(int(lastid) + int(i) + 1).zfill(7)
         farmer.email = username
-        farmer.reserve = farmerlist[0]
+        if not (i == 0):
+            farmerlist2 = Farmer.objects.all()
+            for u in farmerlist2:
+                    if u.username == "vetlefalch_@hotmail.com":
+                        farmer.reserve = u
         farmer.is_staff = True
         farmer.user_permissions.add(20) #change user
         farmer.user_permissions.add(22) #add sheep
         farmer.user_permissions.add(23) #change sheep
         farmer.user_permissions.add(24) #delete sheep
-        farmer.user_permissions.add(30) #delete location
+        farmer.user_permissions.add(30) #delete Wolf
+        farmer.user_permissions.add(33) #delete location
         farmer.user_permissions.add(25) #add message
         farmer.user_permissions.add(26) #change message
         farmer.save()
@@ -136,6 +145,7 @@ def initiate(request):
             for k in range(5):
                 location = Location()
                 location.locId = k
+                location.status = 0
                 location.latitude = latitude + random.random()/20*(float(random.randint(-2,2)))
                 location.longitude = longitude + random.random()/20*(float(random.randint(-2,2)))
                 location.sheep = sheep
@@ -171,9 +181,11 @@ def farmerRegister(request):
         farmer.user_permissions.add(22) #add sheep
         farmer.user_permissions.add(23) #change sheep
         farmer.user_permissions.add(24) #delete sheep
-        farmer.user_permissions.add(30) #delete location
+        farmer.user_permissions.add(30) #delete Wolf
+        farmer.user_permissions.add(33) #delete location
         farmer.user_permissions.add(25) #add message
         farmer.user_permissions.add(26) #change message
+        farmer.save()
         farmerlist = Farmer.objects.all()
         if len(farmerlist) <= 2:
             for i in range(len(farmerlist)):

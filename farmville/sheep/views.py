@@ -57,7 +57,7 @@ def sheepGenerate(request):
     for sheep in s:
         sheepList.append(sheep)
     if sheepList:
-        lastid = int(str(sheepList[-1].sheepId))
+        lastid = int(str(sheepList[-1].sheepId[8:12]))
     else:
         lastid = 0
     for i in range(quantity):
@@ -65,7 +65,7 @@ def sheepGenerate(request):
         sheep.farmer = farmer
         sheep.name = names[random.randint(0,49)]
         sheep.birthday = date.today()
-        sheep.sheepId = str(farmer.farmerId).zfill(7) + str(sheep.birthday)[3] + str(lastid+1).zfill(4)
+        sheep.sheepId = str(farmer.farmerId) + str(sheep.birthday)[3] + str(lastid+1).zfill(4)
         sheep.birthplace = sheep.name + "stad"
         sheep.status = 0
         sheep.latitude = 59.5 + random.random() + (random.random()/10)
@@ -76,6 +76,7 @@ def sheepGenerate(request):
         location.latitude = sheep.latitude
         location.longitude = sheep.longitude
         location.sheep = sheep
+        location.status = 0
         location.timestamp = datetime.datetime.now()
         location.temperature = (float(random.randint(384,400)))/10
         location.pulse = random.randint(60,90)
@@ -116,6 +117,7 @@ def sheepRegister(request):
     if sheepList:
         sheepList[-1].sheepId[8:12]
         lastid = int(sheepList[-1].sheepId[8:12])
+        print lastid
     else:
         lastid = 0
     tempid = request.POST["lastid"]

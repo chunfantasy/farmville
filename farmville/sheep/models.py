@@ -41,7 +41,7 @@ class Sheep(models.Model):
     name = models.CharField(max_length=20, null=True, blank=True)
     birthday = models.DateField(auto_now_add=False,null=True)
     birthplace = models.CharField(max_length=15, null=True, blank=True)
-    farmer = models.ForeignKey(Farmer, null=True)
+    farmer = models.ForeignKey(Farmer, null=True, related_name="own")
     sheepId = models.CharField(validators=[validate_ID_size, validate_ID_unique],max_length=12)
     weight = models.FloatField(validators=[validate_weight],null=True, blank=True)
     status = models.IntegerField(max_length=1, choices=STATUS_CHOICES,default=0, null=True)

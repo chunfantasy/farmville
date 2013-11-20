@@ -5,7 +5,7 @@ from django.core.exceptions import ValidationError
 # Create your models here.
 
 class Farmer(AbstractUser):
-    farmerId = models.CharField(max_length=7)
+    farmerId = models.CharField(max_length=7, unique = True )
     #username = models.CharField(max_length=50, null=True)
     #password = models.CharField(max_length=50, null=True)
     #first_name = models.CharField(max_length=10, null=True)
