@@ -126,7 +126,7 @@ def initiate(request):
             sheep.birthday = datetime(random.randint(2008,2013),random.randint(1,11),random.randint(1,11))
             sheep.sheepId = farmer.farmerId + str(sheep.birthday)[3] + str(lastid+j).zfill(4)
             sheep.birthplace = sheep.name + "stad"
-            sheep.status = 2
+            sheep.status = 0
             sheep.latitude = 59.5 + random.random()
             sheep.longitude = 8.5 + random.random()
             sheep.save()
@@ -139,6 +139,7 @@ def initiate(request):
                 location.latitude = latitude + random.random()/20*(float(random.randint(-2,2)))
                 location.longitude = longitude + random.random()/20*(float(random.randint(-2,2)))
                 location.sheep = sheep
+                location.status = sheep.status
                 location.timestamp = dag
                 location.temperature = (float(random.randint(384,400)))/10
                 location.pulse = random.randint(60,90)
