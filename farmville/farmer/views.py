@@ -103,14 +103,21 @@ def initiate(request):
     lastid = len(farmerlist)
     for i in range(5):
         name = common_names[i]
-        username = name.lower() + "@farmville.com"
+        if (i == 0):
+            username = "vetlefalch_@hotmail.com"
+        else:
+            username = name.lower() + "@farmville.com"
         password = "1"
         farmer = Farmer.objects.create_user(username = username, password = password)
         farmer.first_name = name
         farmer.last_name = str(i)
         farmer.farmerId = str(int(lastid) + int(i) + 1).zfill(7)
         farmer.email = username
-        farmer.reserve = farmerlist[0]
+        if not (i == 0):
+            farmerlist2 = Farmer.objects.all()
+            for u in farmerlist2:
+                    if u.username == "vetlefalch_@hotmail.com":
+                        farmer.reserve = u
         farmer.is_staff = True
         farmer.user_permissions.add(20) #change user
         farmer.user_permissions.add(22) #add sheep
@@ -138,6 +145,7 @@ def initiate(request):
             for k in range(5):
                 location = Location()
                 location.locId = k
+                location.status = 0
                 location.latitude = latitude + random.random()/20*(float(random.randint(-2,2)))
                 location.longitude = longitude + random.random()/20*(float(random.randint(-2,2)))
                 location.sheep = sheep
